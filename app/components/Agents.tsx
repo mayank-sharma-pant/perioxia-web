@@ -12,46 +12,52 @@ const agents = [
     title: "Intelligence Hub",
     desc: "Autonomous parsing of documentation and customer engagement.",
     icon: MessageSquare,
-    id: "A_01"
+    id: "A_01",
   },
   {
     title: "Logic Orchestrator",
     desc: "Sub-second anomaly detection powered by proprietary kernels.",
     icon: BarChart3,
-    id: "A_02"
+    id: "A_02",
   },
   {
     title: "Kinetic Bridge",
     desc: "Software-to-hardware triggers for manufacturing fleets.",
     icon: Workflow,
-    id: "A_03"
+    id: "A_03",
   },
 ];
 
 export default function Agents() {
-  const container = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.from(".agent-card", {
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 70%",
-        },
-        y: 50,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: "power2.out",
+    const ctx = gsap.context(() => {
+      ScrollTrigger.batch(".agent-card", {
+        start: "top 85%",
+        onEnter: (batch) =>
+          gsap.from(batch, {
+            y: 40,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power2.out",
+          }),
+        once: true, // animate only once
       });
-    }, container);
+    }, containerRef);
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={container} id="agents" className="relative py-32 bg-void">
+    <section
+      ref={containerRef}
+      id="agents"
+      className="relative bg-void pt-32 pb-24"
+    >
       <div className="container mx-auto px-6">
-
+        {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-white/10 pb-8">
           <div>
             <div className="flex items-center gap-3 text-accent-signal font-bold text-[10px] uppercase tracking-[0.3em] mb-4">
@@ -62,23 +68,34 @@ export default function Agents() {
               CUSTOM <br /> AGENTS.
             </h2>
           </div>
+
           <p className="text-text-secondary text-right max-w-md mt-8 md:mt-0 font-light">
-            Sovereign digital workers designed to automate non-routine tasks across your technical infrastructure.
+            Sovereign digital workers designed to automate non-routine tasks
+            across your technical infrastructure.
           </p>
         </div>
 
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {agents.map((agent) => (
-            <div key={agent.id} className="agent-card group relative p-10 bg-white/[0.02] border border-white/10 hover:bg-accent-signal/5 transition-all duration-500">
+            <div
+              key={agent.id}
+              className="agent-card group relative p-10 bg-white/[0.02] border border-white/10 hover:bg-accent-signal/5 transition-all duration-500"
+            >
               <div className="absolute top-0 left-0 w-full h-[1px] bg-accent-signal scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
               <div className="w-16 h-16 bg-white/5 flex items-center justify-center mb-10 text-white group-hover:text-accent-signal transition-colors">
                 <agent.icon size={32} />
               </div>
 
-              <div className="absolute top-6 right-6 font-mono-tech text-xs text-white/30">{agent.id}</div>
+              <div className="absolute top-6 right-6 font-mono-tech text-xs text-white/30">
+                {agent.id}
+              </div>
 
-              <h3 className="text-2xl font-bold text-white mb-4 uppercase">{agent.title}</h3>
+              <h3 className="text-2xl font-bold text-white mb-4 uppercase">
+                {agent.title}
+              </h3>
+
               <p className="text-text-secondary leading-relaxed text-sm">
                 {agent.desc}
               </p>
@@ -92,7 +109,6 @@ export default function Agents() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

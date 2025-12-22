@@ -16,7 +16,7 @@ export default function Page() {
 
             <div className="relative z-10">
                 <Hero />
-                <div className="max-w-7xl mx-auto px-6 space-y-32 pb-20">
+                <div className="max-w-7xl flex flex-col mx-auto px-2 pb-20">
                     <About />
                     <Services />
                     <Robotics />
