@@ -1,17 +1,19 @@
-import { Linkedin, Twitter, Github, ArrowUpRight, Radio } from "lucide-react";
+"use client";
+
+import { Linkedin, Twitter, Github, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
     return (
-        <footer className="relative z-10 py-32 border-t border-white/5 bg-[#030303]">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-24 mb-24">
-                    <div className="md:col-span-2 space-y-10">
-                        <div className="text-4xl font-extrabold tracking-tighter text-gradient">Perioxia.</div>
-                        <p className="text-slate-400 text-xl font-light leading-relaxed max-w-sm">
+        <footer className="relative z-10 py-20 border-t border-white/10 bg-void">
+            <div className="container mx-auto px-6">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-20 mb-20">
+                    <div className="md:col-span-2 space-y-8">
+                        <div className="text-4xl font-black tracking-tighter text-white">PERIOXIA.</div>
+                        <p className="text-text-secondary text-lg font-light leading-relaxed max-w-sm">
                             Engineering the machines of tomorrow. We build the physical
                             cognitive stacks that define the boundaries of intelligence.
                         </p>
-                        <div className="flex items-center gap-8">
+                        <div className="flex items-center gap-6">
                             {[
                                 { icon: Twitter, href: "#" },
                                 { icon: Linkedin, href: "#" },
@@ -20,21 +22,22 @@ export default function Footer() {
                                 <a
                                     key={i}
                                     href={social.href}
-                                    className="w-12 h-12 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center text-slate-400 hover:text-amber-500 hover:bg-white/[0.08] hover:border-amber-500/30 transition-all duration-500"
+                                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-accent-signal hover:border-accent-signal transition-all duration-300"
                                 >
-                                    <social.icon size={20} />
+                                    <social.icon size={18} />
                                 </a>
                             ))}
                         </div>
                     </div>
 
                     <div className="space-y-8">
-                        <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.5em]">Capabilities</h4>
-                        <ul className="space-y-5">
-                            {["Custom CRM", "Robotics OS", "AI Agents", "Web Systems"].map((item) => (
+                        <h4 className="text-[10px] font-mono-tech text-white/50 uppercase tracking-widest">CAPABILITIES</h4>
+                        <ul className="space-y-4">
+                            {["CRM Architecture", "Mobile Kinetics", "System Integration", "AI Agent Swarms", "Robotic OS"].map((item) => (
                                 <li key={item}>
-                                    <a href="#" className="text-lg text-slate-400 hover:text-amber-400 transition-all duration-300 flex items-center gap-3 group">
-                                        {item} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                                    <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group font-mono-tech cursor-pointer">
+                                        <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 text-accent-signal transition-opacity" />
+                                        {item}
                                     </a>
                                 </li>
                             ))}
@@ -42,12 +45,13 @@ export default function Footer() {
                     </div>
 
                     <div className="space-y-8">
-                        <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.5em]">Company</h4>
-                        <ul className="space-y-5">
-                            {["Our Research", "Case Studies", "Contact", "Careers"].map((item) => (
+                        <h4 className="text-[10px] font-mono-tech text-white/50 uppercase tracking-widest">COMPANY</h4>
+                        <ul className="space-y-4">
+                            {["Research Papers", "Case Studies", "Global Careers", "Contact"].map((item) => (
                                 <li key={item}>
-                                    <a href="#" className="text-lg text-slate-400 hover:text-amber-400 transition-all duration-300 flex items-center gap-3 group">
-                                        {item} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                                    <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group font-mono-tech cursor-pointer">
+                                        <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 text-accent-signal transition-opacity" />
+                                        {item}
                                     </a>
                                 </li>
                             ))}
@@ -55,14 +59,14 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center gap-4 text-[9px] font-mono text-slate-500 uppercase tracking-[0.2em]">
-                        <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
-                        NODE: PROD_SERVER_01 // © {new Date().getFullYear()} Perioxia Tech
+                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="flex items-center gap-4 text-[10px] font-mono-tech text-white/30 uppercase tracking-widest">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                        SYSTEM_STATUS: NOMINAL // © {new Date().getFullYear()} PERIOXIA
                     </div>
-                    <div className="flex items-center gap-10">
-                        <a href="#" className="text-[9px] font-mono text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-colors">Privacy Stack</a>
-                        <a href="#" className="text-[9px] font-mono text-slate-500 uppercase tracking-[0.2em] hover:text-white transition-colors">Terms of Op</a>
+                    <div className="flex items-center gap-8">
+                        <a href="#" className="text-[10px] font-mono-tech text-white/30 hover:text-white uppercase tracking-widest transition-colors">PRIVACY_PROTOCOL</a>
+                        <a href="#" className="text-[10px] font-mono-tech text-white/30 hover:text-white uppercase tracking-widest transition-colors">TERMS_OF_OP</a>
                     </div>
                 </div>
             </div>

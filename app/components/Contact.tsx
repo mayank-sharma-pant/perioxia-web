@@ -1,171 +1,123 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MessageSquare, Send, CheckCircle, Sparkles, MapPin, Radio } from "lucide-react";
+import { useState, useRef, useLayoutEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { Send, MapPin, Mail, Radio } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
+  const container = useRef(null);
   const [submitted, setSubmitted] = useState(false);
 
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.from(".contact-reveal", {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 70%",
+        },
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1,
+        ease: "power2.out",
+      });
+    }, container);
+    return () => ctx.revert();
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
-    <section id="contact" className="relative py-32 scroll-mt-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
+    <section ref={container} id="contact" className="relative py-32 bg-void overflow-hidden">
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-20">
 
-          {/* Form Header & Description */}
-          <div className="lg:col-span-5 space-y-16">
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-3 text-amber-500 font-bold text-[10px] uppercase tracking-[0.5em] mb-10"
-              >
-                <Radio size={16} className="text-amber-500 animate-pulse" />
-                Collaborations
-              </motion.div>
-              <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1] mb-10">
-                Start a <br /><span className="text-gradient italic">conversation.</span>
-              </h2>
-              <p className="text-slate-400 text-xl font-light leading-relaxed max-w-sm">
-                Engineering the machines of tomorrow requires the right cognitive
-                architects. Tell us about your challenge.
-              </p>
+        <div className="lg:col-span-5 space-y-12">
+          <div className="contact-reveal">
+            <div className="flex items-center gap-3 text-accent-signal font-mono-tech text-xs tracking-widest mb-6">
+              <Radio size={14} className="animate-pulse" />
+              SECURE_CHANNEL
             </div>
+            <h2 className="text-6xl font-black text-white leading-[0.9] uppercase">
+              Initialise <br /> Uplink.
+            </h2>
+          </div>
 
-            <div className="space-y-10 pt-10 border-t border-white/5">
-              <div className="flex items-start gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center group-hover:border-amber-500/30 group-hover:bg-amber-500/5 transition-all duration-500">
-                  <Mail size={24} className="text-amber-500" />
-                </div>
-                <div>
-                  <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-2">Direct Inquiries</div>
-                  <div className="text-xl font-bold group-hover:text-amber-400 transition-colors">hello@perioxia.tech</div>
-                </div>
+          <p className="contact-reveal text-text-secondary text-lg font-light leading-relaxed max-w-sm">
+            Engineering the machines of tomorrow requires the right cognitive architects. Transmit your coordinates.
+          </p>
+
+          <div className="contact-reveal space-y-8 pt-8 border-t border-white/10">
+            <div className="flex items-start gap-4">
+              <Mail className="text-accent-signal mt-1" size={20} />
+              <div>
+                <div className="text-[10px] font-mono-tech text-white/50 uppercase mb-1">DIRECT_INQUIRY</div>
+                <div className="text-xl text-white font-bold">hello@perioxia.tech</div>
               </div>
-
-              <div className="flex items-start gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center group-hover:border-orange-500/30 group-hover:bg-orange-600/5 transition-all duration-500">
-                  <MapPin size={24} className="text-orange-500" />
-                </div>
-                <div>
-                  <div className="text-[9px] font-mono text-slate-500 uppercase tracking-widest mb-2">Studio</div>
-                  <div className="text-xl font-bold group-hover:text-orange-400 transition-colors">Global / Remote Operations</div>
-                </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <MapPin className="text-accent-signal mt-1" size={20} />
+              <div>
+                <div className="text-[10px] font-mono-tech text-white/50 uppercase mb-1">GLOBAL_HQ</div>
+                <div className="text-xl text-white font-bold">Remote Operations</div>
               </div>
             </div>
           </div>
-
-          {/* Form Section */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7"
-          >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/10 to-orange-600/5 rounded-[3rem] blur-3xl opacity-20 pointer-events-none" />
-
-              <AnimatePresence mode="wait">
-                {!submitted ? (
-                  <motion.div
-                    key="form"
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.6 }}
-                    className="glass-card p-12 lg:p-16 rounded-[3.5rem] relative z-10"
-                  >
-                    <form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        setSubmitted(true);
-                      }}
-                      className="space-y-10"
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div className="space-y-4">
-                          <label className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.3em] ml-2">Lead Name</label>
-                          <input
-                            required
-                            placeholder="John Doe"
-                            className="w-full px-8 py-5 rounded-2xl bg-white/[0.02] border border-white/5 focus:border-amber-500/40 focus:bg-white/[0.04] outline-none transition-all duration-500 font-light text-lg"
-                          />
-                        </div>
-                        <div className="space-y-4">
-                          <label className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.3em] ml-2">Company</label>
-                          <input
-                            required
-                            placeholder="Engineering Corp"
-                            className="w-full px-8 py-5 rounded-2xl bg-white/[0.02] border border-white/5 focus:border-amber-500/40 focus:bg-white/[0.04] outline-none transition-all duration-500 font-light text-lg"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-4">
-                        <label className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.3em] ml-2">Secure Email</label>
-                        <input
-                          required
-                          type="email"
-                          placeholder="lead@engineering.tech"
-                          className="w-full px-8 py-5 rounded-2xl bg-white/[0.02] border border-white/5 focus:border-amber-500/40 focus:bg-white/[0.04] outline-none transition-all duration-500 font-light text-lg"
-                        />
-                      </div>
-
-                      <div className="space-y-4">
-                        <label className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.3em] ml-2">Transmission Details</label>
-                        <textarea
-                          required
-                          placeholder="Tell us about the project requirements..."
-                          className="w-full px-8 py-5 rounded-2xl bg-white/[0.02] border border-white/5 focus:border-amber-500/40 focus:bg-white/[0.04] outline-none transition-all duration-500 min-h-[220px] resize-none font-light text-lg"
-                        />
-                      </div>
-
-                      <button
-                        type="submit"
-                        className="btn-premium w-full group py-6 text-xl"
-                      >
-                        Transmit Inquiry
-                        <Send size={22} className="ml-4 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
-                      </button>
-                    </form>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ type: "spring", damping: 20, stiffness: 100 }}
-                    className="glass-card p-16 lg:p-24 rounded-[3.5rem] text-center relative z-10 border border-amber-500/20"
-                  >
-                    <div className="w-28 h-28 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-12 overflow-hidden relative">
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: "spring", damping: 10, stiffness: 150, delay: 0.2 }}
-                        className="relative z-10"
-                      >
-                        <CheckCircle className="text-amber-500" size={56} />
-                      </motion.div>
-                      <div className="absolute inset-0 bg-amber-500/20 blur-2xl animate-pulse" />
-                    </div>
-                    <h3 className="text-4xl font-bold mb-6 tracking-tight">Transmission Received</h3>
-                    <p className="text-slate-400 text-xl font-light leading-relaxed max-w-md mx-auto">
-                      Your inquiry has been logged into our secure stack.
-                      A lead architect will coordinate a response shortly.
-                    </p>
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="mt-12 text-[10px] font-bold text-slate-500 uppercase tracking-[0.4em] hover:text-amber-400 transition-colors"
-                    >
-                      New Transmission
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
         </div>
+
+        <div className="lg:col-span-7 contact-reveal">
+          {!submitted ? (
+            <form onSubmit={handleSubmit} className="space-y-8 bg-white/[0.02] border border-white/5 p-12 backdrop-blur-sm relative blueprint-card">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-mono-tech text-white/50 uppercase">IDENTITY</label>
+                  <input required placeholder="Name / Callsign" className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-mono-tech text-white/50 uppercase">ORG_ID</label>
+                  <input required placeholder="Company" className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] font-mono-tech text-white/50 uppercase">COMMS_ADDRESS</label>
+                <input required type="email" placeholder="Email" className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20" />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] font-mono-tech text-white/50 uppercase">PACKET_DATA</label>
+                <textarea required placeholder="Project Parameters..." className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors h-32 resize-none placeholder:text-white/20" />
+              </div>
+
+              <button type="submit" className="group flex items-center gap-4 bg-white text-black px-8 py-4 font-mono-tech text-xs tracking-widest uppercase hover:bg-accent-signal hover:text-white transition-colors duration-300 w-full justify-center">
+                TRANSMIT DATA <Send size={14} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              {/* Decorators */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/30" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/30" />
+            </form>
+          ) : (
+            <div className="h-full flex flex-col items-center justify-center p-20 border border-white/10 bg-white/[0.02] text-center">
+              <div className="text-accent-signal mb-6">
+                <Radio size={48} className="animate-pulse mx-auto" />
+              </div>
+              <h3 className="text-3xl font-black text-white mb-4">TRANSMISSION RECEIVED</h3>
+              <p className="text-text-secondary max-w-sm mx-auto mb-8">
+                Your packet has been logged in our secure stack. Stand by for response.
+              </p>
+              <button onClick={() => setSubmitted(false)} className="text-white/50 hover:text-white font-mono-tech text-xs underline decoration-accent-signal underline-offset-4">
+                RESET_CONNECTION
+              </button>
+            </div>
+          )}
+        </div>
+
       </div>
     </section>
   );

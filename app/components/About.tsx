@@ -1,98 +1,88 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Cpu, Globe, Rocket, ShieldCheck, ChevronRight } from "lucide-react";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { ShieldCheck, Rocket, Cpu } from "lucide-react";
 
-const stats = [
-  { label: "Systems Deployed", value: "24+", color: "text-amber-400" },
-  { label: "Industry Partners", value: "15", color: "text-orange-400" },
-  { label: "AI Patents Pending", value: "12", color: "text-yellow-500" },
-  { label: "Global Reach", value: "8", color: "text-amber-600" },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
+  const container = useRef(null);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.from(".about-stat", {
+        scrollTrigger: {
+          trigger: ".about-stats",
+          start: "top 80%",
+        },
+        y: 40,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1,
+        ease: "power2.out",
+      });
+    }, container);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="about" className="relative py-32 z-10 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-[1px] bg-amber-500/50" />
-              <h2 className="text-[10px] uppercase tracking-[0.5em] text-amber-500 font-bold">The Core Mission</h2>
-            </div>
+    <section ref={container} id="about" className="relative py-32 bg-void overflow-hidden">
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
-            <h3 className="text-5xl md:text-7xl font-bold mb-10 leading-[1.1] tracking-tighter">
-              Crafting logic that <br />
-              <span className="text-gradient italic">moves world.</span>
-            </h3>
+        <div className="space-y-12">
+          <div>
+            <span className="text-accent-signal font-mono-tech text-xs tracking-[0.3em] block mb-6">
+                    // COGNITIVE_MATRIX
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] text-transform-uppercase">
+              Pioneering <br />
+              <span className="text-stroke-white text-transparent">Logic.</span>
+            </h2>
+          </div>
 
-            <p className="text-slate-400 text-xl leading-relaxed font-light mb-16 max-w-xl">
-              Perioxia is not just another AI company. We are a specialized engineering
-              forge building the next generation of hardware-aware intelligence.
-              Deterministic, reliable, and fundamentally human-aligned.
-            </p>
+          <p className="text-text-secondary text-xl font-light leading-relaxed max-w-xl border-l-2 border-white/10 pl-8">
+            Perioxia is an innovation hub where <span className="text-white font-medium">CRM Architecture</span>,
+            <span className="text-white font-medium"> AI Agents</span>, and <span className="text-white font-medium">Robotic OS</span> converge.
+            We build deterministic systems for a probabilistic world.
+          </p>
 
-            <div className="grid grid-cols-2 gap-16 border-t border-white/5 pt-16">
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: i * 0.1 }}
-                  className="space-y-2"
-                >
-                  <div className={`text-5xl md:text-6xl font-bold ${stat.color} tracking-tighter tabular-nums`}>{stat.value}</div>
-                  <div className="text-[9px] text-slate-500 uppercase tracking-[0.3em] font-bold">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
-          >
-            <div className="glass-panel p-12 md:p-16 rounded-[4rem] relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-
-              {/* Decorative inner corner */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 blur-[60px] pointer-events-none" />
-
-              <div className="relative space-y-16">
-                {[
-                  { icon: ShieldCheck, title: "Deterministic Safety", color: "text-amber-400", desc: "Rigorous testing and proprietary safety stacks for high-stakes environments." },
-                  { icon: Rocket, title: "Operational Velocity", color: "text-orange-400", desc: "Guiding systems from concept to edge deployment with academic-grade precision." },
-                  { icon: Cpu, title: "Neural Hardware", color: "text-yellow-500", desc: "Custom accelerators and low-latency kernels for efficient local inference." }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-10 group/item">
-                    <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center shrink-0 group-hover/item:border-amber-500/30 group-hover/item:bg-amber-500/5 transition-all duration-500">
-                      <item.icon className={item.color} size={32} />
-                    </div>
-                    <div>
-                      <h4 className="text-2xl font-bold mb-4 tracking-tight group-hover/item:text-amber-400 transition-colors duration-300">{item.title}</h4>
-                      <p className="text-slate-400 text-sm leading-relaxed font-light">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+          <div className="about-stats grid grid-cols-2 gap-12 pt-12 border-t border-white/5">
+            {[
+              { val: "24+", label: "SYSTEMS_DEPLOYED" },
+              { val: "15", label: "GLOBAL_PARTNERS" },
+              { val: "12", label: "PATENTS_PENDING" },
+              { val: "0.2ms", label: "AVG_LATENCY" },
+            ].map((s, i) => (
+              <div key={i} className="about-stat">
+                <div className="text-4xl font-black text-white mb-2">{s.val}</div>
+                <div className="text-[10px] font-mono-tech text-accent-signal">{s.label}</div>
               </div>
-            </div>
-
-            {/* Background Decorative Elements */}
-            <div className="absolute -top-16 -right-16 w-80 h-80 bg-amber-500/5 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute -bottom-16 -left-16 w-80 h-80 bg-orange-600/5 rounded-full blur-[120px] pointer-events-none" />
-          </motion.div>
+            ))}
+          </div>
         </div>
+
+        <div className="relative">
+          {/* Decorative technical graphic */}
+          <div className="absolute inset-0 bg-accent-signal/5 blur-3xl rounded-full opacity-20" />
+          <div className="relative z-10 grid grid-cols-1 gap-6">
+            {[
+              { icon: ShieldCheck, title: "Deterministic Safety", desc: "Rigorous testing stacks for high-stakes edge environments." },
+              { icon: Rocket, title: "Operational Velocity", desc: "Concept to deployment with academic-grade precision." },
+              { icon: Cpu, title: "Neural Hardware", desc: "Custom accelerators for efficient local inference." }
+            ].map((item, i) => (
+              <div key={i} className="group flex items-start gap-6 p-8 border border-white/10 hover:border-accent-signal/50 bg-white/[0.02] transition-colors duration-300">
+                <item.icon className="text-accent-signal shrink-0" size={32} />
+                <div>
+                  <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
+                  <p className="text-text-secondary font-light text-sm">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

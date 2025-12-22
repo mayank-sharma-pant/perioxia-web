@@ -1,103 +1,102 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ExternalLink, Folder, MousePointer2 } from "lucide-react";
-import React from "react";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link"; // Assuming Next.js
 
-const items = Array.from({ length: 4 }).map((_, i) => ({
-  id: i,
-  title: ["Autonomous Logistics", "Neural CRM 2.0", "Fleet Orchestrater", "Edge Vision"][i],
-  desc: "High-performance AI integration for mission-critical industrial automation systems.",
-  thumb: `/assets/thumbnails/thumb-${(i % 4) + 1}.png`,
-  category: i % 2 === 0 ? "Robotics" : "AI Software",
-}));
+gsap.registerPlugin(ScrollTrigger);
 
-function PortfolioCard({ it, i }: { it: any, i: number }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: i * 0.1, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={handleMouseMove}
-      className="group relative glass-card p-8 overflow-hidden"
-    >
-      {/* Spotlight Effect */}
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-[2rem] opacity-0 transition duration-500 group-hover:opacity-100"
-        style={{
-          background: useSpring(useTransform(
-            [mouseX, mouseY],
-            (input: any) => {
-              const [x, y] = input;
-              return `radial-gradient(800px circle at ${x}px ${y}px, rgba(251, 191, 36, 0.08), transparent 40%)`;
-            }
-          )),
-        }}
-      />
-
-      <div className="relative aspect-[16/10] rounded-3xl overflow-hidden mb-10 border border-white/5 shadow-2xl">
-        <motion.img
-          src={it.thumb}
-          alt={it.title}
-          whileHover={{ scale: 1.08 }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
-        />
-        <div className="absolute top-8 left-8 hud-border bg-black/60 backdrop-blur-xl border-amber-500/30 text-amber-500">
-          {it.category}
-        </div>
-      </div>
-
-      <div className="relative space-y-6">
-        <div className="flex items-center justify-between">
-          <h3 className="text-3xl font-bold tracking-tight group-hover:text-amber-400 transition-colors duration-500">{it.title}</h3>
-          <div className="w-14 h-14 rounded-full bg-white/[0.03] border border-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:translate-x-0 -translate-x-6 hover:bg-amber-500/10 hover:border-amber-500/30">
-            <ExternalLink size={24} className="text-amber-500" />
-          </div>
-        </div>
-        <p className="text-slate-400 text-lg leading-relaxed font-light">
-          {it.desc}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
+const projects = [
+  {
+    id: "01",
+    client: "AEROSPACE_DYNAMICS",
+    title: "Autonomous Drone Swarm",
+    desc: "Coordination algorithms for 500+ UAVs in contested environments.",
+    year: "2024",
+  },
+  {
+    id: "02",
+    client: "NEXUS_MEDICAL",
+    title: "Robotic Surgery OS",
+    desc: "Real-time haptic feedback kernel for remote surgical interventions.",
+    year: "2023",
+  },
+  {
+    id: "03",
+    client: "GLOBAL_LOGISTICS",
+    title: "Warehouse Neural Net",
+    desc: "Vision-based inventory tracking with 99.99% accuracy at edge.",
+    year: "2024",
+  },
+  {
+    id: "04",
+    client: "FINTECH_CORE",
+    title: "High-Frequency Trading",
+    desc: "FPGA-accelerated execution engine for sub-microsecond latency.",
+    year: "2023",
+  },
+];
 
 export default function Portfolio() {
-  return (
-    <section id="portfolio" className="relative py-32 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-16 mb-24">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-[1px] bg-amber-500/50" />
-              <h2 className="text-[10px] uppercase tracking-[0.5em] text-amber-500 font-bold">Research Arxhive</h2>
-            </div>
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1]">
-              Pioneering <span className="text-gradient itali">Benchmarks.</span>
-            </h2>
-          </div>
-          <p className="text-slate-400 max-w-sm text-xl font-light leading-relaxed">
-            Case studies in fusing autonomy and high-level reasoning to solve
-            limitless industrial challenges.
-          </p>
-        </div>
+  const sectionRef = useRef(null);
+  const slideContainer = useRef(null);
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {items.map((it, i) => (
-            <PortfolioCard key={it.id} it={it} i={i} />
-          ))}
-        </div>
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      // Horizontal Scroll Animation
+      const slides = gsap.utils.toArray(".project-slide");
+      const totalWidth = 100 * (slides.length - 1); // 100% per slide
+
+      gsap.to(slideContainer.current, {
+        xPercent: -100 * (projects.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          pin: true,
+          scrub: 1,
+          snap: 1 / (projects.length - 1),
+          end: "+=3000", // Scroll distance
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={sectionRef} id="portfolio" className="relative h-screen bg-void overflow-hidden flex items-center">
+      {/* Background Decor */}
+      <div className="absolute top-10 left-10 text-white/20 font-mono-tech text-xs tracking-widest z-10">
+        // CASE_STUDIES_ARCHIVE
+      </div>
+
+      <div ref={slideContainer} className="flex h-full w-full">
+        {projects.map((p, i) => (
+          <div key={p.id} className="project-slide min-w-full h-full flex items-center justify-center relative px-20 border-r border-white/5">
+            <div className="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+
+              <div className="lg:col-span-8">
+                <div className="text-accent-signal font-mono-tech mb-6 block">{p.client} // {p.year}</div>
+                <h2 className="text-[8vw] leading-[0.85] font-black text-white mb-8 uppercase tracking-tighter">
+                  {p.title}
+                </h2>
+              </div>
+
+              <div className="lg:col-span-4 border-l border-white/20 pl-8 pb-2">
+                <div className="text-5xl text-white/10 font-black mb-6">/{p.id}</div>
+                <p className="text-text-secondary text-xl font-light mb-10 leading-relaxed">
+                  {p.desc}
+                </p>
+                <Link href="#" className="inline-flex items-center text-white border-b border-accent-signal hover:text-accent-signal transition-colors pb-1">
+                  VIEW DATA <ArrowUpRight className="ml-2" size={16} />
+                </Link>
+              </div>
+
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
