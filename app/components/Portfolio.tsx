@@ -122,9 +122,9 @@ export default function Portfolio() {
       </section>
       
       {/* Add some content after to demonstrate the scroll works */}
-      <div className="h-screen bg-gray-900 flex items-center justify-center">
+      {/* <div className="h-screen bg-gray-900 flex items-center justify-center">
         <p className="text-white text-2xl">Content after portfolio section</p>
-      </div>
+      </div> */}
     </div>
   );
 }
