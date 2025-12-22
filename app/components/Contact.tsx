@@ -8,8 +8,24 @@ import { Send, MapPin, Mail, Radio } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
-  const container = useRef(null);
+  const container = useRef<HTMLElement | null>(null);
+
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+
+  const [form, setForm] = useState({
+    name: "",
+    company: "",
+    email: "",
+    message: "",
+  });
+
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -28,10 +44,36 @@ export default function Contact() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          message: form.message,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to send");
+      }
+
+      setSubmitted(true);
+      setForm({ name: "", company: "", email: "", message: "" });
+    } catch (err) {
+      setError("Transmission failed. Try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <section ref={container} id="contact" className="relative py-32 bg-void overflow-hidden">
@@ -76,22 +118,51 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label className="text-[10px] font-mono-tech text-white/50 uppercase">IDENTITY</label>
-                  <input required placeholder="Name / Callsign" className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20" />
+                  <input
+                    required
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Name / Callsign"
+                    className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20"
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] font-mono-tech text-white/50 uppercase">ORG_ID</label>
-                  <input required placeholder="Company" className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20" />
+                  <input
+                    required
+                    name="company"
+                    value={form.company}
+                    onChange={handleChange}
+                    placeholder="Company"
+                    className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20"
+                  />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <label className="text-[10px] font-mono-tech text-white/50 uppercase">COMMS_ADDRESS</label>
-                <input required type="email" placeholder="Email" className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20" />
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="Email"
+                  className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20"
+                />
               </div>
 
               <div className="space-y-2">
                 <label className="text-[10px] font-mono-tech text-white/50 uppercase">PACKET_DATA</label>
-                <textarea required placeholder="Project Parameters..." className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors h-32 resize-none placeholder:text-white/20" />
+                <textarea
+                  required
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Project Parameters..."
+                  className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors h-32 resize-none placeholder:text-white/20"
+                />
               </div>
 
               <button type="submit" className="group flex items-center gap-4 bg-white text-black px-8 py-4 font-mono-tech text-xs tracking-widest uppercase hover:bg-accent-signal hover:text-white transition-colors duration-300 w-full justify-center">
