@@ -71,16 +71,16 @@ export default function Hero() {
           </div>
 
           <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-text-primary leading-[1.1] mb-8">
-            Building
+            Robotic
             <br />
-            <span className="text-text-secondary">Autonomous</span>
+            <span className="text-text-secondary">Intelligence</span>
             <br />
-            Systems.
+            & Enterprise AI.
           </h1>
 
           <p className="hero-text text-lg md:text-xl text-text-secondary max-w-xl font-light leading-relaxed mb-10">
-            We engineer intelligent agents and cognitive architectures.
-            Reliable, scalable, and human-aligned.
+            Pioneering the convergence of <strong>Custom CRM</strong>, <strong>Agentic AI</strong>, and <strong>Robotic Operating Systems</strong>.
+            We build the brain and the body of next-gen enterprises.
           </p>
 
           <div className="hero-text flex flex-wrap gap-4">
@@ -96,23 +96,48 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT: Abstract Schematic Visual */}
+        {/* RIGHT: Abstract Schematic Visual - HUD Interface */}
         <div className="lg:col-span-4 relative h-full flex items-center justify-center">
-          <div className="hero-visual w-full max-w-[500px] aspect-square relative flex items-center justify-center">
-            {/* Main Visual - Robotics Core */}
-            <div className="absolute inset-0 z-10">
-              <img
-                src="/abstract_robotics.png"
-                alt="Autonomous Core"
-                className="w-full h-full object-contain drop-shadow-2xl opacity-90 mix-blend-lighten"
-              />
+          <div className="hero-visual w-full max-w-[500px] aspect-square relative flex items-center justify-center bg-white/[0.02] border border-white/10 backdrop-blur-sm rounded-xl overflow-hidden shadow-2xl">
+
+            {/* HUD UI Elements */}
+            <div className="absolute top-6 left-6 flex items-center gap-3 z-20">
+              <div className="w-5 h-5 border border-current text-emerald-400 rounded-full flex items-center justify-center animate-spin-slow">
+                <div className="w-3 h-0.5 bg-current" />
+                <div className="h-3 w-0.5 bg-current absolute" />
+              </div>
+              <span className="text-xs font-mono text-emerald-400/80 tracking-widest font-semibold">TARGET_LOCK: AUTOMATION</span>
             </div>
 
-            {/* Background Glow */}
-            <div className="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full z-0 animate-pulse" />
+            <div className="absolute bottom-6 right-6 text-right z-20">
+              <div className="text-[10px] font-mono text-text-secondary opacity-60 mb-1">SCHEMATIC_V.04</div>
+              <div className="text-xl font-bold text-white tracking-wider">ROBOTIC OS</div>
+            </div>
 
-            {/* Rotating Rings (Overlay) */}
-            <div className="absolute inset-0 border border-white/10 rounded-full scale-110 border-dashed animate-[spin_60s_linear_infinite]" />
+            {/* Main Visual - Robotics Core */}
+            <div className="absolute inset-0 z-10 p-12 flex items-center justify-center">
+              <div className="relative w-full h-full">
+                <img
+                  src="/abstract_robotics.png"
+                  alt="Autonomous Core"
+                  className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(0,255,255,0.2)]"
+                />
+              </div>
+            </div>
+
+            {/* Rotating Glowing Rings */}
+            {/* Ring 1 - Outer Dashed */}
+            <div className="absolute inset-8 border border-dashed border-white/10 rounded-full animate-[spin_30s_linear_infinite]" />
+
+            {/* Ring 2 - Middle Glow */}
+            <div className="absolute inset-16 border border-white/5 rounded-full animate-[spin_20s_linear_infinite_reverse] shadow-[0_0_20px_rgba(255,255,255,0.05)]" />
+
+            {/* Ring 3 - Inner Tech */}
+            <div className="absolute inset-24 border-2 border-transparent border-t-cyan-500/20 border-b-cyan-500/20 rounded-full animate-[spin_10s_linear_infinite]" />
+
+            {/* Scanline Effect */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent z-30 opacity-20 animate-scan pointer-events-none" />
+
           </div>
         </div>
 

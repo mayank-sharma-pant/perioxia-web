@@ -87,4 +87,38 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+
+    .animate-spin-slow {
+        animation: spin 10s linear infinite;
+    }
+
+    .animate-scan {
+        animation: scan 4s linear infinite;
+    }
+}
+
+@keyframes scan {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes spin-reverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@layer utilities {
+    .animate-spin-reverse-slow {
+        animation: spin-reverse 10s linear infinite;
+    }
 }

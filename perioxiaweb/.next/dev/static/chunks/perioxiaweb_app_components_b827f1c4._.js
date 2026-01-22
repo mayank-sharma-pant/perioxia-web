@@ -150,7 +150,7 @@ function Hero() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                 className: "hero-text text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-text-primary leading-[1.1] mb-8",
                                 children: [
-                                    "Building",
+                                    "Robotic",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
                                         lineNumber: 75,
@@ -158,7 +158,7 @@ function Hero() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "text-text-secondary",
-                                        children: "Autonomous"
+                                        children: "Intelligence"
                                     }, void 0, false, {
                                         fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
                                         lineNumber: 76,
@@ -169,7 +169,7 @@ function Hero() {
                                         lineNumber: 77,
                                         columnNumber: 13
                                     }, this),
-                                    "Systems."
+                                    "& Enterprise AI."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
@@ -178,8 +178,34 @@ function Hero() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "hero-text text-lg md:text-xl text-text-secondary max-w-xl font-light leading-relaxed mb-10",
-                                children: "We engineer intelligent agents and cognitive architectures. Reliable, scalable, and human-aligned."
-                            }, void 0, false, {
+                                children: [
+                                    "Pioneering the convergence of ",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                        children: "Custom CRM"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 82,
+                                        columnNumber: 43
+                                    }, this),
+                                    ", ",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                        children: "Agentic AI"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 82,
+                                        columnNumber: 72
+                                    }, this),
+                                    ", and ",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                        children: "Robotic Operating Systems"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 82,
+                                        columnNumber: 105
+                                    }, this),
+                                    ". We build the brain and the body of next-gen enterprises."
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
                                 lineNumber: 81,
                                 columnNumber: 11
@@ -238,36 +264,122 @@ function Hero() {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "lg:col-span-4 relative h-full flex items-center justify-center",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "hero-visual w-full max-w-[500px] aspect-square relative flex items-center justify-center",
+                            className: "hero-visual w-full max-w-[500px] aspect-square relative flex items-center justify-center bg-white/[0.02] border border-white/10 backdrop-blur-sm rounded-xl overflow-hidden shadow-2xl",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "absolute inset-0 z-10",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                        src: "/abstract_robotics.png",
-                                        alt: "Autonomous Core",
-                                        className: "w-full h-full object-contain drop-shadow-2xl opacity-90 mix-blend-lighten"
-                                    }, void 0, false, {
-                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
-                                        lineNumber: 104,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
+                                    className: "absolute top-6 left-6 flex items-center gap-3 z-20",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-5 h-5 border border-current text-emerald-400 rounded-full flex items-center justify-center animate-spin-slow",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "w-3 h-0.5 bg-current"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                                    lineNumber: 106,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "h-3 w-0.5 bg-current absolute"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                                    lineNumber: 107,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 105,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "text-xs font-mono text-emerald-400/80 tracking-widest font-semibold",
+                                            children: "TARGET_LOCK: AUTOMATION"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 109,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
-                                    lineNumber: 103,
+                                    lineNumber: 104,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full z-0 animate-pulse"
-                                }, void 0, false, {
+                                    className: "absolute bottom-6 right-6 text-right z-20",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "text-[10px] font-mono text-text-secondary opacity-60 mb-1",
+                                            children: "SCHEMATIC_V.04"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 113,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "text-xl font-bold text-white tracking-wider",
+                                            children: "ROBOTIC OS"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 114,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
                                     lineNumber: 112,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "absolute inset-0 border border-white/10 rounded-full scale-110 border-dashed animate-[spin_60s_linear_infinite]"
+                                    className: "absolute inset-0 z-10 p-12 flex items-center justify-center",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "relative w-full h-full",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                            src: "/abstract_robotics.png",
+                                            alt: "Autonomous Core",
+                                            className: "w-full h-full object-contain drop-shadow-[0_0_30px_rgba(0,255,255,0.2)]"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 120,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 119,
+                                        columnNumber: 15
+                                    }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
-                                    lineNumber: 115,
+                                    lineNumber: 118,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "absolute inset-8 border border-dashed border-white/10 rounded-full animate-[spin_30s_linear_infinite]"
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 130,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "absolute inset-16 border border-white/5 rounded-full animate-[spin_20s_linear_infinite_reverse] shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 133,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "absolute inset-24 border-2 border-transparent border-t-cyan-500/20 border-b-cyan-500/20 rounded-full animate-[spin_10s_linear_infinite]"
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 136,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent z-30 opacity-20 animate-scan pointer-events-none"
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 139,
                                     columnNumber: 13
                                 }, this)
                             ]
@@ -931,7 +1043,7 @@ function Robotics() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 ref: scanLine,
-                                className: "absolute top-0 left-0 w-full h-[2px] bg-accent-signal box-shadow-[0_0_20px_var(--accent-signal)] z-20 opacity-70"
+                                className: "absolute top-0 left-0 w-full h-[2px] bg-accent-signal shadow-[0_0_20px_var(--accent-signal)] z-20 opacity-70"
                             }, void 0, false, {
                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
                                 lineNumber: 52,
@@ -939,21 +1051,75 @@ function Robotics() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute inset-0 flex items-center justify-center",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-3/4 h-3/4 border border-dashed border-white/20 rounded-full animate-spin-slow flex items-center justify-center",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-2/3 h-2/3 border border-white/10 rounded-full"
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute w-[75%] h-[75%] border border-dashed border-accent-signal/40 rounded-full animate-spin-slow shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                                     }, void 0, false, {
                                         fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
                                         lineNumber: 56,
-                                        columnNumber: 15
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute w-[55%] h-[55%] border-2 border-white/20 rounded-full animate-spin-reverse-slow shadow-[0_0_15px_rgba(255,255,255,0.1)] flex items-center justify-center",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-[95%] h-[95%] border border-white/5 rounded-full"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
+                                            lineNumber: 60,
+                                            columnNumber: 15
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
+                                        lineNumber: 59,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute w-[15%] h-[15%] bg-accent-signal/20 rounded-full backdrop-blur-md border border-accent-signal/50 shadow-[0_0_20px_var(--accent-signal)] animate-pulse z-10"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
+                                        lineNumber: 64,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute w-[35%] h-[35%] rounded-full z-0 flex items-center justify-center overflow-hidden border border-white/20 shadow-[0_0_30px_rgba(0,255,255,0.3)]",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                src: "/images/robotic-eye.png",
+                                                alt: "Robotic Core",
+                                                className: "w-full h-full object-cover animate-spin-slow opacity-90 mix-blend-screen scale-110",
+                                                style: {
+                                                    animationDuration: '20s'
+                                                }
+                                            }, void 0, false, {
+                                                fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
+                                                lineNumber: 71,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "absolute inset-0 bg-accent-signal/30 mix-blend-overlay animate-pulse rounded-full"
+                                            }, void 0, false, {
+                                                fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
+                                                lineNumber: 79,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "absolute w-[40%] h-[40%] bg-white/10 rounded-full blur-md animate-ping",
+                                                style: {
+                                                    animationDuration: '3s'
+                                                }
+                                            }, void 0, false, {
+                                                fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
+                                                lineNumber: 82,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
+                                        lineNumber: 67,
+                                        columnNumber: 13
                                     }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                    lineNumber: 55,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
                                 lineNumber: 54,
                                 columnNumber: 11
@@ -966,14 +1132,14 @@ function Robotics() {
                                         className: "inline mr-2"
                                     }, void 0, false, {
                                         fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                        lineNumber: 61,
+                                        lineNumber: 87,
                                         columnNumber: 13
                                     }, this),
                                     "TARGET_LOCK: AUTOMATION"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                lineNumber: 60,
+                                lineNumber: 86,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -984,7 +1150,7 @@ function Robotics() {
                                         children: "SCHEMATIC_V.04"
                                     }, void 0, false, {
                                         fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                        lineNumber: 66,
+                                        lineNumber: 92,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -992,13 +1158,13 @@ function Robotics() {
                                         children: "ROBOTIC OS"
                                     }, void 0, false, {
                                         fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                        lineNumber: 67,
+                                        lineNumber: 93,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                lineNumber: 65,
+                                lineNumber: 91,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -1019,7 +1185,7 @@ function Robotics() {
                                             "HARDWARE ",
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                                lineNumber: 75,
+                                                lineNumber: 101,
                                                 columnNumber: 24
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1027,13 +1193,13 @@ function Robotics() {
                                                 children: "FUSION."
                                             }, void 0, false, {
                                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                                lineNumber: 76,
+                                                lineNumber: 102,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                        lineNumber: 74,
+                                        lineNumber: 100,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1041,13 +1207,13 @@ function Robotics() {
                                         children: "We bridge the gap between digital logic and kinetic reality. Our OS integrates seamlessly with industrial manipulators."
                                     }, void 0, false, {
                                         fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 104,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                lineNumber: 73,
+                                lineNumber: 99,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1081,7 +1247,7 @@ function Robotics() {
                                                 size: 24
                                             }, void 0, false, {
                                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                                lineNumber: 91,
+                                                lineNumber: 117,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1089,7 +1255,7 @@ function Robotics() {
                                                 children: stat.val
                                             }, void 0, false, {
                                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 118,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1097,24 +1263,24 @@ function Robotics() {
                                                 children: stat.label
                                             }, void 0, false, {
                                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                                lineNumber: 93,
+                                                lineNumber: 119,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                        lineNumber: 90,
+                                        lineNumber: 116,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                                lineNumber: 83,
+                                lineNumber: 109,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/perioxiaweb/app/components/Robotics.tsx",
-                        lineNumber: 72,
+                        lineNumber: 98,
                         columnNumber: 9
                     }, this)
                 ]

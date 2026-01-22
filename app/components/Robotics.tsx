@@ -49,11 +49,37 @@ export default function Robotics() {
         {/* Visual / Schematic Side */}
         <div className="relative aspect-square max-w-lg mx-auto lg:mx-0 border border-white/10 bg-white/5 backdrop-blur-sm p-4 blueprint-card">
           {/* Scanning Line */}
-          <div ref={scanLine} className="absolute top-0 left-0 w-full h-[2px] bg-accent-signal box-shadow-[0_0_20px_var(--accent-signal)] z-20 opacity-70" />
+          <div ref={scanLine} className="absolute top-0 left-0 w-full h-[2px] bg-accent-signal shadow-[0_0_20px_var(--accent-signal)] z-20 opacity-70" />
 
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-3/4 h-3/4 border border-dashed border-white/20 rounded-full animate-spin-slow flex items-center justify-center">
-              <div className="w-2/3 h-2/3 border border-white/10 rounded-full" />
+            {/* Outer Ring - Clockwise */}
+            <div className="absolute w-[75%] h-[75%] border border-dashed border-accent-signal/40 rounded-full animate-spin-slow shadow-[0_0_30px_rgba(255,255,255,0.05)]"></div>
+
+            {/* Inner Ring - Counter-Clockwise */}
+            <div className="absolute w-[55%] h-[55%] border-2 border-white/20 rounded-full animate-spin-reverse-slow shadow-[0_0_15px_rgba(255,255,255,0.1)] flex items-center justify-center">
+              <div className="w-[95%] h-[95%] border border-white/5 rounded-full" />
+            </div>
+
+            {/* Core Glow */}
+            <div className="absolute w-[15%] h-[15%] bg-accent-signal/20 rounded-full backdrop-blur-md border border-accent-signal/50 shadow-[0_0_20px_var(--accent-signal)] animate-pulse z-10" />
+
+            {/* Robotic Eye Core */}
+            <div className="absolute w-[35%] h-[35%] rounded-full z-0 flex items-center justify-center overflow-hidden border border-white/20 shadow-[0_0_30px_rgba(0,255,255,0.3)]">
+
+              {/* Base Image Layer */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/robotic-eye.png"
+                alt="Robotic Core"
+                className="w-full h-full object-cover animate-spin-slow opacity-90 mix-blend-screen scale-110"
+                style={{ animationDuration: '20s' }}
+              />
+
+              {/* Overlaid Pulse Effect */}
+              <div className="absolute inset-0 bg-accent-signal/30 mix-blend-overlay animate-pulse rounded-full" />
+
+              {/* Technic Glint */}
+              <div className="absolute w-[40%] h-[40%] bg-white/10 rounded-full blur-md animate-ping" style={{ animationDuration: '3s' }} />
             </div>
           </div>
 
