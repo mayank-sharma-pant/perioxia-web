@@ -3,84 +3,111 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { ShieldCheck, Rocket, Cpu } from "lucide-react";
+import { Terminal, Shield, Cpu, Activity } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const container = useRef(null);
+  const statsRef = useRef(null);
 
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.from(".about-stat", {
+    const ctx = gsap.context(() => {
+      // Staggered Stat Entry
+      gsap.from(".stat-item", {
         scrollTrigger: {
-          trigger: ".about-stats",
+          trigger: statsRef.current,
+          start: "top 85%",
+        },
+        y: 20,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+
+      // Feature Row Entry
+      gsap.from(".feature-row", {
+        scrollTrigger: {
+          trigger: ".feature-grid",
           start: "top 80%",
         },
-        y: 40,
+        x: -20,
         opacity: 0,
+        duration: 0.8,
         stagger: 0.1,
-        duration: 1,
-        ease: "power2.out",
+        ease: "power2.out"
       });
+
     }, container);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={container} id="about" className="relative py-32 bg-void overflow-hidden">
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <section ref={container} id="about" className="relative py-24 md:py-32 bg-bg-void border-t border-white/5 overflow-hidden">
+      {/* Background Texture */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-screen">
+        <img
+          src="/abstract_neural.png"
+          alt=""
+          className="w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg-void via-transparent to-bg-void" />
+      </div>
 
-        <div className="space-y-12">
-          <div>
-            <span className="text-accent-signal font-mono-tech text-xs tracking-[0.3em] block mb-6">
-                    // COGNITIVE_MATRIX
-            </span>
-            <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] text-transform-uppercase">
-              Pioneering <br />
-              <span className="text-stroke-white text-transparent">Logic.</span>
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+
+          {/* Header & Narrative */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="inline-flex items-center gap-2 px-2 py-1 border border-white/10 bg-white/5 rounded text-xs font-mono text-text-secondary">
+              <Terminal size={12} />
+              <span>CAPABILITY_MATRIX</span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-bold text-text-primary leading-tight">
+              Bridging Digital <br />
+              <span className="text-text-secondary">&& Physical.</span>
             </h2>
+
+            <p className="text-text-secondary text-lg font-light leading-relaxed">
+              From <strong className="text-white">intelligent CRMs</strong> that predict market shifts to <strong className="text-white">robotic operating systems</strong> that actuate in the real world.
+              We engineer the complete cognitive loop for modern industry.
+            </p>
           </div>
 
-          <p className="text-text-secondary text-xl font-light leading-relaxed max-w-xl border-l-2 border-white/10 pl-8">
-            Perioxia is an innovation hub where <span className="text-white font-medium">CRM Architecture</span>,
-            <span className="text-white font-medium"> AI Agents</span>, and <span className="text-white font-medium">Robotic OS</span> converge.
-            Systems are being set up for active development.
-          </p>
-
-          <div className="about-stats grid grid-cols-2 gap-12 pt-12 border-t border-white/5">
+          {/* Stats Grid - Clean, Bordered */}
+          <div ref={statsRef} className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-4 about-stats">
             {[
-              { val: "INITIALIZING", label: "MODE" },
-              { val: "BUILDING & EXECUTION", label: "FOCUS" },
-              { val: "ACTIVE", label: "STATE" },
-              { val: "SETUP", label: "SYSTEM" },
+              { val: "CRM", label: "Intelligence" },
+              { val: "ROS", label: "Robotic OS" },
+              { val: "AI", label: "Agents" },
+              { val: "App", label: "Ecosystems" },
             ].map((s, i) => (
-              <div key={i} className="about-stat">
-                <div className="text-2xl font-black text-white mb-2">{s.val}</div>
-                <div className="text-[10px] font-mono-tech text-accent-signal">{s.label}</div>
+              <div key={i} className="stat-item p-6 border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-colors flex flex-col justify-between aspect-square">
+                <span className="text-3xl md:text-4xl font-semibold text-text-primary tracking-tight">{s.val}</span>
+                <span className="text-xs font-mono text-text-secondary uppercase tracking-widest">{s.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="relative">
-          {/* Decorative technical graphic */}
-          <div className="absolute inset-0 bg-accent-signal/5 blur-3xl rounded-full opacity-20" />
-          <div className="relative z-10 grid grid-cols-1 gap-6">
-            {[
-              { icon: ShieldCheck, title: "Deterministic Safety", desc: "Rigorous testing stacks for high-stakes edge environments." },
-              { icon: Rocket, title: "Operational Velocity", desc: "Concept to deployment with academic-grade precision." },
-              { icon: Cpu, title: "Neural Hardware", desc: "Custom accelerators for efficient local inference." }
-            ].map((item, i) => (
-              <div key={i} className="group flex items-start gap-6 p-8 border border-white/10 hover:border-accent-signal/50 bg-white/[0.02] transition-colors duration-300">
-                <item.icon className="text-accent-signal shrink-0" size={32} />
-                <div>
-                  <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-text-secondary font-light text-sm">{item.desc}</p>
-                </div>
+        {/* Technical Principles - Horizontal Strip */}
+        <div className="mt-24 feature-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { icon: Cpu, title: "Robotic OS Kernel", desc: "Real-time, deterministic operating systems for autonomous machines and industrial robotics." },
+            { icon: Activity, title: "Agentic CRM", desc: "Self-evolving customer relationship systems that autonomously manage leads and support." },
+            { icon: Shield, title: "Mobile & Web Architectures", desc: "High-performance, scalable applications that serve as the interface for your AI workforce." }
+          ].map((item, i) => (
+            <div key={i} className="feature-row group flex flex-col items-start gap-4 p-8 border-l border-white/10 hover:border-white/40 transition-colors">
+              <item.icon className="text-text-secondary group-hover:text-white transition-colors" size={24} />
+              <div>
+                <h4 className="text-lg font-semibold text-text-primary mb-2">{item.title}</h4>
+                <p className="text-text-secondary font-light text-sm leading-relaxed">{item.desc}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
       </div>

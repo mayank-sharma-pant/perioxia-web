@@ -3,7 +3,7 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { Send, MapPin, Mail, Radio } from "lucide-react";
+import { Send, Mail, Terminal, ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +14,6 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -22,22 +21,21 @@ export default function Contact() {
     message: "",
   });
 
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.from(".contact-reveal", {
+    const ctx = gsap.context(() => {
+      gsap.from(".contact-item", {
         scrollTrigger: {
           trigger: container.current,
-          start: "top 70%",
+          start: "top 75%",
         },
-        y: 30,
+        y: 20,
         opacity: 0,
         stagger: 0.1,
-        duration: 1,
+        duration: 0.8,
         ease: "power2.out",
       });
     }, container);
@@ -53,137 +51,134 @@ export default function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          company: form.company,
-          message: form.message,
-        }),
+        body: JSON.stringify(form),
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to send");
-      }
+      if (!res.ok) throw new Error("Failed to send");
 
       setSubmitted(true);
       setForm({ name: "", company: "", email: "", message: "" });
     } catch (err) {
-      setError("Transmission failed. Try again.");
+      setError("Transmission failed. Please retry.");
     } finally {
       setLoading(false);
     }
   };
 
-
   return (
-    <section ref={container} id="contact" className="relative py-32 bg-void overflow-hidden">
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-20">
+    <section ref={container} id="contact" className="relative py-24 bg-bg-void border-t border-white/5">
+      <div className="container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
 
-        <div className="lg:col-span-5 space-y-12">
-          <div className="contact-reveal">
-            <div className="flex items-center gap-3 text-accent-signal font-mono-tech text-xs tracking-widest mb-6">
-              <Radio size={14} className="animate-pulse" />
-              SECURE_CHANNEL
+        {/* LEFT: Context */}
+        <div className="lg:col-span-5 space-y-10 contact-item">
+          <div>
+            <div className="inline-flex items-center gap-2 px-2 py-1 mb-6 border border-white/10 bg-white/5 rounded text-xs font-mono text-text-secondary">
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+              <span>CHANNEL_OPEN</span>
             </div>
-            <h2 className="text-6xl font-black text-white leading-[0.9] uppercase">
-              Initialise <br /> Uplink.
+
+            <h2 className="text-4xl md:text-5xl font-bold text-text-primary leading-tight">
+              Initiate <br /> Protocol.
             </h2>
           </div>
 
-          <p className="contact-reveal text-text-secondary text-lg font-light leading-relaxed max-w-sm">
-            Engineering the machines of tomorrow requires the right cognitive architects. Transmit your coordinates.
+          <p className="text-text-secondary text-lg font-light leading-relaxed max-w-md">
+            Whether you are scaling an existing cognitive layer or architecting a new one from scratch.
+            Direct communication ensures clarity.
           </p>
 
-          <div className="contact-reveal space-y-8 pt-8 border-t border-white/10">
-            <div className="flex items-start gap-4">
-              <Mail className="text-accent-signal mt-1" size={20} />
-              <div>
-                <div className="text-[10px] font-mono-tech text-white/50 uppercase mb-1">DIRECT_INQUIRY</div>
-                <div className="text-xl text-white font-bold">hello@perioxia.tech</div>
+          <div className="pt-8 border-t border-white/10">
+            <div className="flex items-center gap-4 text-text-secondary hover:text-white transition-colors cursor-pointer group">
+              <div className="w-10 h-10 border border-white/10 bg-white/5 rounded-full flex items-center justify-center group-hover:border-white/30 transition-colors">
+                <Mail size={16} />
               </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <MapPin className="text-accent-signal mt-1" size={20} />
-              <div>
-                <div className="text-[10px] font-mono-tech text-white/50 uppercase mb-1">GLOBAL_HQ</div>
-                <div className="text-xl text-white font-bold">Remote Operations</div>
+              <div className="flex flex-col">
+                <span className="text-xs font-mono uppercase tracking-wider opacity-60">Secure Transmission</span>
+                <span className="font-medium">contact@perioxia.tech</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="lg:col-span-7 contact-reveal">
+        {/* RIGHT: Form */}
+        <div className="lg:col-span-7 contact-item">
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-8 bg-white/[0.02] border border-white/5 p-12 backdrop-blur-sm relative blueprint-card">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono-tech text-white/50 uppercase">IDENTITY</label>
+                  <label className="text-xs font-mono text-text-secondary ml-1 uppercase">Identify</label>
                   <input
                     required
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="Name / Callsign"
-                    className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20"
+                    placeholder="Subject Name"
+                    className="w-full bg-bg-panel border border-white/10 rounded-none px-4 py-3 text-text-primary placeholder:text-white/10 focus:border-white/30 focus:bg-white/5 outline-none transition-all font-light"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono-tech text-white/50 uppercase">ORG_ID</label>
+                  <label className="text-xs font-mono text-text-secondary ml-1 uppercase">Organization</label>
                   <input
                     required
                     name="company"
                     value={form.company}
                     onChange={handleChange}
-                    placeholder="Company"
-                    className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20"
+                    placeholder="Entity Name"
+                    className="w-full bg-bg-panel border border-white/10 rounded-none px-4 py-3 text-text-primary placeholder:text-white/10 focus:border-white/30 focus:bg-white/5 outline-none transition-all font-light"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-mono-tech text-white/50 uppercase">COMMS_ADDRESS</label>
+                <label className="text-xs font-mono text-text-secondary ml-1 uppercase">Return Address</label>
                 <input
                   required
                   type="email"
                   name="email"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="Email"
-                  className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors placeholder:text-white/20"
+                  placeholder="name@domain.com"
+                  className="w-full bg-bg-panel border border-white/10 rounded-none px-4 py-3 text-text-primary placeholder:text-white/10 focus:border-white/30 focus:bg-white/5 outline-none transition-all font-light"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-mono-tech text-white/50 uppercase">PACKET_DATA</label>
+                <label className="text-xs font-mono text-text-secondary ml-1 uppercase">Parameters</label>
                 <textarea
                   required
                   name="message"
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Project Parameters..."
-                  className="w-full bg-void border-b border-white/10 focus:border-accent-signal py-4 text-white outline-none transition-colors h-32 resize-none placeholder:text-white/20"
+                  placeholder="Outline operational requirements..."
+                  className="w-full bg-bg-panel border border-white/10 rounded-none px-4 py-3 text-text-primary placeholder:text-white/10 focus:border-white/30 focus:bg-white/5 outline-none transition-all font-light h-32 resize-none"
                 />
               </div>
 
-              <button type="submit" className="group flex items-center gap-4 bg-white text-black px-8 py-4 font-mono-tech text-xs tracking-widest uppercase hover:bg-accent-signal hover:text-white transition-colors duration-300 w-full justify-center">
-                TRANSMIT DATA <Send size={14} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              <div className="pt-4">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="flex items-center gap-2 bg-white text-black px-8 py-3 font-semibold text-sm hover:bg-gray-200 transition-colors disabled:opacity-50"
+                >
+                  {loading ? "Transmitting..." : "Execute Send"}
+                  {!loading && <ArrowRight size={16} />}
+                </button>
+                {error && <p className="mt-4 text-red-400 text-sm font-mono">{error}</p>}
+              </div>
 
-              {/* Decorators */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/30" />
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/30" />
             </form>
           ) : (
-            <div className="h-full flex flex-col items-center justify-center p-20 border border-white/10 bg-white/[0.02] text-center">
-              <div className="text-accent-signal mb-6">
-                <Radio size={48} className="animate-pulse mx-auto" />
+            <div className="h-full min-h-[400px] flex flex-col items-center justify-center p-12 border border-white/10 bg-white/[0.02]">
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6">
+                <Terminal size={24} className="text-white" />
               </div>
-              <h3 className="text-3xl font-black text-white mb-4">TRANSMISSION RECEIVED</h3>
-              <p className="text-text-secondary max-w-sm mx-auto mb-8">
-                Your packet has been logged in our secure stack. Stand by for response.
+              <h3 className="text-2xl font-bold text-white mb-2">Acknowledged.</h3>
+              <p className="text-text-secondary text-center mb-8 font-light">
+                Your transmission has been logged. Expect a response sequence shortly.
               </p>
-              <button onClick={() => setSubmitted(false)} className="text-white/50 hover:text-white font-mono-tech text-xs underline decoration-accent-signal underline-offset-4">
-                RESET_CONNECTION
+              <button onClick={() => setSubmitted(false)} className="text-xs font-mono text-text-secondary border-b border-transparent hover:border-text-secondary transition-all pb-0.5">
+                RESET_FORM
               </button>
             </div>
           )}
