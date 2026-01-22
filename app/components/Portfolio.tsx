@@ -10,47 +10,61 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: "01",
-    client: "AEROSPACE_DYNAMICS",
-    title: "Autonomous Drone Swarm",
-    desc: "Coordination algorithms for 500+ UAVs in contested environments.",
-    year: "2024",
+    client: "CORE_PLATFORM",
+    title: "Perioxia Prime",
+    desc: "The central nervous system of your enterprise. Orchestrating intelligence across all operational layers.",
+    year: "2025",
+    status: "ONLINE",
+    gradient: "from-cyan-500/20 via-blue-900/10 to-transparent",
+    accent: "text-cyan-400",
+    border: "border-cyan-500/20"
   },
   {
     id: "02",
-    client: "NEXUS_MEDICAL",
-    title: "Robotic Surgery OS",
-    desc: "Real-time haptic feedback kernel for remote surgical interventions.",
-    year: "2023",
+    client: "NEURAL_LAYER",
+    title: "Neural Fabric",
+    desc: "Distributed AI architecture handling millions of inference/sec for real-time decision making.",
+    year: "EST. 2025",
+    status: "SYSTEM_CHECK",
+    gradient: "from-violet-500/20 via-purple-900/10 to-transparent",
+    accent: "text-violet-400",
+    border: "border-violet-500/20"
   },
   {
     id: "03",
-    client: "GLOBAL_LOGISTICS",
-    title: "Warehouse Neural Net",
-    desc: "Vision-based inventory tracking with 99.99% accuracy at edge.",
-    year: "2024",
+    client: "KINETIC_GRID",
+    title: "Kinetic Core",
+    desc: "Hardware abstraction layer bridging digital commands to physical robotic actuation.",
+    year: "EST. 2026",
+    status: "BUILDING",
+    gradient: "from-amber-500/20 via-orange-900/10 to-transparent",
+    accent: "text-amber-400",
+    border: "border-amber-500/20"
   },
   {
     id: "04",
-    client: "FINTECH_CORE",
-    title: "High-Frequency Trading",
-    desc: "FPGA-accelerated execution engine for sub-microsecond latency.",
-    year: "2023",
+    client: "INFRASTRUCTURE",
+    title: "Sovereign Cloud",
+    desc: "Air-gapped computation clusters ensuring absolute data dominance and security.",
+    year: "PENDING",
+    status: "QUEUED",
+    gradient: "from-emerald-500/20 via-teal-900/10 to-transparent",
+    accent: "text-emerald-400",
+    border: "border-emerald-500/20"
   },
 ];
 
 export default function Portfolio() {
   const sectionRef = useRef(null);
-  const slideContainerRef = useRef(null);
+  const slideContainerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const slides = gsap.utils.toArray(".project-slide");
-      const totalSlides = slides.length;
-
-      // Calculate the total scroll distance
-      const scrollWidth = slideContainerRef.current.scrollWidth;
+      // Robust calculation for horizontal scroll
+      const scrollWidth = slideContainerRef.current!.scrollWidth;
       const viewportWidth = window.innerWidth;
-      
+
+      // The Core Horizontal Scroll Animation
       gsap.to(slideContainerRef.current, {
         x: -(scrollWidth - viewportWidth),
         ease: "none",
@@ -59,15 +73,25 @@ export default function Portfolio() {
           pin: true,
           scrub: 1,
           anticipatePin: 1,
-          snap: {
-            snapTo: 1 / (totalSlides - 1),
-            duration: 0.3,
-            ease: "power1.inOut"
-          },
-          end: () => `+=${scrollWidth - viewportWidth}`,
+          // Calculate exact end point based on width to ensuring dragging/swiping feels natural
+          end: () => `+=${scrollWidth}`,
           invalidateOnRefresh: true,
         },
       });
+
+      // Playful: Float animations for background orbs
+      gsap.to(".floating-orb", {
+        y: -30,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        stagger: {
+          amount: 1,
+          from: "random"
+        }
+      });
+
     }, sectionRef);
 
     return () => ctx.revert();
@@ -81,50 +105,68 @@ export default function Portfolio() {
         className="relative bg-black overflow-hidden h-screen"
       >
         {/* Background label */}
-        <div className="absolute top-10 left-10 text-white/20 font-mono text-xs tracking-widest z-10">
-          // CASE_STUDIES_ARCHIVE
+        <div className="absolute top-10 left-10 text-white/20 font-mono text-xs tracking-widest z-10 mix-blend-difference">
+          // SYSTEM_ARCHITECTURE_V1.0
         </div>
 
-        <div ref={slideContainerRef} className="flex h-screen">
+        {/* Width MUST be total items * 100vw */}
+        <div ref={slideContainerRef} className="flex h-screen w-[400vw]">
           {projects.map((p) => (
             <div
               key={p.id}
-              className="project-slide min-w-screen h-screen flex items-center justify-center relative px-20 border-r border-white/5"
+              className="project-slide w-screen h-screen flex-none flex items-center justify-center relative px-4 md:px-20 border-r border-white/5 overflow-hidden group perspective-1000"
             >
-              <div className="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+              {/* Dynamic Gradient Background & Playful Elements */}
+              <div className="absolute inset-0 z-0">
+                <div className={`absolute inset-0 bg-gradient-radial ${p.gradient} opacity-30 group-hover:opacity-50 transition-opacity duration-1000 transform scale-150`} />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+
+                {/* Floating Orbs for Playfulness */}
+                <div className={`floating-orb absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-r ${p.gradient} blur-[120px] opacity-20`} />
+                <div className={`floating-orb absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-br ${p.gradient} blur-[100px] opacity-20 delay-1000`} />
+              </div>
+
+              <div className="relative z-10 max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-end transform transition-transform duration-700 hover:scale-[1.01]">
                 <div className="lg:col-span-8">
-                  <div className="text-cyan-400 font-mono mb-6 block">
-                    {p.client} // {p.year}
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className={`px-4 py-1.5 rounded-full border bg-black/50 backdrop-blur-md ${p.border} ${p.accent}`}>
+                      <span className="font-mono text-xs tracking-[0.2em] font-bold">
+                        {p.status}
+                      </span>
+                    </div>
+                    <span className={`font-mono text-xs tracking-widest opacity-70 ${p.accent}`}>
+                      {p.client} // {p.year}
+                    </span>
                   </div>
-                  <h2 className="text-5xl md:text-7xl lg:text-8xl leading-none font-black text-white mb-8 uppercase tracking-tighter">
+
+                  <h2 className="text-6xl md:text-8xl lg:text-9xl leading-[0.85] font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/40 mb-8 uppercase tracking-tighter drop-shadow-2xl">
                     {p.title}
                   </h2>
                 </div>
 
-                <div className="lg:col-span-4 border-l border-white/20 pl-8 pb-2">
-                  <div className="text-5xl text-white/10 font-black mb-6">
+                <div className="lg:col-span-4 lg:border-l border-white/10 lg:pl-10 pb-4">
+                  <div className="text-6xl text-white/5 font-black mb-6 select-none" >
                     /{p.id}
                   </div>
-                  <p className="text-gray-400 text-xl font-light mb-10 leading-relaxed">
+                  <p className="text-gray-300 text-lg md:text-xl font-light mb-12 leading-relaxed max-w-sm">
                     {p.desc}
                   </p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center text-white border-b border-cyan-400 hover:text-cyan-400 transition-colors pb-1"
+
+                  <button
+                    className={`group/btn relative overflow-hidden inline-flex items-center gap-4 px-8 py-4 bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-md rounded-lg`}
                   >
-                    VIEW DATA <ArrowUpRight className="ml-2" size={16} />
-                  </a>
+                    <span className={`text-xs font-mono-tech tracking-[0.2em] uppercase transition-colors ${p.accent}`}>
+                      {p.status === "ONLINE" ? "Initialize" : "System_Locked"} <ArrowUpRight className="inline ml-2 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" size={14} />
+                    </span>
+                    <div className={`w-1.5 h-1.5 rounded-full bg-current animate-pulse absolute top-4 right-4 ${p.accent}`} />
+                    <div className={`absolute bottom-0 left-0 h-[2px] w-full bg-current transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-300 origin-left ${p.accent}`} />
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </section>
-      
-      {/* Add some content after to demonstrate the scroll works */}
-      {/* <div className="h-screen bg-gray-900 flex items-center justify-center">
-        <p className="text-white text-2xl">Content after portfolio section</p>
-      </div> */}
     </div>
   );
 }

@@ -45,18 +45,18 @@ export default function About() {
           <p className="text-text-secondary text-xl font-light leading-relaxed max-w-xl border-l-2 border-white/10 pl-8">
             Perioxia is an innovation hub where <span className="text-white font-medium">CRM Architecture</span>,
             <span className="text-white font-medium"> AI Agents</span>, and <span className="text-white font-medium">Robotic OS</span> converge.
-            We build deterministic systems for a probabilistic world.
+            Systems are being set up for active development.
           </p>
 
           <div className="about-stats grid grid-cols-2 gap-12 pt-12 border-t border-white/5">
             {[
-              { val: "24+", label: "SYSTEMS_DEPLOYED" },
-              { val: "15", label: "GLOBAL_PARTNERS" },
-              { val: "12", label: "PATENTS_PENDING" },
-              { val: "0.2ms", label: "AVG_LATENCY" },
+              { val: "INITIALIZING", label: "MODE" },
+              { val: "BUILDING & EXECUTION", label: "FOCUS" },
+              { val: "ACTIVE", label: "STATE" },
+              { val: "SETUP", label: "SYSTEM" },
             ].map((s, i) => (
               <div key={i} className="about-stat">
-                <div className="text-4xl font-black text-white mb-2">{s.val}</div>
+                <div className="text-2xl font-black text-white mb-2">{s.val}</div>
                 <div className="text-[10px] font-mono-tech text-accent-signal">{s.label}</div>
               </div>
             ))}

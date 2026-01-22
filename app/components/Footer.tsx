@@ -10,7 +10,7 @@ export default function Footer() {
                     <div className="md:col-span-2 space-y-8">
                         <div className="text-4xl font-black tracking-tighter text-white">PERIOXIA.</div>
                         <p className="text-text-secondary text-lg font-light leading-relaxed max-w-sm">
-                            Engineering the machines of tomorrow. We build the physical
+                            Engineering the machines of tomorrow. We are building the physical
                             cognitive stacks that define the boundaries of intelligence.
                         </p>
                         <div className="flex items-center gap-6">
