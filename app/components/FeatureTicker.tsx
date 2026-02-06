@@ -17,25 +17,22 @@ export default function FeatureTicker() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
-
       mm.add("(prefers-reduced-motion: reduce)", () => {
         gsap.set(tickerRef.current, { opacity: 0.9 });
       });
-
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.fromTo(
           tickerRef.current,
           { xPercent: -50 },
           {
             xPercent: 0,
-            duration: 28,
             ease: "none",
+            duration: 28,
             repeat: -1,
           }
         );
       });
     });
-
     return () => ctx.revert();
   }, []);
 
@@ -43,16 +40,12 @@ export default function FeatureTicker() {
     const interval = setInterval(() => {
       setMetrics((prev) =>
         prev.map((metric) => {
-          if (metric.label === "Security") return metric;
-
-          const delta =
-            Math.random() * metric.variance * 2 - metric.variance;
+          if (metric.label === "Security") {
+            return metric;
+          }
+          const delta = (Math.random() * metric.variance * 2 - metric.variance) || 0;
           const nextValue = Math.max(0, metric.value + delta);
-
-          return {
-            ...metric,
-            value: Number(nextValue.toFixed(1)),
-          };
+          return { ...metric, value: Number(nextValue.toFixed(1)) };
         })
       );
     }, 2200);
@@ -64,21 +57,17 @@ export default function FeatureTicker() {
 
   return (
     <section className="relative overflow-hidden border-y border-white/10 bg-white/5 py-4">
-      {/* edge fade */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[var(--bg-navy)] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[var(--bg-navy)] to-transparent" />
-
+      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[var(--bg-navy)] to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[var(--bg-navy)] to-transparent" />
       <div ref={tickerRef} className="flex w-max items-center gap-10 px-6">
         {repeatedMetrics.map((metric, index) => (
           <div
             key={`${metric.label}-${index}`}
-            className="flex items-center gap-4 text-xs font-mono uppercase tracking-[0.2em] text-secondary"
+            className="flex items-center gap-4 text-xs font-mono-tech uppercase tracking-[0.2em] text-secondary"
           >
             <span className="text-primary">{metric.label}</span>
             <span className="text-primary">
-              {metric.label === "Security"
-                ? metric.suffix
-                : `${metric.value}${metric.suffix}`}
+              {metric.label === "Security" ? metric.suffix : `${metric.value}${metric.suffix}`}
             </span>
           </div>
         ))}

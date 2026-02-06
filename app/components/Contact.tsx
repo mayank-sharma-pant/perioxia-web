@@ -56,7 +56,7 @@ export default function Contact() {
 
       setSubmitted(true);
       setForm({ name: "", email: "", message: "" });
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);

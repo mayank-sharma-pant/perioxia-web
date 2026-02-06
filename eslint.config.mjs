@@ -9,9 +9,13 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
+    "perioxiaweb/.next/**",
     "out/**",
+    "perioxiaweb/out/**",
     "build/**",
+    "perioxiaweb/build/**",
     "next-env.d.ts",
+    "test-email.js",
   ]),
 ]);
 
