@@ -2,22 +2,21 @@
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import { Brain, Cloud, Database, Globe, Smartphone, Zap } from "lucide-react";
 
 const features = [
-    { icon: Brain, label: "AI Automation" },
-    { icon: Database, label: "Custom CRM" },
-    { icon: Cloud, label: "Cloud Solutions" },
-    { icon: Zap, label: "API Integration" },
-    { icon: Smartphone, label: "Mobile Apps" },
-    { icon: Globe, label: "Web Platforms" },
-    // Duplicate for loop
-    { icon: Brain, label: "AI Automation" },
-    { icon: Database, label: "Custom CRM" },
-    { icon: Cloud, label: "Cloud Solutions" },
-    { icon: Zap, label: "API Integration" },
-    { icon: Smartphone, label: "Mobile Apps" },
-    { icon: Globe, label: "Web Platforms" },
+    "AI VISIBILITY TRACKING",
+    "GENERATIVE SEARCH",
+    "BRAND MONITORING",
+    "COMPETITOR INTEL",
+    "AI MENTIONS",
+    "CITATION MAPPING",
+    // Duplicates
+    "AI VISIBILITY TRACKING",
+    "GENERATIVE SEARCH",
+    "BRAND MONITORING",
+    "COMPETITOR INTEL",
+    "AI MENTIONS",
+    "CITATION MAPPING",
 ];
 
 export default function FeatureTicker() {
@@ -28,7 +27,7 @@ export default function FeatureTicker() {
             gsap.to(tickerRef.current, {
                 xPercent: -50,
                 ease: "none",
-                duration: 20,
+                duration: 30, // Slow loop
                 repeat: -1
             });
         });
@@ -36,16 +35,19 @@ export default function FeatureTicker() {
     }, []);
 
     return (
-        <div className="w-full bg-navy-light/50 border-y border-white/5 py-4 overflow-hidden relative">
-            {/* Gradients to fade edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-bg-navy to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-bg-navy to-transparent z-10" />
+        <div className="w-full bg-bg-void border-y border-white/5 py-8 overflow-hidden relative z-20">
 
-            <div ref={tickerRef} className="flex w-max gap-12 items-center px-6">
+            {/* Gradients to fade edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-bg-void to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-bg-void to-transparent z-10" />
+
+            <div ref={tickerRef} className="flex w-max gap-16 items-center">
                 {features.map((f, i) => (
-                    <div key={i} className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-default">
-                        <f.icon size={20} className="text-accent-blue" />
-                        <span className="text-sm font-medium tracking-wide text-white whitespace-nowrap">{f.label}</span>
+                    <div key={i} className="flex items-center gap-4">
+                        <span className="text-4xl md:text-5xl font-display font-bold text-transparent text-outline-chartreuse whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">
+                            {f}
+                        </span>
+                        <span className="w-2 h-2 rounded-full bg-accent-chartreuse opacity-40" />
                     </div>
                 ))}
             </div>

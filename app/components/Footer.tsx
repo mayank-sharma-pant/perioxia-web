@@ -1,64 +1,75 @@
 import Link from 'next/link';
+import { Twitter, Linkedin, Github } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="bg-[#050505] border-t border-accent-cyan/10 pt-20 pb-10">
-            <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+        <footer className="bg-[--obsidian] border-t border-[--graphite]/30 pt-20 pb-10">
+            <div className="container-custom">
 
-                {/* COLUMN 1: BRAND */}
-                <div className="md:col-span-5">
-                    <h2 className="text-3xl font-display font-bold text-white mb-6 tracking-wide">PERIOXIA.</h2>
-                    <p className="text-text-warm-gray text-lg leading-relaxed max-w-sm mb-8">
-                        Engineering the machines of tomorrow. We are building the physical cognitive stacks that define the boundaries of intelligence.
-                    </p>
-                    <div className="flex gap-4">
-                        {/* Social Placeholders */}
-                        {['twitter', 'linkedin', 'github'].map((social) => (
-                            <a key={social} href={`#${social}`} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:bg-white hover:text-black hover:scale-110 transition-all duration-300">
-                                <span className="capitalize text-xs">{social[0]}</span>
+                {/* Main Footer Content */}
+                <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
+
+                    {/* Left: Logo + Tagline */}
+                    <div className="md:w-1/3">
+                        <h3 className="font-display text-4xl text-[--ivory] mb-4 tracking-tight">
+                            PERIOXIA
+                        </h3>
+                        <p className="text-[--silver] leading-relaxed mb-4">
+                            Building the software that doesn't exist yet.
+                        </p>
+                        <p className="text-[--silver]/60 text-sm">
+                            Based in India. Building globally.
+                        </p>
+                    </div>
+
+                    {/* Center: Links */}
+                    <div className="md:w-1/3">
+                        <nav className="flex flex-col gap-4">
+                            <Link href="#" className="text-[--silver] hover:text-[--lime] transition-colors text-lg">
+                                Work
+                            </Link>
+                            <Link href="#" className="text-[--silver] hover:text-[--lime] transition-colors text-lg">
+                                Capabilities
+                            </Link>
+                            <Link href="#" className="text-[--silver] hover:text-[--lime] transition-colors text-lg">
+                                Company
+                            </Link>
+                            <Link href="#" className="text-[--silver] hover:text-[--lime] transition-colors text-lg">
+                                Contact
+                            </Link>
+                        </nav>
+                    </div>
+
+                    {/* Right: Social + Email */}
+                    <div className="md:w-1/3">
+                        <div className="flex gap-4 mb-6">
+                            <a href="#" className="w-12 h-12 border border-[--silver]/30 rounded-full flex items-center justify-center text-[--silver] hover:bg-[--lime] hover:text-[--obsidian] hover:border-[--lime] transition-all">
+                                <Twitter size={20} />
                             </a>
-                        ))}
+                            <a href="#" className="w-12 h-12 border border-[--silver]/30 rounded-full flex items-center justify-center text-[--silver] hover:bg-[--lime] hover:text-[--obsidian] hover:border-[--lime] transition-all">
+                                <Linkedin size={20} />
+                            </a>
+                            <a href="#" className="w-12 h-12 border border-[--silver]/30 rounded-full flex items-center justify-center text-[--silver] hover:bg-[--lime] hover:text-[--obsidian] hover:border-[--lime] transition-all">
+                                <Github size={20} />
+                            </a>
+                        </div>
+                        <a href="mailto:hello@perioxia.tech" className="text-[--ivory] hover:text-[--lime] transition-colors">
+                            hello@perioxia.tech
+                        </a>
+                    </div>
+
+                </div>
+
+                {/* Bottom Bar */}
+                <div className="pt-8 border-t border-[--graphite]/30 flex flex-col md:flex-row justify-between items-center text-sm text-[--silver]/60">
+                    <div>&copy; 2024 Perioxia Technology</div>
+                    <div className="flex gap-6 mt-4 md:mt-0">
+                        <Link href="#" className="hover:text-[--lime] transition-colors">Privacy</Link>
+                        <Link href="#" className="hover:text-[--lime] transition-colors">Terms</Link>
+                        <Link href="#" className="hover:text-[--lime] transition-colors">Cookies</Link>
                     </div>
                 </div>
 
-                {/* COLUMN 2: CAPABILITIES */}
-                <div className="md:col-span-4">
-                    <h3 className="text-sm font-mono-tech uppercase tracking-widest text-[#555] mb-8">Capabilities</h3>
-                    <ul className="space-y-4">
-                        {['CRM Architecture', 'Mobile Kinetics', 'System Integration', 'AI Agent Swarms', 'Robotic OS'].map((item) => (
-                            <li key={item}>
-                                <Link href="#" className="text-text-warm-gray hover:text-accent-cyan transition-colors text-lg">
-                                    {item}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                {/* COLUMN 3: COMPANY */}
-                <div className="md:col-span-3">
-                    <h3 className="text-sm font-mono-tech uppercase tracking-widest text-[#555] mb-8">Company</h3>
-                    <ul className="space-y-4">
-                        {['Research Papers', 'Case Studies', 'Global Careers', 'Contact'].map((item) => (
-                            <li key={item}>
-                                <Link href="#" className="text-text-warm-gray hover:text-accent-cyan transition-colors text-lg">
-                                    {item}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-            </div>
-
-            {/* BOTTOM BAR */}
-            <div className="container mx-auto px-6 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm text-[#444]">
-                <div>&copy; 2024 Perioxia Technology Private Limited.</div>
-                <div className="flex gap-6 mt-4 md:mt-0">
-                    <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
-                    <Link href="#" className="hover:text-white transition-colors">Terms</Link>
-                    <Link href="#" className="hover:text-white transition-colors">Cookies</Link>
-                </div>
             </div>
         </footer>
     );
