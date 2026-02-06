@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const solutions = [
   {
+<<<<<<< HEAD
     id: "01",
     icon: Bot,
     label: "AI Agents",
@@ -18,6 +19,14 @@ const solutions = [
     features: ["Multi-agent coordination", "Self-learning loops", "Task orchestration"],
     cta: "Explore Agents",
     color: "cyan"
+=======
+    id: "03",
+    title: "Cortex",
+    desc: "Real-time robotic OS bridging digital logic with physical hardware control.",
+    features: ["Latency-safe runtime", "Edge inference", "Hardware orchestration"],
+    status: "Core research",
+    gradient: "from-[#FF0080]/20 via-[#00D4FF]/10 to-transparent",
+>>>>>>> a0f7e15e6b63523bfe89b36df0621caa0c2fa918
   },
   {
     id: "02",
@@ -30,6 +39,7 @@ const solutions = [
     color: "violet"
   },
   {
+<<<<<<< HEAD
     id: "03",
     icon: Code2,
     label: "Systems",
@@ -38,6 +48,14 @@ const solutions = [
     features: ["Hardware orchestration", "Edge inference", "Robotics control"],
     cta: "View Docs",
     color: "pink"
+=======
+    id: "01",
+    title: "Neural Workers",
+    desc: "Autonomous AI agent swarms for documentation, analysis, and orchestration at scale.",
+    features: ["Intelligent automation", "Self-learning loops", "Multi-agent coordination"],
+    status: "R&D",
+    gradient: "from-[#00D4FF]/20 via-[#8B5CF6]/10 to-transparent",
+>>>>>>> a0f7e15e6b63523bfe89b36df0621caa0c2fa918
   },
   {
     id: "04",
@@ -56,12 +74,22 @@ export default function SolutionsGrid() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+<<<<<<< HEAD
       gsap.from(".solution-card", {
         y: 60,
         opacity: 0,
         stagger: 0.15,
         duration: 0.8,
         ease: "power3.out",
+=======
+      const totalScroll = track.current?.scrollWidth || 0;
+      const getMaxX = () => (track.current?.scrollWidth || 0) - window.innerWidth;
+
+      gsap.set(track.current, { x: () => -getMaxX() });
+      gsap.to(track.current, {
+        x: 0,
+        ease: "none",
+>>>>>>> a0f7e15e6b63523bfe89b36df0621caa0c2fa918
         scrollTrigger: {
           trigger: ".solutions-grid",
           start: "top 75%",

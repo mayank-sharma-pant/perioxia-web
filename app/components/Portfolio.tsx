@@ -3,7 +3,6 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,10 +48,15 @@ export default function Portfolio() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+<<<<<<< HEAD
       const panels = gsap.utils.toArray(".project-panel");
 
       gsap.to(panels, {
         xPercent: -100 * (panels.length - 1),
+=======
+      gsap.to(trackRef.current, {
+        x: () => -(trackRef.current?.scrollWidth || 0) + window.innerWidth,
+>>>>>>> a0f7e15e6b63523bfe89b36df0621caa0c2fa918
         ease: "none",
         scrollTrigger: {
           trigger: triggerRef.current,
@@ -71,6 +75,7 @@ export default function Portfolio() {
   return (
     <section ref={sectionRef} id="portfolio" className="bg-bg-charcoal relative">
 
+<<<<<<< HEAD
       <div ref={triggerRef} className="overflow-hidden h-screen flex relative">
         <div ref={sliderRef} className="flex h-full w-[300vw]">
 
@@ -106,6 +111,30 @@ export default function Portfolio() {
                     <button className="group flex items-center gap-3 px-6 py-3 border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 transition-all rounded-sm backdrop-blur-md">
                       <span className="text-sm font-medium text-white">View Schematics</span>
                       <ArrowUpRight size={16} className="text-white/60 group-hover:text-white transition-colors" />
+=======
+      <div className="relative h-[70vh] overflow-hidden">
+        <div ref={trackRef} className="flex h-full items-center gap-8 px-6 w-max">
+          {projects.map((project) => (
+            <div key={project.id} className="project-panel w-[460px] h-full">
+              <div
+                className={`h-full rounded-3xl border border-white/10 bg-white/5 p-10 flex flex-col justify-between ${
+                  project.highlight ? "" : "opacity-70"
+                }`}
+              >
+                <div>
+                  <div className="text-xs font-mono-tech uppercase tracking-[0.3em] text-secondary">{project.label}</div>
+                  <h3 className="mt-6 text-3xl sm:text-4xl font-display text-primary">{project.id}</h3>
+                  <p className="mt-4 text-lg text-secondary">{project.desc}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-mono-tech uppercase tracking-[0.2em] text-secondary">
+                    <span className={`h-2 w-2 rounded-full ${project.highlight ? "bg-[var(--accent-lime)]" : "bg-white/30"}`} />
+                    {project.status}
+                  </span>
+                  {project.highlight && (
+                    <button className="rounded-full border border-white/10 bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#FF0080] px-5 py-2 text-sm font-semibold text-slate-950">
+                      Explore →
+>>>>>>> a0f7e15e6b63523bfe89b36df0621caa0c2fa918
                     </button>
                   </div>
                 </div>
