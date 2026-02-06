@@ -10,6 +10,7 @@ import SmoothScroll from './components/ui/SmoothScroll';
 
 export default function Page() {
     return (
+<<<<<<< HEAD
         <>
             <CursorGlow />
             <SmoothScroll />
@@ -25,3 +26,16 @@ export default function Page() {
         </>
     );
 }
+=======
+        <main className="relative min-h-screen selection:bg-[var(--accent-blue)] selection:text-slate-950">
+            <Hero />
+            <FeatureTicker />
+            <SolutionsGrid />
+            <TechConstellation />
+            <ProcessAndStats />
+            <Portfolio />
+            <Footer />
+        </main>
+    )
+}
+>>>>>>> a32d989586293f049b6b08fa80ddc01140cd4d91
