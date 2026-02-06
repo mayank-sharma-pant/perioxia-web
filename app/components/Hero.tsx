@@ -3,6 +3,15 @@
 import type { MouseEvent as ReactMouseEvent } from "react";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const flowLines = [
+  "M10 20 C 40 10, 60 30, 90 20",
+  "M5 50 C 35 40, 65 60, 95 50",
+  "M10 80 C 45 70, 70 90, 92 75",
+];
 
 export default function Hero() {
   const container = useRef<HTMLElement>(null);
@@ -21,20 +30,31 @@ export default function Hero() {
       if (gradientRef.current) {
         gsap.to(gradientRef.current, {
           backgroundPosition: "80% 20%",
-          duration: 18,
+          duration: 22,
           ease: "none",
         });
       }
+
+      gsap.to(".hero-visual", {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+        yPercent: -8,
+        ease: "none",
+      });
     }, container);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={container} className="relative pt-16 pb-20">
+    <section ref={container} className="relative pt-16 pb-20 overflow-hidden">
       <div
         ref={gradientRef}
-        className="absolute inset-0 opacity-80"
+        className="absolute inset-0 opacity-70"
         style={{
           backgroundImage:
             "radial-gradient(circle at 10% 20%, rgba(91,124,250,0.18), transparent 45%), radial-gradient(circle at 80% 0%, rgba(91,124,250,0.08), transparent 50%)",
@@ -69,6 +89,21 @@ export default function Hero() {
           </div>
         </div>
 
+        <div className="hero-item hero-visual rounded-3xl border border-white/10 bg-surface p-8">
+          <h2 className="text-xl font-semibold text-primary">Subtle technical focus</h2>
+          <p className="mt-3 text-sm text-secondary">
+            An abstract representation of systems in motion — quiet, precise, and intentional.
+          </p>
+          <div className="mt-6 rounded-2xl border border-white/10 bg-[rgba(15,17,21,0.4)] p-4">
+            <svg viewBox="0 0 100 100" className="w-full h-40 opacity-10">
+              {flowLines.map((path) => (
+                <path key={path} d={path} stroke="var(--accent)" strokeWidth="1.2" fill="none" />
+              ))}
+              <circle cx="20" cy="20" r="2" fill="var(--accent)" />
+              <circle cx="60" cy="30" r="2" fill="var(--accent)" />
+              <circle cx="80" cy="50" r="2" fill="var(--accent)" />
+              <circle cx="45" cy="70" r="2" fill="var(--accent)" />
+            </svg>
         <div className="hero-item rounded-3xl border border-white/10 bg-surface p-8">
           <h2 className="text-xl font-semibold text-primary">What we deliver</h2>
           <p className="mt-3 text-sm text-secondary">
