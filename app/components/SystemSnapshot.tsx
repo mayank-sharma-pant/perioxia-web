@@ -1,6 +1,6 @@
 "use client";
 
-import { Activity, Cpu, Database, Globe, ShieldCheck, Wifi } from "lucide-react";
+import { Activity, Cpu, Globe, ShieldCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function SystemSnapshot() {
