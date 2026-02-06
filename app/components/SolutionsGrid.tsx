@@ -3,100 +3,108 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { ArrowRight, Bot, Code2, Database } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const solutions = [
-    {
-        icon: Database,
-        title: "Nexus CRM Platform",
-        desc: "High-velocity customer management powered by predictive AI. Built for scale, designed for speed.",
-        features: ["360° Customer Intelligence", "Predictive Analytics", "Workflow Orchestration"],
-        gradient: "from-blue-500/20 to-cyan-500/20",
-        cta: "Explore Nexus"
-    },
-    {
-        icon: Bot,
-        title: "Neural Workforce",
-        desc: "Autonomous AI agents handling documentation, data processing, and intelligent decision support.",
-        features: ["Document Intelligence", "Anomaly Detection", "24/7 Autonomy"],
-        gradient: "from-violet-500/20 to-fuchsia-500/20",
-        cta: "See Agents"
-    },
-    {
-        icon: Code2,
-        title: "Bespoke Development",
-        desc: "End-to-end custom software solutions tailored to your unique business challenges.",
-        features: ["Web & Mobile Apps", "API Integration", "Legacy Modernization"],
-        gradient: "from-emerald-500/20 to-teal-500/20",
-        cta: "View Projects"
-    }
+const pillars = [
+  {
+    id: "01",
+    title: "Neural Workers",
+    desc: "Autonomous AI agent swarms for documentation, analysis, and orchestration at scale.",
+    features: ["Intelligent automation", "Self-learning loops", "Multi-agent coordination"],
+    status: "R&D",
+    gradient: "from-[#00D4FF]/20 via-[#8B5CF6]/10 to-transparent",
+  },
+  {
+    id: "02",
+    title: "Nexus",
+    desc: "High-velocity CRM infrastructure with predictive intelligence and real-time ingestion.",
+    features: ["Unified customer graph", "Predictive pipeline", "Signal-driven routing"],
+    status: "Prototype",
+    gradient: "from-[#8B5CF6]/25 via-[#FF0080]/10 to-transparent",
+  },
+  {
+    id: "03",
+    title: "Cortex",
+    desc: "Real-time robotic OS bridging digital logic with physical hardware control.",
+    features: ["Latency-safe runtime", "Edge inference", "Hardware orchestration"],
+    status: "Core research",
+    gradient: "from-[#FF0080]/20 via-[#00D4FF]/10 to-transparent",
+  },
 ];
 
 export default function SolutionsGrid() {
-    const container = useRef(null);
+  const container = useRef<HTMLElement>(null);
+  const track = useRef<HTMLDivElement>(null);
 
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".solution-card", {
-                scrollTrigger: {
-                    trigger: container.current,
-                    start: "top 80%",
-                },
-                y: 60,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "power2.out"
-            });
-        }, container);
-        return () => ctx.revert();
-    }, []);
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray(".pillar-card");
+      const totalScroll = track.current?.scrollWidth || 0;
 
-    return (
-        <section ref={container} className="relative py-32 container mx-auto px-6">
+      gsap.to(cards, {
+        xPercent: -100 * (cards.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: container.current,
+          pin: true,
+          scrub: 1,
+          end: () => `+=${totalScroll}`,
+          invalidateOnRefresh: true,
+        },
+      });
+    }, container);
 
-            <div className="text-center w-full max-w-2xl mx-auto mb-20">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                    Engineered for <span className="text-gradient-cyan">Impact.</span>
-                </h2>
-                <p className="text-text-secondary text-lg">
-                    We don't just write code. We build intelligent ecosystems that transform how your enterprise operates.
-                </p>
-            </div>
+    return () => ctx.revert();
+  }, []);
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {solutions.map((s, i) => (
-                    <div key={i} className="solution-card group relative p-8 glass-card rounded-2xl hover:translate-y-[-8px] transition-all duration-300">
-                        {/* Gradient Background */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${s.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl -z-10`} />
+  return (
+    <section ref={container} id="pillars" className="relative py-24">
+      <div className="container mx-auto px-6">
+        <div className="max-w-2xl">
+          <p className="text-xs font-mono-tech uppercase tracking-[0.4em] text-secondary">What we build</p>
+          <h2 className="mt-6 text-4xl sm:text-5xl font-display text-primary">
+            Technology pillars powering the Perioxia stack.
+          </h2>
+          <p className="mt-4 text-lg text-secondary">
+            Three divisions, one cohesive infrastructure engine. Each pillar is engineered to scale independently and
+            integrate seamlessly across the enterprise.
+          </p>
+        </div>
+      </div>
 
-                        <div className="w-14 h-14 bg-white/5 rounded-xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300">
-                            <s.icon size={28} />
-                        </div>
-
-                        <h3 className="text-2xl font-bold text-white mb-4">{s.title}</h3>
-                        <p className="text-text-secondary leading-relaxed mb-8 min-h-[80px]">
-                            {s.desc}
-                        </p>
-
-                        <ul className="space-y-3 mb-8">
-                            {s.features.map((f, j) => (
-                                <li key={j} className="flex items-center gap-3 text-sm text-gray-400">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-accent-blue/50" />
-                                    {f}
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className="pt-6 border-t border-white/5 flex items-center text-accent-cyan font-medium text-sm group-hover:gap-4 transition-all gap-2 cursor-pointer">
-                            {s.cta} <ArrowRight size={16} />
-                        </div>
+      <div ref={track} className="mt-16 flex w-[300vw]">
+        {pillars.map((pillar) => (
+          <div key={pillar.id} className="pillar-card w-screen px-6">
+            <div className="gradient-border mx-auto max-w-5xl">
+              <div className="relative rounded-3xl glass-card p-10 sm:p-14">
+                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${pillar.gradient} opacity-70`} />
+                <div className="relative z-10 grid gap-10 lg:grid-cols-[auto_1fr]">
+                  <div>
+                    <div className="text-6xl font-display text-white/10">{pillar.id}</div>
+                    <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-mono-tech uppercase tracking-[0.2em] text-secondary">
+                      <span className="h-2 w-2 rounded-full bg-[var(--accent-lime)]" />
+                      Status: {pillar.status}
                     </div>
-                ))}
+                  </div>
+                  <div>
+                    <h3 className="text-3xl sm:text-4xl font-display text-primary">{pillar.title}</h3>
+                    <p className="mt-4 text-lg text-secondary max-w-2xl">{pillar.desc}</p>
+                    <ul className="mt-8 grid gap-3 text-sm text-secondary">
+                      {pillar.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-3">
+                          <span className="h-2 w-2 rounded-full bg-[var(--accent-blue)]" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-
-        </section>
-    );
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }

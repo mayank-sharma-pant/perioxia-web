@@ -8,13 +8,13 @@ import Footer from './components/Footer'
 
 export default function Page() {
     return (
-        <main className="relative min-h-screen selection:bg-accent-blue selection:text-white">
+        <main className="relative min-h-screen selection:bg-[var(--accent-blue)] selection:text-slate-950">
             <Hero />
             <FeatureTicker />
             <SolutionsGrid />
             <TechConstellation />
-            <Portfolio />
             <ProcessAndStats />
+            <Portfolio />
             <Footer />
         </main>
     )
