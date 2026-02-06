@@ -12,7 +12,7 @@ export default function Robotics() {
   const scanLine = useRef(null);
 
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       // Continuous Scan Animation
       gsap.to(scanLine.current, {
         top: "100%",
