@@ -2,179 +2,176 @@
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import { ArrowRight, ChevronRight, Layers, Box, Cpu } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+
+const metrics = [
+  { label: "Latency", value: "12ms" },
+  { label: "Uptime", value: "99.97%" },
+  { label: "Agents", value: "150+" },
+  { label: "Status", value: "Armed" },
+];
+
+const nodes = [
+  { cx: 20, cy: 30, r: 3 },
+  { cx: 40, cy: 20, r: 4 },
+  { cx: 60, cy: 35, r: 3 },
+  { cx: 80, cy: 18, r: 4 },
+  { cx: 75, cy: 60, r: 3 },
+  { cx: 55, cy: 70, r: 4 },
+  { cx: 30, cy: 55, r: 3 },
+];
+
+const lines = [
+  { x1: 20, y1: 30, x2: 40, y2: 20 },
+  { x1: 40, y1: 20, x2: 60, y2: 35 },
+  { x1: 60, y1: 35, x2: 80, y2: 18 },
+  { x1: 60, y1: 35, x2: 75, y2: 60 },
+  { x1: 55, y1: 70, x2: 30, y2: 55 },
+  { x1: 30, y1: 55, x2: 20, y2: 30 },
+];
 
 export default function Hero() {
   const container = useRef<HTMLElement>(null);
-  const heroText = useRef<HTMLDivElement>(null);
-  const visuals = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      // Staggered Text Reveal
-      tl.from(".hero-fade-up", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power2.out"
-      })
-        // Visuals Entrance
-        .from(".visual-card", {
-          y: 60,
-          opacity: 0,
-          scale: 0.9,
-          duration: 1.2,
-          stagger: 0.2,
-          ease: "back.out(1.7)"
-        }, "-=0.8");
+      tl.from(".hero-badge", { y: -10, opacity: 0, duration: 0.6 })
+        .from(".hero-word", { y: 32, opacity: 0, duration: 0.8, stagger: 0.08 }, "-=0.3")
+        .from(".hero-subcopy", { y: 24, opacity: 0, duration: 0.6 }, "-=0.4")
+        .from(".hero-cta", { y: 16, opacity: 0, duration: 0.5, stagger: 0.1 }, "-=0.4")
+        .from(".hero-visual", { opacity: 0, scale: 0.98, duration: 0.8 }, "-=0.6")
+        .from(".hero-metric", { y: 24, opacity: 0, duration: 0.6, stagger: 0.12 }, "-=0.5");
 
-      // Continuous Floating
-      gsap.to(".visual-float-1", {
-        y: -15,
-        duration: 3,
+      gsap.to(".hero-node", {
+        scale: 1.2,
+        opacity: 0.6,
         repeat: -1,
         yoyo: true,
-        ease: "sine.inOut"
-      });
-      gsap.to(".visual-float-2", {
-        y: -20,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
+        duration: 1.8,
         ease: "sine.inOut",
-        delay: 0.5
+        stagger: 0.2,
       });
 
+      gsap.to(".hero-glow", {
+        rotate: 360,
+        duration: 20,
+        repeat: -1,
+        ease: "none",
+      });
     }, container);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={container} className="relative min-h-[90vh] w-full flex items-center justify-center overflow-hidden pt-20 lg:pt-0">
+    <section ref={container} className="relative min-h-[95vh] overflow-hidden pt-12">
+      <div className="absolute inset-0" aria-hidden="true">
+        <div className="hero-glow absolute -top-40 right-[-10%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(0,212,255,0.24),transparent_60%)] blur-2xl" />
+        <div className="absolute bottom-[-20%] left-[-15%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.18),transparent_60%)] blur-2xl" />
+      </div>
 
-      {/* Background Ambience */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent-blue/5 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent-purple/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
-
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-
-        {/* LEFT: TEXT CONTENT */}
-        <div ref={heroText} className="lg:col-span-7 flex flex-col items-start text-left">
-
-          {/* Badge */}
-          <div className="hero-fade-up inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm hover:bg-white/10 transition-colors cursor-default">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-blue opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-blue"></span>
-            </span>
-            <span className="text-sm font-medium text-blue-200">v4.0 Platform Live</span>
-            <ChevronRight size={14} className="text-white/40" />
+      <div className="container mx-auto px-6">
+        <nav className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-secondary">
+          <div className="font-display text-lg tracking-[0.3em] text-primary">Perioxia</div>
+          <div className="hidden md:flex items-center gap-10 font-mono-tech text-[11px]">
+            <a href="#pillars" className="hover:text-primary transition-colors">Work</a>
+            <a href="#visiblo" className="hover:text-primary transition-colors">About</a>
+            <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
           </div>
+        </nav>
 
-          <h1 className="hero-fade-up text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
-            Building Intelligence for <br />
-            <span className="text-gradient">Modern Enterprises.</span>
-          </h1>
-
-          <p className="hero-fade-up text-lg md:text-xl text-text-secondary max-w-xl leading-relaxed mb-10 font-light">
-            We engineer <strong>AI-Agent Swarms</strong>, <strong>Custom CRM Systems</strong>, and <strong>High-Scale IT Solutions</strong> that drive operational velocity.
-          </p>
-
-          <div className="hero-fade-up flex flex-wrap gap-4">
-            {/* Primary Button */}
-            <button className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold text-sm shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:translate-y-[-2px] transition-all duration-300 overflow-hidden">
-              <span className="relative z-10 flex items-center gap-2">
-                Explore Solutions <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-            </button>
-
-            {/* Secondary Button */}
-            <button className="px-8 py-4 rounded-xl border border-white/10 bg-white/5 text-white font-medium text-sm hover:bg-white/10 hover:border-white/20 transition-all">
-              View Case Studies
-            </button>
-          </div>
-
-          {/* Stats */}
-          <div className="hero-fade-up mt-16 flex items-center gap-12 border-t border-white/5 pt-8 w-full max-w-lg">
-            <div>
-              <div className="text-3xl font-tech font-bold text-white mb-1">500+</div>
-              <div className="text-sm text-text-secondary">Projects Shipped</div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center mt-20">
+          <div>
+            <div className="hero-badge inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-mono-tech text-secondary">
+              <span className="h-2 w-2 rounded-full bg-[var(--accent-lime)] animate-pulse" />
+              Systems online · 24/7 signal
             </div>
-            <div>
-              <div className="text-3xl font-tech font-bold text-white mb-1">99.9%</div>
-              <div className="text-sm text-text-secondary">Uptime Guaranteed</div>
+
+            <h1 className="mt-8 text-5xl sm:text-6xl lg:text-7xl font-display leading-[1.05]">
+              {"Building the infrastructure that powers tomorrow's enterprises".split(" ").map((word, index) => (
+                <span key={word + index} className="hero-word inline-block mr-2 text-primary">
+                  {word}
+                </span>
+              ))}
+              <span className="hero-word inline-block text-gradient">.</span>
+            </h1>
+
+            <p className="hero-subcopy mt-6 text-lg text-secondary max-w-xl">
+              Perioxia Technology builds critical AI infrastructure across autonomous agents, predictive
+              intelligence, and real-time robotic systems. Visiblo is the first product in a multi-division
+              ecosystem built for the next era of enterprise.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <button className="hero-cta group rounded-full bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#FF0080] px-6 py-3 text-sm font-semibold text-slate-950">
+                <span className="flex items-center gap-2">
+                  Explore Systems <ArrowDownRight size={16} className="transition-transform group-hover:translate-x-1" />
+                </span>
+              </button>
+              <button className="hero-cta rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-primary hover:border-white/30 hover:bg-white/10 transition">
+                See Visiblo <ArrowUpRight size={16} className="inline-block ml-2" />
+              </button>
+            </div>
+
+            <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6">
+              {metrics.map((metric) => (
+                <div key={metric.label} className="hero-metric glass-card rounded-2xl px-4 py-5">
+                  <div className="text-2xl font-mono-tech text-primary">{metric.value}</div>
+                  <div className="mt-2 text-xs uppercase tracking-[0.2em] text-secondary">{metric.label}</div>
+                </div>
+              ))}
             </div>
           </div>
 
+          <div className="hero-visual relative rounded-[28px] border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-8">
+            <div className="absolute inset-0 rounded-[28px] bg-[radial-gradient(circle_at_top,rgba(0,212,255,0.18),transparent_55%)]" />
+            <div className="relative flex h-full flex-col gap-6">
+              <div className="flex items-center justify-between text-xs font-mono-tech uppercase tracking-[0.3em] text-secondary">
+                <span>Neural field</span>
+                <span className="text-[10px] text-primary">Live sync</span>
+              </div>
+              <div className="relative flex-1">
+                <svg viewBox="0 0 100 100" className="w-full h-[320px]">
+                  <defs>
+                    <linearGradient id="nodeGradient" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stopColor="#00D4FF" />
+                      <stop offset="50%" stopColor="#8B5CF6" />
+                      <stop offset="100%" stopColor="#FF0080" />
+                    </linearGradient>
+                  </defs>
+                  {lines.map((line, index) => (
+                    <line
+                      key={`line-${index}`}
+                      x1={line.x1}
+                      y1={line.y1}
+                      x2={line.x2}
+                      y2={line.y2}
+                      stroke="url(#nodeGradient)"
+                      strokeWidth="0.6"
+                      strokeDasharray="2 3"
+                      opacity="0.6"
+                    />
+                  ))}
+                  {nodes.map((node, index) => (
+                    <circle
+                      key={`node-${index}`}
+                      className="hero-node"
+                      cx={node.cx}
+                      cy={node.cy}
+                      r={node.r}
+                      fill="url(#nodeGradient)"
+                    />
+                  ))}
+                </svg>
+                <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-xs text-secondary">
+                  Autonomous data paths · Adaptive flow · Predictive routing
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        {/* RIGHT: 3D ABSTRACTION (CSS COMPOSITION) */}
-        <div ref={visuals} className="lg:col-span-5 relative h-[600px] flex items-center justify-center perspective-[1000px] hidden lg:flex">
-
-          {/* Center Core */}
-          <div className="visual-card relative z-20 w-64 h-64 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 border border-white/10 shadow-2xl flex items-center justify-center visual-float-1">
-            <div className="absolute inset-0 bg-accent-blue/10 rounded-3xl blur-xl -z-10" />
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto bg-blue-500/20 rounded-2xl flex items-center justify-center mb-4 text-blue-400">
-                <Cpu size={32} />
-              </div>
-            </div>
-            {/* Floating Badge */}
-            <div className="absolute -right-12 top-12 px-4 py-2 glass-card rounded-lg flex items-center gap-2 animate-float-delayed">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-xs font-mono text-white">Neural Engine Active</span>
-            </div>
-          </div>
-
-          {/* Floating Card 1 (Back Left) */}
-          <div className="visual-card absolute top-20 left-10 w-48 h-56 rounded-2xl glass-card z-10 visual-float-2 opacity-60 transform -rotate-6">
-            <div className="p-4 border-b border-white/5">
-              <div className="w-8 h-8 rounded-full bg-white/10" />
-            </div>
-            <div className="p-4 space-y-2">
-              <div className="w-full h-2 bg-white/10 rounded" />
-              <div className="w-2/3 h-2 bg-white/10 rounded" />
-            </div>
-          </div>
-
-          {/* Floating Card 2 (Bottom Right) */}
-          <div className="visual-card absolute bottom-32 right-0 w-52 h-40 rounded-2xl bg-slate-800/80 border border-white/10 z-30 visual-float-1 transform rotate-3 shadow-xl backdrop-blur-md">
-            <div className="p-5 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400">
-                <Layers size={20} />
-              </div>
-              <div>
-                <div className="text-sm font-bold text-white">Full Stack</div>
-                <div className="text-xs text-text-secondary">Integration Ready</div>
-              </div>
-            </div>
-            {/* Progress Bar */}
-            <div className="px-5 mt-2">
-              <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                <div className="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500" />
-              </div>
-            </div>
-          </div>
-
-          {/* Connecting Lines (SVG) */}
-          <svg className="absolute inset-0 pointer-events-none z-0 opacity-30" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M40 40 L60 60" stroke="url(#lineGrad)" strokeWidth="0.5" strokeDasharray="2 2" />
-            <defs>
-              <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
-                <stop offset="50%" stopColor="#3B82F6" stopOpacity="1" />
-                <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
-
-        </div>
-
       </div>
     </section>
   );

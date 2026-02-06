@@ -3,93 +3,93 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { ClipboardCheck, Code, Rocket, Search } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const steps = [
-    { icon: Search, title: "Discovery", desc: "We deep dive into your operational bottlenecks and requirements." },
-    { icon: ClipboardCheck, title: "Design", desc: "Architecting a scalable solution that fits your long-term vision." },
-    { icon: Code, title: "Develop", desc: "Agile sprints with bi-weekly updates and continuous integration." },
-    { icon: Rocket, title: "Deploy", desc: "Seamless rollover to production with 24/7 hypercare support." },
+const stats = [
+  { value: 150, suffix: "+", label: "AI platforms" },
+  { value: 10, suffix: "M+", label: "Queries daily" },
+  { value: 99.97, suffix: "%", label: "System uptime" },
+  { value: 50, suffix: "ms", label: "Average latency" },
 ];
 
 export default function ProcessAndStats() {
-    const container = useRef(null);
+  const container = useRef<HTMLElement>(null);
 
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".process-step", {
-                scrollTrigger: {
-                    trigger: container.current,
-                    start: "top 75%",
-                },
-                x: -40,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "power2.out"
-            });
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".stat-card", {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
+      });
 
-            // Draw the line
-            gsap.from(".timeline-line", {
-                scrollTrigger: {
-                    trigger: container.current,
-                    start: "top 80%",
-                    end: "bottom 80%",
-                    scrub: 1
-                },
-                height: 0,
-                ease: "none"
-            });
+      gsap.utils.toArray<HTMLElement>(".stat-value").forEach((node) => {
+        const target = Number(node.dataset.value || 0);
+        const suffix = node.dataset.suffix || "";
+        gsap.fromTo(
+          node,
+          { textContent: 0 },
+          {
+            textContent: target,
+            duration: 1.8,
+            ease: "power2.out",
+            snap: { textContent: 1 },
+            scrollTrigger: {
+              trigger: node,
+              start: "top 85%",
+            },
+            onUpdate: function () {
+              const current = Number(node.textContent);
+              if (Number.isNaN(current)) {
+                node.textContent = `0${suffix}`;
+                return;
+              }
+              const formatted = target % 1 === 0 ? Math.round(current) : current.toFixed(2);
+              node.textContent = `${formatted}${suffix}`;
+            },
+          }
+        );
+      });
+    }, container);
 
-        }, container);
-        return () => ctx.revert();
-    }, []);
+    return () => ctx.revert();
+  }, []);
 
-    return (
-        <section ref={container} className="py-32 container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
+  return (
+    <section ref={container} className="relative py-24">
+      <div className="container mx-auto px-6">
+        <div className="max-w-2xl">
+          <p className="text-xs font-mono-tech uppercase tracking-[0.4em] text-secondary">The numbers speak</p>
+          <h2 className="mt-6 text-4xl sm:text-5xl font-display text-primary">Proven infrastructure.</h2>
+          <p className="mt-4 text-lg text-secondary">
+            Operational metrics that reinforce Perioxia as an enterprise-grade infrastructure partner.
+          </p>
+        </div>
 
-            {/* Timeline */}
-            <div>
-                <span className="text-accent-blue font-bold uppercase tracking-widest mb-8 block text-sm">How We Work</span>
-                <div className="relative pl-12 space-y-16">
-
-                    {/* Vertical Line */}
-                    <div className="absolute left-4 top-2 bottom-2 w-[2px] bg-white/5">
-                        <div className="timeline-line w-full bg-gradient-to-b from-blue-500 to-purple-500" />
-                    </div>
-
-                    {steps.map((s, i) => (
-                        <div key={i} className="process-step relative">
-                            {/* Icon Node */}
-                            <div className="absolute -left-[44px] w-10 h-10 rounded-full bg-navy border border-white/20 flex items-center justify-center z-10 text-white">
-                                <s.icon size={16} />
-                            </div>
-
-                            <h3 className="text-2xl font-bold text-white mb-2">{s.title}</h3>
-                            <p className="text-text-secondary">{s.desc}</p>
-                        </div>
-                    ))}
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label} className="stat-card gradient-border">
+              <div className="rounded-2xl glass-card p-6 text-center">
+                <div
+                  className="stat-value text-4xl font-mono-tech text-primary"
+                  data-value={stat.value}
+                  data-suffix={stat.suffix}
+                >
+                  0
                 </div>
+                <div className="mt-3 text-xs uppercase tracking-[0.2em] text-secondary">{stat.label}</div>
+              </div>
             </div>
-
-            {/* CTA Card in the corner */}
-            <div className="relative bg-gradient-to-br from-blue-600 to-violet-700 rounded-3xl p-12 flex flex-col justify-between overflow-hidden text-center lg:text-left">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-                <div className="absolute -right-20 -top-20 w-80 h-80 bg-white/10 rounded-full blur-[60px]" />
-
-                <div className="relative z-10">
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform?</h3>
-                    <p className="text-blue-100 text-lg mb-10">
-                        Join 50+ enterprise clients who have automated their future with Perioxia.
-                    </p>
-                    <button className="bg-white text-blue-900 font-bold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors w-full lg:w-auto shadow-xl">
-                        Schedule Consultation
-                    </button>
-                </div>
-            </div>
-
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
