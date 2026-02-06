@@ -43,8 +43,7 @@ export default function TechPillars() {
 
     useLayoutEffect(() => {
         const section = sectionRef.current;
-        const cards = cardsRef.current;
-        if (!section || !cards) return;
+        if (!section) return;
 
         const ctx = gsap.context(() => {
             // Header animation

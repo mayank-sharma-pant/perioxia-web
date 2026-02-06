@@ -79,11 +79,639 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/perioxiaweb/app/components/Hero.tsx [app-client] (ecmascript)", ((__turbopack_context__, module, exports) => {
+"[project]/perioxiaweb/app/components/Hero.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
 
-const e = new Error("Could not parse module '[project]/perioxiaweb/app/components/Hero.tsx'\n\nMerge conflict marker encountered.");
-e.code = 'MODULE_UNPARSABLE';
-throw e;
+__turbopack_context__.s([
+    "default",
+    ()=>Hero
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/perioxiaweb/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/perioxiaweb/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/perioxiaweb/node_modules/gsap/index.js [app-client] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$app$2f$components$2f$ui$2f$MagneticButton$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/perioxiaweb/app/components/ui/MagneticButton.tsx [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+;
+;
+function Hero() {
+    _s();
+    const containerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLayoutEffect"])({
+        "Hero.useLayoutEffect": ()=>{
+            const ctx = __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].context({
+                "Hero.useLayoutEffect.ctx": ()=>{
+                    // Split text reveal
+                    const words = __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].utils.toArray(".hero-word");
+                    __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].from(words, {
+                        y: 100,
+                        opacity: 0,
+                        rotateX: -15,
+                        duration: 0.8,
+                        stagger: 0.06,
+                        ease: "power4.out",
+                        delay: 0.3
+                    });
+                    // Tagline
+                    __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].from(".hero-tagline", {
+                        y: 30,
+                        opacity: 0,
+                        duration: 0.6,
+                        delay: 0.8,
+                        ease: "power3.out"
+                    });
+                    // CTA
+                    __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].from(".hero-cta", {
+                        y: 30,
+                        opacity: 0,
+                        duration: 0.6,
+                        delay: 1.0,
+                        ease: "power3.out"
+                    });
+                    // Data viz
+                    __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].from(".data-viz", {
+                        scale: 0.9,
+                        opacity: 0,
+                        duration: 1,
+                        delay: 0.5,
+                        ease: "power3.out"
+                    });
+                    // Metrics bar
+                    __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].from(".metrics-bar", {
+                        y: 50,
+                        opacity: 0,
+                        duration: 0.8,
+                        delay: 1.2,
+                        ease: "power3.out"
+                    });
+                }
+            }["Hero.useLayoutEffect.ctx"], containerRef);
+            return ({
+                "Hero.useLayoutEffect": ()=>ctx.revert()
+            })["Hero.useLayoutEffect"];
+        }
+    }["Hero.useLayoutEffect"], []);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+        ref: containerRef,
+        className: "relative min-h-screen flex flex-col justify-center overflow-hidden py-20",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "container-precision relative z-10",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
+                    className: "flex items-center justify-between mb-20",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "font-display text-2xl gradient-text",
+                            children: "PERIOXIA"
+                        }, void 0, false, {
+                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                            lineNumber: 71,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex items-center gap-8 text-sm text-text-secondary",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                    href: "#work",
+                                    className: "hover:text-text-primary transition-colors",
+                                    children: "Work"
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 73,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                    href: "#about",
+                                    className: "hover:text-text-primary transition-colors",
+                                    children: "About"
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 74,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                    href: "#contact",
+                                    className: "hover:text-text-primary transition-colors",
+                                    children: "Contact"
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 75,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                            lineNumber: 72,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                    lineNumber: 70,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "grid lg:grid-cols-5 gap-12 items-center",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "lg:col-span-3",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                    className: "font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-8",
+                                    style: {
+                                        perspective: "1000px"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "hero-word block text-text-primary",
+                                            children: "BUILDING THE"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 85,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "hero-word block gradient-text",
+                                            children: "INFRASTRUCTURE"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 86,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "hero-word block text-text-primary",
+                                            children: "THAT POWERS"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 87,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "hero-word block text-text-primary",
+                                            children: "TOMORROW'S"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 88,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "hero-word block gradient-text",
+                                            children: "ENTERPRISES"
+                                        }, void 0, false, {
+                                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                            lineNumber: 89,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 84,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "hero-tagline text-lg md:text-xl text-text-secondary mb-8 max-w-xl",
+                                    children: "AI Agents • Custom CRM • Neural Operating Systems"
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 92,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "hero-cta",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$app$2f$components$2f$ui$2f$MagneticButton$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        className: "px-8 py-4 bg-gradient-to-r from-cyber-blue to-neon-violet text-bg-deep font-bold rounded-lg",
+                                        children: "Explore Systems ↓"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 97,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 96,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                            lineNumber: 83,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "lg:col-span-2 data-viz",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DataVisualization, {}, void 0, false, {
+                                fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                lineNumber: 105,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                            lineNumber: 104,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                    lineNumber: 80,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "metrics-bar mt-20 glass-card p-4 flex items-center justify-between flex-wrap gap-4",
+                    children: [
+                        {
+                            value: "12ms",
+                            label: "Latency"
+                        },
+                        {
+                            value: "99.9%",
+                            label: "Uptime"
+                        },
+                        {
+                            value: "150+",
+                            label: "Agents"
+                        },
+                        {
+                            value: "ARMED",
+                            label: "Status"
+                        }
+                    ].map((metric, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex items-center gap-3 px-4",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "font-mono text-xl text-cyber-blue",
+                                    children: metric.value
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 119,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "text-xs text-text-muted uppercase",
+                                    children: metric.label
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 120,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, i, true, {
+                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                            lineNumber: 118,
+                            columnNumber: 13
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                    lineNumber: 111,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+            lineNumber: 67,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+        lineNumber: 66,
+        columnNumber: 5
+    }, this);
+}
+_s(Hero, "JVErPvg7bZ6yLj50J4lCvDO7Tjk=");
+_c = Hero;
+function DataVisualization() {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "relative h-80 w-full",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                viewBox: "0 0 300 300",
+                className: "w-full h-full",
+                children: [
+                    [
+                        {
+                            cx: 150,
+                            cy: 150,
+                            r: 12,
+                            fill: "url(#gradientCyan)"
+                        },
+                        {
+                            cx: 80,
+                            cy: 100,
+                            r: 8,
+                            fill: "url(#gradientViolet)"
+                        },
+                        {
+                            cx: 220,
+                            cy: 80,
+                            r: 8,
+                            fill: "url(#gradientPink)"
+                        },
+                        {
+                            cx: 60,
+                            cy: 200,
+                            r: 6,
+                            fill: "url(#gradientCyan)"
+                        },
+                        {
+                            cx: 240,
+                            cy: 180,
+                            r: 6,
+                            fill: "url(#gradientViolet)"
+                        },
+                        {
+                            cx: 120,
+                            cy: 250,
+                            r: 5,
+                            fill: "url(#gradientPink)"
+                        },
+                        {
+                            cx: 200,
+                            cy: 240,
+                            r: 5,
+                            fill: "url(#gradientCyan)"
+                        }
+                    ].map((node, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                    ...node,
+                                    className: "float",
+                                    style: {
+                                        animationDelay: `${i * 0.3}s`
+                                    },
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
+                                        attributeName: "opacity",
+                                        values: "0.6;1;0.6",
+                                        dur: "3s",
+                                        repeatCount: "indefinite",
+                                        begin: `${i * 0.5}s`
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 147,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 146,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                    cx: node.cx,
+                                    cy: node.cy,
+                                    r: node.r * 2.5,
+                                    fill: node.fill,
+                                    opacity: "0.1",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
+                                        attributeName: "r",
+                                        values: `${node.r * 2};${node.r * 3};${node.r * 2}`,
+                                        dur: "2s",
+                                        repeatCount: "indefinite",
+                                        begin: `${i * 0.3}s`
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 150,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                    lineNumber: 149,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, i, true, {
+                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                            lineNumber: 145,
+                            columnNumber: 11
+                        }, this)),
+                    [
+                        {
+                            x1: 150,
+                            y1: 150,
+                            x2: 80,
+                            y2: 100
+                        },
+                        {
+                            x1: 150,
+                            y1: 150,
+                            x2: 220,
+                            y2: 80
+                        },
+                        {
+                            x1: 150,
+                            y1: 150,
+                            x2: 60,
+                            y2: 200
+                        },
+                        {
+                            x1: 150,
+                            y1: 150,
+                            x2: 240,
+                            y2: 180
+                        },
+                        {
+                            x1: 80,
+                            y1: 100,
+                            x2: 60,
+                            y2: 200
+                        },
+                        {
+                            x1: 220,
+                            y1: 80,
+                            x2: 240,
+                            y2: 180
+                        },
+                        {
+                            x1: 60,
+                            y1: 200,
+                            x2: 120,
+                            y2: 250
+                        },
+                        {
+                            x1: 240,
+                            y1: 180,
+                            x2: 200,
+                            y2: 240
+                        }
+                    ].map((line, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                            ...line,
+                            stroke: "url(#gradientLine)",
+                            strokeWidth: "1",
+                            opacity: "0.4",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("animate", {
+                                attributeName: "opacity",
+                                values: "0.2;0.5;0.2",
+                                dur: "4s",
+                                repeatCount: "indefinite",
+                                begin: `${i * 0.2}s`
+                            }, void 0, false, {
+                                fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                lineNumber: 167,
+                                columnNumber: 13
+                            }, this)
+                        }, i, false, {
+                            fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                            lineNumber: 166,
+                            columnNumber: 11
+                        }, this)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
+                                id: "gradientCyan",
+                                x1: "0%",
+                                y1: "0%",
+                                x2: "100%",
+                                y2: "100%",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "0%",
+                                        stopColor: "#00D4FF"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 174,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "100%",
+                                        stopColor: "#0099CC"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 175,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                lineNumber: 173,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
+                                id: "gradientViolet",
+                                x1: "0%",
+                                y1: "0%",
+                                x2: "100%",
+                                y2: "100%",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "0%",
+                                        stopColor: "#8B5CF6"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 178,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "100%",
+                                        stopColor: "#6D28D9"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 179,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                lineNumber: 177,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
+                                id: "gradientPink",
+                                x1: "0%",
+                                y1: "0%",
+                                x2: "100%",
+                                y2: "100%",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "0%",
+                                        stopColor: "#FF0080"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 182,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "100%",
+                                        stopColor: "#CC0066"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 183,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                lineNumber: 181,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("linearGradient", {
+                                id: "gradientLine",
+                                x1: "0%",
+                                y1: "0%",
+                                x2: "100%",
+                                y2: "100%",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "0%",
+                                        stopColor: "#00D4FF"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 186,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "50%",
+                                        stopColor: "#8B5CF6"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 187,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("stop", {
+                                        offset: "100%",
+                                        stopColor: "#FF0080"
+                                    }, void 0, false, {
+                                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                        lineNumber: 188,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                                lineNumber: 185,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                        lineNumber: 172,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                lineNumber: 133,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "scan-line"
+            }, void 0, false, {
+                fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+                lineNumber: 195,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/perioxiaweb/app/components/Hero.tsx",
+        lineNumber: 132,
+        columnNumber: 5
+    }, this);
+}
+_c1 = DataVisualization;
+var _c, _c1;
+__turbopack_context__.k.register(_c, "Hero");
+__turbopack_context__.k.register(_c1, "DataVisualization");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
 }),
 "[project]/perioxiaweb/app/components/MetricsMarquee.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -269,8 +897,7 @@ function TechPillars() {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLayoutEffect"])({
         "TechPillars.useLayoutEffect": ()=>{
             const section = sectionRef.current;
-            const cards = cardsRef.current;
-            if (!section || !cards) return;
+            if (!section) return;
             const ctx = __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].context({
                 "TechPillars.useLayoutEffect.ctx": ()=>{
                     // Header animation
@@ -317,20 +944,20 @@ function TechPillars() {
                             children: "WHAT WE BUILD"
                         }, void 0, false, {
                             fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                            lineNumber: 85,
+                            lineNumber: 84,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "w-24 h-1 bg-gradient-to-r from-cyber-blue to-plasma-pink rounded"
                         }, void 0, false, {
                             fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                            lineNumber: 88,
+                            lineNumber: 87,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                    lineNumber: 84,
+                    lineNumber: 83,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -344,7 +971,7 @@ function TechPillars() {
                                     children: pillar.number
                                 }, void 0, false, {
                                     fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                    lineNumber: 99,
+                                    lineNumber: 98,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -354,12 +981,12 @@ function TechPillars() {
                                         strokeWidth: 1.5
                                     }, void 0, false, {
                                         fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                        lineNumber: 105,
+                                        lineNumber: 104,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                    lineNumber: 104,
+                                    lineNumber: 103,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -367,7 +994,7 @@ function TechPillars() {
                                     children: pillar.title
                                 }, void 0, false, {
                                     fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                    lineNumber: 109,
+                                    lineNumber: 108,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -375,7 +1002,7 @@ function TechPillars() {
                                     children: pillar.description
                                 }, void 0, false, {
                                     fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                    lineNumber: 114,
+                                    lineNumber: 113,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -388,19 +1015,19 @@ function TechPillars() {
                                                     children: "•"
                                                 }, void 0, false, {
                                                     fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                                    lineNumber: 122,
+                                                    lineNumber: 121,
                                                     columnNumber: 41
                                                 }, this),
                                                 bullet
                                             ]
                                         }, j, true, {
                                             fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                            lineNumber: 121,
+                                            lineNumber: 120,
                                             columnNumber: 37
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                    lineNumber: 119,
+                                    lineNumber: 118,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -413,7 +1040,7 @@ function TechPillars() {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                            lineNumber: 130,
+                                            lineNumber: 129,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$perioxiaweb$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -424,35 +1051,35 @@ function TechPillars() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                            lineNumber: 131,
+                                            lineNumber: 130,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                                    lineNumber: 129,
+                                    lineNumber: 128,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, i, true, {
                             fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                            lineNumber: 94,
+                            lineNumber: 93,
                             columnNumber: 25
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-                    lineNumber: 92,
+                    lineNumber: 91,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-            lineNumber: 81,
+            lineNumber: 80,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/perioxiaweb/app/components/TechPillars.tsx",
-        lineNumber: 80,
+        lineNumber: 79,
         columnNumber: 9
     }, this);
 }
