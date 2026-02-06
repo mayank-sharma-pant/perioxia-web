@@ -1,27 +1,17 @@
-import Hero from './components/Hero';
-import MetricsMarquee from './components/MetricsMarquee';
-import TechPillars from './components/TechPillars';
-import VisibloSpotlight from './components/VisibloSpotlight';
-import ProofStats from './components/ProofStats';
-import HorizontalScroll from './components/HorizontalScroll';
-import CTAFooter from './components/CTAFooter';
-import CursorGlow from './components/ui/CursorGlow';
-import SmoothScroll from './components/ui/SmoothScroll';
+import Hero from "./components/Hero";
+import SolutionsGrid from "./components/SolutionsGrid";
+import TechConstellation from "./components/TechConstellation";
+import ProcessAndStats from "./components/ProcessAndStats";
+import Contact from "./components/Contact";
 
 export default function Page() {
-    return (
-        <>
-            <CursorGlow />
-            <SmoothScroll />
-            <main className="relative z-10">
-                <Hero />
-                <MetricsMarquee />
-                <TechPillars />
-                <VisibloSpotlight />
-                <ProofStats />
-                <HorizontalScroll />
-                <CTAFooter />
-            </main>
-        </>
-    );
+  return (
+    <main className="relative min-h-screen">
+      <Hero />
+      <SolutionsGrid />
+      <TechConstellation />
+      <ProcessAndStats />
+      <Contact />
+    </main>
+  );
 }

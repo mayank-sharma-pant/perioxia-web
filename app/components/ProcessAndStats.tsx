@@ -3,7 +3,6 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import AnimatedCounter from "./ui/AnimatedCounter";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,12 +14,13 @@ const stats = [
 ];
 
 export default function ProcessAndStats() {
-  const container = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
+      /* Reduced motion */
       mm.add("(prefers-reduced-motion: reduce)", () => {
         gsap.set(".stat-card", { opacity: 1, y: 0, filter: "blur(0px)" });
         gsap.utils.toArray<HTMLElement>(".stat-value").forEach((node) => {
@@ -29,13 +29,12 @@ export default function ProcessAndStats() {
           node.textContent = `${target}${suffix}`;
         });
       });
-<<<<<<< HEAD
-=======
 
+      /* Full animation */
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.from(".stat-card", {
           scrollTrigger: {
-            trigger: container.current,
+            trigger: containerRef.current,
             start: "top 80%",
           },
           y: 40,
@@ -49,6 +48,7 @@ export default function ProcessAndStats() {
         gsap.utils.toArray<HTMLElement>(".stat-value").forEach((node) => {
           const target = Number(node.dataset.value || 0);
           const suffix = node.dataset.suffix || "";
+
           gsap.fromTo(
             node,
             { textContent: 0 },
@@ -61,57 +61,66 @@ export default function ProcessAndStats() {
                 trigger: node,
                 start: "top 85%",
               },
-              onUpdate: function () {
+              onUpdate: () => {
                 const current = Number(node.textContent);
-                const formatted = target % 1 === 0 ? Math.round(current) : current.toFixed(2);
+                const formatted =
+                  target % 1 === 0
+                    ? Math.round(current)
+                    : current.toFixed(2);
                 node.textContent = `${formatted}${suffix}`;
               },
               onComplete: () => {
                 gsap.fromTo(
                   node,
                   { x: -2 },
-                  { x: 2, duration: 0.08, repeat: 3, yoyo: true, ease: "power1.inOut" }
+                  {
+                    x: 2,
+                    duration: 0.08,
+                    repeat: 3,
+                    yoyo: true,
+                    ease: "power1.inOut",
+                  }
                 );
               },
             }
           );
         });
       });
->>>>>>> a0f7e15e6b63523bfe89b36df0621caa0c2fa918
-    }, container);
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={container} className="relative py-24">
-      <div className="container-precision">
+    <section ref={containerRef} className="relative py-24">
+      <div className="container mx-auto px-6">
         <div className="max-w-2xl">
-          <p className="text-xs font-mono uppercase tracking-[0.4em] text-text-secondary">The numbers speak</p>
-          <h2 className="mt-6 text-4xl sm:text-5xl font-display text-text-primary">Proven infrastructure.</h2>
-          <p className="mt-4 text-lg text-text-secondary">
-            Operational metrics that reinforce Perioxia as an enterprise-grade infrastructure partner.
+          <p className="text-xs font-mono uppercase tracking-[0.4em] text-secondary">
+            The numbers speak
+          </p>
+          <h2 className="mt-6 text-4xl font-display text-primary sm:text-5xl">
+            Proven infrastructure.
+          </h2>
+          <p className="mt-4 text-lg text-secondary">
+            Operational metrics that reinforce Perioxia as an enterprise-grade
+            infrastructure partner.
           </p>
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
-            <div key={stat.label} className="stat-card gradient-border">
-<<<<<<< HEAD
-              <div className="rounded-2xl glass-card p-6 text-center">
-                <div className="text-4xl font-mono text-text-primary">
-                  <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-=======
-              <div className="rounded-2xl glass-card p-6 text-center transition duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
+            <div key={stat.label} className="stat-card">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center transition duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
                 <div
                   className="stat-value text-4xl font-mono-tech text-primary"
                   data-value={stat.value}
                   data-suffix={stat.suffix}
                 >
                   0
->>>>>>> a0f7e15e6b63523bfe89b36df0621caa0c2fa918
                 </div>
-                <div className="mt-3 text-xs uppercase tracking-[0.2em] text-text-secondary">{stat.label}</div>
+                <div className="mt-3 text-xs uppercase tracking-[0.2em] text-secondary">
+                  {stat.label}
+                </div>
               </div>
             </div>
           ))}
