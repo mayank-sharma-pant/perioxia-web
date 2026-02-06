@@ -66,6 +66,9 @@ export default function SolutionsGrid() {
               <p className="mt-4 text-xs text-secondary opacity-0 translate-y-2 transition duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                 {area.detail}
               </p>
+            <div key={area.title} className="focus-card rounded-2xl border border-white/10 bg-surface p-6">
+              <h3 className="text-lg font-semibold text-primary">{area.title}</h3>
+              <p className="mt-3 text-sm text-secondary">{area.desc}</p>
             </div>
           ))}
         </div>

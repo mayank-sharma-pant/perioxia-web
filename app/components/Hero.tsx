@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent as ReactMouseEvent } from "react";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -103,6 +104,24 @@ export default function Hero() {
               <circle cx="80" cy="50" r="2" fill="var(--accent)" />
               <circle cx="45" cy="70" r="2" fill="var(--accent)" />
             </svg>
+        <div className="hero-item rounded-3xl border border-white/10 bg-surface p-8">
+          <h2 className="text-xl font-semibold text-primary">What we deliver</h2>
+          <p className="mt-3 text-sm text-secondary">
+            Clear scope, disciplined engineering, and production-ready systems that ship on schedule.
+          </p>
+          <div className="mt-6 grid gap-4 text-sm text-secondary">
+            <div className="flex items-start gap-3">
+              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+              Strategic discovery and technical planning.
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+              Focused delivery for AI products, platforms, and tooling.
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+              Long-term support with measurable outcomes.
+            </div>
           </div>
         </div>
       </div>

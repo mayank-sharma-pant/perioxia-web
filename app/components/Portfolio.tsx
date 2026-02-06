@@ -39,6 +39,8 @@ export default function Portfolio() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    if (!sectionRef.current || !trackRef.current) return;
+
     const ctx = gsap.context(() => {
       gsap.to(trackRef.current, {
         x: () => -(trackRef.current?.scrollWidth || 0) + window.innerWidth,

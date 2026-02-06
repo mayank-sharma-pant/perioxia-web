@@ -19,11 +19,13 @@ export default function ProcessAndStats() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(".capability-row", {
+      gsap.from(".capability-card", {
         scrollTrigger: {
           trigger: container.current,
           start: "top 75%",
         },
         y: 18,
+        scale: 0.96,
         opacity: 0,
         duration: 0.7,
         stagger: 0.12,
@@ -54,6 +56,9 @@ export default function ProcessAndStats() {
                 index % 2 === 0 ? "md:ml-0" : "md:ml-8"
               }`}
             >
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {capabilities.map((item) => (
+            <div key={item} className="capability-card rounded-2xl border border-white/10 bg-surface p-6">
               <p className="text-sm font-semibold text-primary">{item}</p>
             </div>
           ))}
