@@ -1,146 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 :root {
-    /* PALETTE: ELEVATED ENTERPRISE */
-    --bg-navy: #0A1628;
-    --bg-navy-light: #112240;
+    /* PALETTE: PREMIUM BESPOKE */
+    --bg-charcoal: #0D0D0D;
+    --bg-slate: #1A1D24;
+    --bg-slate-border: #2A2D34;
 
-    --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
-    /* Slate-400 */
-    --text-accent: #38BDF8;
-    /* Sky-400 */
+    --text-off-white: #F5F5F7;
+    --text-warm-gray: #A8A8A8;
 
     /* ACCENTS */
-    --accent-blue: #3B82F6;
-    /* Blue-500 */
-    --accent-purple: #8B5CF6;
-    /* Violet-500 */
-    --accent-cyan: #06B6D4;
-    /* Cyan-500 */
-    --accent-emerald: #10B981;
+    --accent-cyan: #00E5FF;
+    --accent-purple: #6B46C1;
+    --accent-amber: #FFB84D;
+    --accent-emerald: #00D9A3;
 
     /* GRADIENTS */
-    --grad-hero: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    --grad-glow: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(139, 92, 246, 0.5));
-
-    /* GRID */
-    --grid-color: rgba(255, 255, 255, 0.03);
+    --grad-primary: linear-gradient(135deg, #00E5FF 0%, #6B46C1 50%, #FFB84D 100%);
+    --grad-glow: radial-gradient(circle at center, rgba(0, 229, 255, 0.15), transparent 70%);
 }
 
 @layer base {
     body {
-        background-color: var(--bg-navy);
-        background-image:
-            radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
-            radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
-        color: var(--text-primary);
+        background-color: var(--bg-charcoal);
+        color: var(--text-off-white);
         font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
     }
 
+    /* Load Cabinet Grotesk from local or fontshare CDN if available, fallback to Inter */
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-        font-family: 'Manrope', sans-serif;
-        letter-spacing: -0.02em;
+        font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
+        font-weight: 700;
     }
+}
 
-    /* Subtle Mesh Grid Background */
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        background-image:
-            linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-        background-size: 60px 60px;
-        pointer-events: none;
+@layer components {
+
+    /* FONTS */
+    @font-face {
+        font-family: 'Cabinet Grotesk';
+        src: url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500&display=swap') format('woff2');
     }
 }
 
 @layer utilities {
     .font-display {
-        font-family: 'Manrope', sans-serif;
+        font-family: 'Cabinet Grotesk', sans-serif;
     }
 
-    .font-tech {
-        font-family: 'Outfit', sans-serif;
+    .font-mono-tech {
+        font-family: 'JetBrains Mono', monospace;
     }
 
-    /* GLASS CARDS */
-    .glass-card {
-        background: rgba(255, 255, 255, 0.03);
+    /* PREMIUM UTILS */
+    .text-gradient-primary {
+        background: var(--grad-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .glass-premium {
+        background: rgba(26, 29, 36, 0.6);
         backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-
-    .glass-card:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.15);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-
-    /* TEXT GRADIENTS */
-    .text-gradient {
-        background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .text-gradient-cyan {
-        background: linear-gradient(135deg, #22D3EE 0%, #818CF8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    /* CUSTOM ANIMATIONS */
-    .animate-float {
-        animation: float 6s ease-in-out infinite;
-    }
-
-    .animate-float-delayed {
-        animation: float 6s ease-in-out 3s infinite;
-    }
-
-    .animate-pulse-glow {
-        animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-@keyframes pulse-glow {
+::-webkit-scrollbar-track {
+    background: var(--bg-charcoal);
+}
 
-    0%,
-    100% {
-        opacity: 1;
-        box-shadow: 0 0 5px var(--accent-blue);
-    }
+::-webkit-scrollbar-thumb {
+    background: var(--bg-slate-border);
+    border-radius: 4px;
+}
 
-    50% {
-        opacity: .7;
-        box-shadow: 0 0 20px var(--accent-purple);
-    }
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-warm-gray);
 }
