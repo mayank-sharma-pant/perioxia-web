@@ -1,147 +1,161 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useEffect } from "react";
 import gsap from "gsap";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowUpRight, Terminal } from "lucide-react";
 
 export default function Hero() {
-  const comp = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const scanRef = useRef<HTMLDivElement>(null);
+
+  // MOUSE PARALLAX EFFECT
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!scanRef.current) return;
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth - 0.5) * 20;
+      const y = (clientY / window.innerHeight - 0.5) * 20;
+
+      gsap.to(scanRef.current, {
+        x: x,
+        y: y,
+        duration: 1,
+        ease: "power2.out"
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline();
 
-      // Initial States
-      gsap.set(".hero-text", { y: 40, opacity: 0 });
-      gsap.set(".hero-visual", { opacity: 0, scale: 0.98 });
-      gsap.set(".grid-line", { scaleX: 0, transformOrigin: "left" });
-
-      // Orchestrated Reveal
-      tl.to(".grid-line", {
-        scaleX: 1,
-        duration: 1.5,
-        stagger: 0.1,
-        ease: "expo.out"
+      // INTRO ANIMATION
+      // 1. Grid Reveal
+      tl.from(".grid-cell", {
+        opacity: 0,
+        scale: 0,
+        duration: 0.8,
+        stagger: { amount: 0.5, from: "random" },
+        ease: "power2.out"
       })
-        .to(".hero-text", {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.15,
-        }, "-=1.0")
-        .to(".hero-visual", {
-          opacity: 1,
-          scale: 1,
-          duration: 2,
-          ease: "power2.out"
-        }, "-=1.5");
+        // 2. Text Reveal
+        .from(".hero-char", {
+          y: 100,
+          opacity: 0,
+          rotateX: -90,
+          stagger: 0.02,
+          duration: 1,
+          ease: "expo.out"
+        }, "-=0.4")
+        // 3. Interface Elements
+        .from(".ui-element", {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          stagger: 0.1
+        }, "-=0.8");
 
-    }, comp);
-
+    }, container);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      ref={comp}
-      className="relative h-screen w-full flex items-center bg-transparent overflow-hidden"
-      aria-label="Engineering Hero"
-    >
-      {/* SCHEMATIC BACKGROUND */}
-      <div className="absolute inset-0 z-0 pointer-events-none" ref={gridRef}>
-        <div className="absolute top-[20%] left-0 w-full h-[1px] bg-white/10 grid-line" />
-        <div className="absolute top-[80%] left-0 w-full h-[1px] bg-white/10 grid-line" />
-        <div className="absolute top-0 left-[25%] w-[1px] h-full bg-white/5 grid-line origin-top" />
-        <div className="absolute top-0 right-[25%] w-[1px] h-full bg-white/5 grid-line origin-top" />
+    <section ref={container} className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden pt-20">
 
-        {/* Subtle Radial Gradient to focus center */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent to-bg-void opacity-80" />
-      </div>
+      {/* 1. BACKGROUND: DYNAMIC GRID SUBSTRATE */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg-void pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      {/* 2. MAIN CONTENT LAYER */}
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 h-full items-center">
 
-        {/* LEFT: Typography & Command */}
-        <div className="lg:col-span-8 flex flex-col items-start text-left">
+        {/* LEFT COLUMN: TYPOGRAPHY ASSAULT */}
+        <div className="lg:col-span-12 xl:col-span-8 flex flex-col justify-center">
 
-          {/* Status Badge */}
-          <div className="hero-text mb-8 flex items-center gap-3 px-3 py-1.5 border border-white/10 bg-white/5 rounded-sm backdrop-blur-sm">
-            <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-xs font-mono text-text-secondary uppercase tracking-widest">System Active // v3.0</span>
+          {/* Badge */}
+          <div className="ui-element mb-6 flex items-center gap-3">
+            <div className="h-[1px] w-12 bg-accent-signal" />
+            <span className="text-accent-signal font-mono text-xs tracking-[0.2em] font-bold">CRITICAL INFRASTRUCTURE</span>
           </div>
 
-          <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-text-primary leading-[1.1] mb-8">
-            Robotic
+          <h1 ref={textRef} className="text-display-giant text-white uppercase mb-8 relative z-20">
+            <span className="hero-char inline-block">R</span>
+            <span className="hero-char inline-block">o</span>
+            <span className="hero-char inline-block">b</span>
+            <span className="hero-char inline-block">o</span>
+            <span className="hero-char inline-block">t</span>
+            <span className="hero-char inline-block">i</span>
+            <span className="hero-char inline-block">c</span>
             <br />
-            <span className="text-text-secondary">Intelligence</span>
-            <br />
-            & Enterprise AI.
+            <span className="text-text-dim">
+              <span className="hero-char inline-block">I</span>
+              <span className="hero-char inline-block">n</span>
+              <span className="hero-char inline-block">t</span>
+              <span className="hero-char inline-block">e</span>
+              <span className="hero-char inline-block">l</span>
+              <span className="hero-char inline-block">l</span>
+              <span className="hero-char inline-block">i</span>
+              <span className="hero-char inline-block">g</span>
+              <span className="hero-char inline-block">e</span>
+              <span className="hero-char inline-block">n</span>
+              <span className="hero-char inline-block">c</span>
+              <span className="hero-char inline-block">e</span>
+            </span>
           </h1>
 
-          <p className="hero-text text-lg md:text-xl text-text-secondary max-w-xl font-light leading-relaxed mb-10">
-            Pioneering the convergence of <strong>Custom CRM</strong>, <strong>Agentic AI</strong>, and <strong>Robotic Operating Systems</strong>.
-            We build the brain and the body of next-gen enterprises.
+          <p className="ui-element text-xl text-text-secondary max-w-2xl leading-relaxed font-light mb-12 border-l-2 border-white/10 pl-6">
+            We build the neural pathways for autonomous enterprises.
+            <span className="text-white font-medium"> A fusion of Agentic AI, Custom CRM, and Robotics.</span>
           </p>
 
-          <div className="hero-text flex flex-wrap gap-4">
-            <button className="group relative px-6 py-3 bg-white text-black font-semibold text-sm tracking-wide hover:bg-white/90 transition-colors flex items-center gap-2">
-              Start Configuration
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          <div className="ui-element flex flex-wrap gap-6">
+            <button className="group relative px-8 py-4 bg-white text-black font-bold text-sm tracking-widest uppercase hover:bg-accent-cyan transition-colors overflow-hidden">
+              <span className="relative z-10 flex items-center gap-2">
+                Initialize System <ArrowUpRight size={18} />
+              </span>
+              <div className="absolute inset-0 bg-accent-cyan transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
             </button>
-
-            <button className="group px-6 py-3 border border-white/20 text-text-primary font-medium text-sm hover:bg-white/5 transition-colors flex items-center gap-2">
-              <Terminal size={16} className="text-text-secondary" />
-              View Documentation
+            <button className="group px-8 py-4 border border-white/20 text-white font-mono text-sm tracking-widest uppercase hover:border-white transition-colors flex items-center gap-3">
+              <Terminal size={16} />
+              <span>Read Protocols</span>
             </button>
           </div>
         </div>
 
-        {/* RIGHT: Abstract Schematic Visual - HUD Interface */}
-        <div className="lg:col-span-4 relative h-full flex items-center justify-center">
-          <div className="hero-visual w-full max-w-[500px] aspect-square relative flex items-center justify-center bg-white/[0.02] border border-white/10 backdrop-blur-sm rounded-xl overflow-hidden shadow-2xl">
+        {/* RIGHT COLUMN: THE LIDAR SCAN (Abstract Visual) */}
+        {/* We place this absolutely on large screens to overlap/create depth */}
+        <div ref={scanRef} className="lg:absolute lg:right-[-10%] lg:top-[15%] lg:w-[60%] lg:h-[70%] opacity-50 lg:opacity-100 pointer-events-none z-0">
+          {/* The "Eye" or "Core" */}
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* 1. Radar Sweep */}
+            <div className="absolute w-[800px] h-[800px] rounded-full border border-white/5 animate-[spin_10s_linear_infinite]" />
+            <div className="absolute w-[600px] h-[600px] rounded-full border border-dashed border-white/10 animate-[spin_20s_linear_infinite_reverse]" />
 
-            {/* HUD UI Elements */}
-            <div className="absolute top-6 left-6 flex items-center gap-3 z-20">
-              <div className="w-5 h-5 border border-current text-emerald-400 rounded-full flex items-center justify-center animate-spin-slow">
-                <div className="w-3 h-0.5 bg-current" />
-                <div className="h-3 w-0.5 bg-current absolute" />
-              </div>
-              <span className="text-xs font-mono text-emerald-400/80 tracking-widest font-semibold">TARGET_LOCK: AUTOMATION</span>
+            {/* 2. Abstract Image Glitch */}
+            <div className="relative w-[500px] h-[500px] mix-blend-lighten opacity-80 filter brightness-125 contrast-125">
+              <img
+                src="/abstract_robotics.png"
+                alt="Core"
+                className="w-full h-full object-contain animate-pulse-signal"
+              />
+              {/* Overlay Scanlines */}
+              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
             </div>
-
-            <div className="absolute bottom-6 right-6 text-right z-20">
-              <div className="text-[10px] font-mono text-text-secondary opacity-60 mb-1">SCHEMATIC_V.04</div>
-              <div className="text-xl font-bold text-white tracking-wider">ROBOTIC OS</div>
-            </div>
-
-            {/* Main Visual - Robotics Core */}
-            <div className="absolute inset-0 z-10 p-12 flex items-center justify-center">
-              <div className="relative w-full h-full">
-                <img
-                  src="/abstract_robotics.png"
-                  alt="Autonomous Core"
-                  className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(0,255,255,0.2)]"
-                />
-              </div>
-            </div>
-
-            {/* Rotating Glowing Rings */}
-            {/* Ring 1 - Outer Dashed */}
-            <div className="absolute inset-8 border border-dashed border-white/10 rounded-full animate-[spin_30s_linear_infinite]" />
-
-            {/* Ring 2 - Middle Glow */}
-            <div className="absolute inset-16 border border-white/5 rounded-full animate-[spin_20s_linear_infinite_reverse] shadow-[0_0_20px_rgba(255,255,255,0.05)]" />
-
-            {/* Ring 3 - Inner Tech */}
-            <div className="absolute inset-24 border-2 border-transparent border-t-cyan-500/20 border-b-cyan-500/20 rounded-full animate-[spin_10s_linear_infinite]" />
-
-            {/* Scanline Effect */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent z-30 opacity-20 animate-scan pointer-events-none" />
-
           </div>
         </div>
 
       </div>
+
+      {/* 3. DECORATIVE ELEMENTS */}
+      <div className="absolute bottom-10 right-10 flex flex-col items-end gap-2 ui-element">
+        <div className="text-6xl font-black text-white/5">01</div>
+        <div className="h-[2px] w-20 bg-accent-signal" />
+      </div>
+
     </section>
   );
 }
