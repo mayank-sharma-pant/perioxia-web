@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent as ReactMouseEvent } from "react";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 

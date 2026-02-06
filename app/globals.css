@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
+/* ===============================
+   DESIGN TOKENS
+================================ */
 :root {
     --bg-dark: #0f1115;
     --bg-surface: #151821;
@@ -10,6 +13,9 @@
     --border-subtle: rgba(255, 255, 255, 0.08);
 }
 
+/* ===============================
+   BASE
+================================ */
 @layer base {
     body {
         background-color: var(--bg-dark);
@@ -38,6 +44,9 @@
     }
 }
 
+/* ===============================
+   UTILITIES
+================================ */
 @layer utilities {
     .bg-surface {
         background-color: var(--bg-surface);
