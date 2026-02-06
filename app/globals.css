@@ -1,42 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-    /* PALETTE: ELEVATED ENTERPRISE */
-    --bg-navy: #0A1628;
-    --bg-navy-light: #112240;
-
-    --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
-    /* Slate-400 */
-    --text-accent: #38BDF8;
-    /* Sky-400 */
-
-    /* ACCENTS */
-    --accent-blue: #3B82F6;
-    /* Blue-500 */
-    --accent-purple: #8B5CF6;
-    /* Violet-500 */
-    --accent-cyan: #06B6D4;
-    /* Cyan-500 */
-    --accent-emerald: #10B981;
-
-    /* GRADIENTS */
-    --grad-hero: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    --grad-glow: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(139, 92, 246, 0.5));
-
-    /* GRID */
-    --grid-color: rgba(255, 255, 255, 0.03);
+    --bg-dark: #0f1115;
+    --bg-surface: #151821;
+    --text-primary: #f5f7fb;
+    --text-secondary: #c4cad6;
+    --accent: #5b7cfa;
+    --border-subtle: rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
     body {
-        background-color: var(--bg-navy);
-        background-image:
-            radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
-            radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
+        background-color: var(--bg-dark);
         color: var(--text-primary);
-        font-family: 'Inter', sans-serif;
+        font-family: 'Manrope', sans-serif;
         overflow-x: hidden;
     }
 
@@ -46,101 +24,38 @@
     h4,
     h5,
     h6 {
-        font-family: 'Manrope', sans-serif;
+        font-family: 'Space Grotesk', sans-serif;
         letter-spacing: -0.02em;
     }
 
-    /* Subtle Mesh Grid Background */
     body::before {
         content: "";
         position: fixed;
         inset: 0;
         z-index: -1;
-        background-image:
-            linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-        background-size: 60px 60px;
-        pointer-events: none;
+        background: radial-gradient(circle at 20% 20%, rgba(91, 124, 250, 0.12), transparent 45%),
+            radial-gradient(circle at 80% 0%, rgba(91, 124, 250, 0.08), transparent 50%);
     }
 }
 
 @layer utilities {
-    .font-display {
-        font-family: 'Manrope', sans-serif;
+    .bg-surface {
+        background-color: var(--bg-surface);
     }
 
-    .font-tech {
-        font-family: 'Outfit', sans-serif;
+    .text-primary {
+        color: var(--text-primary);
     }
 
-    /* GLASS CARDS */
-    .glass-card {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    .text-secondary {
+        color: var(--text-secondary);
     }
 
-    .glass-card:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.15);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    .text-accent {
+        color: var(--accent);
     }
 
-    /* TEXT GRADIENTS */
-    .text-gradient {
-        background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .text-gradient-cyan {
-        background: linear-gradient(135deg, #22D3EE 0%, #818CF8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    /* CUSTOM ANIMATIONS */
-    .animate-float {
-        animation: float 6s ease-in-out infinite;
-    }
-
-    .animate-float-delayed {
-        animation: float 6s ease-in-out 3s infinite;
-    }
-
-    .animate-pulse-glow {
-        animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-@keyframes pulse-glow {
-
-    0%,
-    100% {
-        opacity: 1;
-        box-shadow: 0 0 5px var(--accent-blue);
-    }
-
-    50% {
-        opacity: .7;
-        box-shadow: 0 0 20px var(--accent-purple);
+    .border-subtle {
+        border-color: var(--border-subtle);
     }
 }
