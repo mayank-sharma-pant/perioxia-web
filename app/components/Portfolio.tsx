@@ -3,7 +3,6 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,10 +40,8 @@ export default function Portfolio() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const panels = gsap.utils.toArray<HTMLElement>(".project-panel");
-
-      gsap.to(panels, {
-        xPercent: -100 * (panels.length - 1),
+      gsap.to(trackRef.current, {
+        x: () => -(trackRef.current?.scrollWidth || 0) + window.innerWidth,
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -70,15 +67,19 @@ export default function Portfolio() {
         </p>
       </div>
 
-      <div className="relative h-[70vh] overflow-hidden" ref={trackRef}>
-        <div className="flex h-full w-[400vw]">
+      <div className="relative h-[70vh] overflow-hidden">
+        <div ref={trackRef} className="flex h-full items-center gap-8 px-6 w-max">
           {projects.map((project) => (
-            <div key={project.id} className="project-panel w-screen px-6">
-              <div className="h-full rounded-3xl border border-white/10 bg-white/5 p-10 flex flex-col justify-between">
+            <div key={project.id} className="project-panel w-[460px] h-full">
+              <div
+                className={`h-full rounded-3xl border border-white/10 bg-white/5 p-10 flex flex-col justify-between ${
+                  project.highlight ? "" : "opacity-70"
+                }`}
+              >
                 <div>
                   <div className="text-xs font-mono-tech uppercase tracking-[0.3em] text-secondary">{project.label}</div>
                   <h3 className="mt-6 text-3xl sm:text-4xl font-display text-primary">{project.id}</h3>
-                  <p className="mt-4 text-lg text-secondary max-w-md">{project.desc}</p>
+                  <p className="mt-4 text-lg text-secondary">{project.desc}</p>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-mono-tech uppercase tracking-[0.2em] text-secondary">
@@ -86,9 +87,8 @@ export default function Portfolio() {
                     {project.status}
                   </span>
                   {project.highlight && (
-                    <button className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#FF0080] px-5 py-2 text-sm font-semibold text-slate-950">
-                      Explore
-                      <ArrowUpRight size={14} />
+                    <button className="rounded-full border border-white/10 bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#FF0080] px-5 py-2 text-sm font-semibold text-slate-950">
+                      Explore →
                     </button>
                   )}
                 </div>

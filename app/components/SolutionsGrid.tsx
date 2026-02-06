@@ -8,12 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const pillars = [
   {
-    id: "01",
-    title: "Neural Workers",
-    desc: "Autonomous AI agent swarms for documentation, analysis, and orchestration at scale.",
-    features: ["Intelligent automation", "Self-learning loops", "Multi-agent coordination"],
-    status: "R&D",
-    gradient: "from-[#00D4FF]/20 via-[#8B5CF6]/10 to-transparent",
+    id: "03",
+    title: "Cortex",
+    desc: "Real-time robotic OS bridging digital logic with physical hardware control.",
+    features: ["Latency-safe runtime", "Edge inference", "Hardware orchestration"],
+    status: "Core research",
+    gradient: "from-[#FF0080]/20 via-[#00D4FF]/10 to-transparent",
   },
   {
     id: "02",
@@ -24,12 +24,12 @@ const pillars = [
     gradient: "from-[#8B5CF6]/25 via-[#FF0080]/10 to-transparent",
   },
   {
-    id: "03",
-    title: "Cortex",
-    desc: "Real-time robotic OS bridging digital logic with physical hardware control.",
-    features: ["Latency-safe runtime", "Edge inference", "Hardware orchestration"],
-    status: "Core research",
-    gradient: "from-[#FF0080]/20 via-[#00D4FF]/10 to-transparent",
+    id: "01",
+    title: "Neural Workers",
+    desc: "Autonomous AI agent swarms for documentation, analysis, and orchestration at scale.",
+    features: ["Intelligent automation", "Self-learning loops", "Multi-agent coordination"],
+    status: "R&D",
+    gradient: "from-[#00D4FF]/20 via-[#8B5CF6]/10 to-transparent",
   },
 ];
 
@@ -39,11 +39,12 @@ export default function SolutionsGrid() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray(".pillar-card");
       const totalScroll = track.current?.scrollWidth || 0;
+      const getMaxX = () => (track.current?.scrollWidth || 0) - window.innerWidth;
 
-      gsap.to(cards, {
-        xPercent: -100 * (cards.length - 1),
+      gsap.set(track.current, { x: () => -getMaxX() });
+      gsap.to(track.current, {
+        x: 0,
         ease: "none",
         scrollTrigger: {
           trigger: container.current,

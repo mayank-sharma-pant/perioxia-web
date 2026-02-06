@@ -155,7 +155,7 @@
     }
 
     .scan-line {
-        animation: scan-line 2.2s linear infinite;
+        animation: scan-line 7s linear infinite;
     }
 }
 
@@ -192,8 +192,13 @@
         opacity: 0;
     }
 
-    20% {
+    10% {
         opacity: 0.8;
+    }
+
+    30% {
+        transform: translateY(120%);
+        opacity: 0;
     }
 
     100% {

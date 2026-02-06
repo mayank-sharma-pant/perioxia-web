@@ -18,44 +18,61 @@ export default function ProcessAndStats() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".stat-card", {
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 80%",
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        gsap.set(".stat-card", { opacity: 1, y: 0, filter: "blur(0px)" });
+        gsap.utils.toArray<HTMLElement>(".stat-value").forEach((node) => {
+          const target = Number(node.dataset.value || 0);
+          const suffix = node.dataset.suffix || "";
+          node.textContent = `${target}${suffix}`;
+        });
       });
 
-      gsap.utils.toArray<HTMLElement>(".stat-value").forEach((node) => {
-        const target = Number(node.dataset.value || 0);
-        const suffix = node.dataset.suffix || "";
-        gsap.fromTo(
-          node,
-          { textContent: 0 },
-          {
-            textContent: target,
-            duration: 1.8,
-            ease: "power2.out",
-            snap: { textContent: 1 },
-            scrollTrigger: {
-              trigger: node,
-              start: "top 85%",
-            },
-            onUpdate: function () {
-              const current = Number(node.textContent);
-              if (Number.isNaN(current)) {
-                node.textContent = `0${suffix}`;
-                return;
-              }
-              const formatted = target % 1 === 0 ? Math.round(current) : current.toFixed(2);
-              node.textContent = `${formatted}${suffix}`;
-            },
-          }
-        );
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.from(".stat-card", {
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top 80%",
+          },
+          y: 40,
+          opacity: 0,
+          filter: "blur(6px)",
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power2.out",
+        });
+
+        gsap.utils.toArray<HTMLElement>(".stat-value").forEach((node) => {
+          const target = Number(node.dataset.value || 0);
+          const suffix = node.dataset.suffix || "";
+          gsap.fromTo(
+            node,
+            { textContent: 0 },
+            {
+              textContent: target,
+              duration: 1.8,
+              ease: "power2.out",
+              snap: { textContent: 1 },
+              scrollTrigger: {
+                trigger: node,
+                start: "top 85%",
+              },
+              onUpdate: function () {
+                const current = Number(node.textContent);
+                const formatted = target % 1 === 0 ? Math.round(current) : current.toFixed(2);
+                node.textContent = `${formatted}${suffix}`;
+              },
+              onComplete: () => {
+                gsap.fromTo(
+                  node,
+                  { x: -2 },
+                  { x: 2, duration: 0.08, repeat: 3, yoyo: true, ease: "power1.inOut" }
+                );
+              },
+            }
+          );
+        });
       });
     }, container);
 
@@ -76,7 +93,7 @@ export default function ProcessAndStats() {
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="stat-card gradient-border">
-              <div className="rounded-2xl glass-card p-6 text-center">
+              <div className="rounded-2xl glass-card p-6 text-center transition duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
                 <div
                   className="stat-value text-4xl font-mono-tech text-primary"
                   data-value={stat.value}
