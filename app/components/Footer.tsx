@@ -1,75 +1,62 @@
 "use client";
 
-import { Linkedin, Twitter, Github, ArrowUpRight } from "lucide-react";
+import type { FormEvent } from "react";
+import { useState } from "react";
 
 export default function Footer() {
-    return (
-        <footer className="relative z-10 py-20 border-t border-white/10 bg-void">
-            <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-20 mb-20">
-                    <div className="md:col-span-2 space-y-8">
-                        <div className="text-4xl font-black tracking-tighter text-white">PERIOXIA.</div>
-                        <p className="text-text-secondary text-lg font-light leading-relaxed max-w-sm">
-                            Engineering the machines of tomorrow. We are building the physical
-                            cognitive stacks that define the boundaries of intelligence.
-                        </p>
-                        <div className="flex items-center gap-6">
-                            {[
-                                { icon: Twitter, href: "#" },
-                                { icon: Linkedin, href: "#" },
-                                { icon: Github, href: "#" }
-                            ].map((social, i) => (
-                                <a
-                                    key={i}
-                                    href={social.href}
-                                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-accent-signal hover:border-accent-signal transition-all duration-300"
-                                >
-                                    <social.icon size={18} />
-                                </a>
-                            ))}
-                        </div>
-                    </div>
+  const [submitted, setSubmitted] = useState(false);
 
-                    <div className="space-y-8">
-                        <h4 className="text-[10px] font-mono-tech text-white/50 uppercase tracking-widest">CAPABILITIES</h4>
-                        <ul className="space-y-4">
-                            {["CRM Architecture", "Mobile Kinetics", "System Integration", "AI Agent Swarms", "Robotic OS"].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group font-mono-tech cursor-pointer">
-                                        <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 text-accent-signal transition-opacity" />
-                                        {item}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
 
-                    <div className="space-y-8">
-                        <h4 className="text-[10px] font-mono-tech text-white/50 uppercase tracking-widest">COMPANY</h4>
-                        <ul className="space-y-4">
-                            {["Research Papers", "Case Studies", "Global Careers", "Contact"].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-sm text-text-secondary hover:text-white transition-colors duration-300 flex items-center gap-2 group font-mono-tech cursor-pointer">
-                                        <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 text-accent-signal transition-opacity" />
-                                        {item}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
+  return (
+    <footer id="contact" className="relative border-t border-white/10 bg-[rgba(10,14,39,0.95)] py-20">
+      <div className="container mx-auto px-6 grid gap-16 lg:grid-cols-[1.2fr_0.8fr] items-start">
+        <div>
+          <p className="text-xs font-mono-tech uppercase tracking-[0.4em] text-secondary">Initiate connection</p>
+          <h2 className="mt-6 text-4xl sm:text-5xl font-display text-primary">
+            Let&apos;s build something extraordinary.
+          </h2>
+          <p className="mt-4 text-lg text-secondary max-w-xl">
+            Ready to transform your infrastructure? Send a signal and our systems will respond within one business day.
+          </p>
+          <form className="mt-10 flex flex-col gap-4 sm:flex-row" onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="your@email.com"
+              className="w-full rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm text-primary placeholder:text-secondary focus:border-[var(--accent-blue)] focus:outline-none"
+              required
+            />
+            <button
+              type="submit"
+              className="rounded-full bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#FF0080] px-6 py-3 text-sm font-semibold text-slate-950"
+            >
+              INITIATE CONTACT
+            </button>
+          </form>
+          <p className="mt-4 text-xs font-mono-tech uppercase tracking-[0.2em] text-secondary">
+            {submitted ? "Signal received." : "Or email: hello@perioxia.tech"}
+          </p>
+        </div>
 
-                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className="flex items-center gap-4 text-[10px] font-mono-tech text-white/30 uppercase tracking-widest">
-                        <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                        SYSTEM_STATUS: NOMINAL // © {new Date().getFullYear()} PERIOXIA
-                    </div>
-                    <div className="flex items-center gap-8">
-                        <a href="#" className="text-[10px] font-mono-tech text-white/30 hover:text-white uppercase tracking-widest transition-colors">PRIVACY_PROTOCOL</a>
-                        <a href="#" className="text-[10px] font-mono-tech text-white/30 hover:text-white uppercase tracking-widest transition-colors">TERMS_OF_OP</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+          <div className="text-lg font-display text-primary">Perioxia Technology</div>
+          <p className="mt-4 text-sm text-secondary">
+            Building critical infrastructure for next-generation enterprises. All systems operational.
+          </p>
+          <div className="mt-8 grid gap-3 text-xs font-mono-tech uppercase tracking-[0.2em] text-secondary">
+            <a href="#" className="hover:text-primary transition">LinkedIn</a>
+            <a href="#" className="hover:text-primary transition">Twitter</a>
+            <a href="#" className="hover:text-primary transition">GitHub</a>
+          </div>
+          <div className="mt-10 flex items-center gap-3 text-xs font-mono-tech uppercase tracking-[0.2em] text-secondary">
+            <span className="h-2 w-2 rounded-full bg-[var(--accent-lime)] animate-pulse" />
+            All systems operational ● © 2025
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }
