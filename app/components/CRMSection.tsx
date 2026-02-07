@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 export default function CRMSection() {
   return (
     <section id="crm" className="py-20 bg-surface">
@@ -22,15 +20,15 @@ export default function CRMSection() {
             In Development
           </span>
         </div>
-        <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-          <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-white/10 bg-[var(--bg-surface)]">
-            <Image
-              src="/assets/thumbnails/thumb-2.png"
-              alt="CRM interface concept"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 45vw"
-            />
+        <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-6">
+          <div className="text-xs uppercase tracking-[0.2em] text-secondary">CRM system outline</div>
+          <div className="mt-6 space-y-4">
+            <div className="h-16 rounded-2xl border border-white/10 bg-[var(--bg-surface)]" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="h-14 rounded-2xl border border-white/10 bg-[var(--bg-surface)]" />
+              <div className="h-14 rounded-2xl border border-white/10 bg-[var(--bg-surface)]" />
+            </div>
+            <div className="h-10 rounded-2xl border border-white/10 bg-[var(--bg-surface)]" />
           </div>
         </div>
       </div>
