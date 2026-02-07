@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -14,8 +13,12 @@ const panels = [
     desc: "Visibility analytics for AI-first brands with clear, actionable signals.",
     cta: "View Product",
     href: "https://visiblo.vercel.app/",
-    image: "/assets/thumbnails/thumb-3.png",
-    imageAlt: "Visiblo interface preview",
+    previewTitle: "Signal coverage",
+    previewRows: [
+      { label: "Tracked surfaces", value: "152" },
+      { label: "Coverage score", value: "84%" },
+      { label: "Visibility delta", value: "+12%" },
+    ],
   },
   {
     name: "Custom CRM",
@@ -23,8 +26,12 @@ const panels = [
     desc: "A focused CRM designed for product-led teams and reliable data foundations.",
     cta: "In Development",
     href: "#",
-    image: "/assets/thumbnails/thumb-4.png",
-    imageAlt: "Custom CRM interface concept",
+    previewTitle: "Pipeline model",
+    previewRows: [
+      { label: "Lifecycle stages", value: "6" },
+      { label: "Data readiness", value: "In build" },
+      { label: "Reporting grid", value: "Scoping" },
+    ],
   },
   {
     name: "Systems & Work",
@@ -32,8 +39,12 @@ const panels = [
     desc: "System design, architecture, and integration work that supports our product roadmap.",
     cta: "See Approach",
     href: "#approach",
-    image: "/assets/thumbnails/thumb-2.png",
-    imageAlt: "System architecture overview",
+    previewTitle: "Delivery flow",
+    previewRows: [
+      { label: "Architecture maps", value: "Quarterly" },
+      { label: "Integration audits", value: "Monthly" },
+      { label: "Reliability reviews", value: "Weekly" },
+    ],
   },
 ];
 
@@ -50,7 +61,7 @@ export default function TechConstellation() {
           trigger: sectionRef.current,
           pin: true,
           scrub: 1,
-          end: () => `+=${window.innerWidth * panelsEls.length}`,
+          end: () => `+=${window.innerWidth * panelsEls.length * 1.4}`,
           invalidateOnRefresh: true,
         },
       });
@@ -93,15 +104,28 @@ export default function TechConstellation() {
                       </a>
                     </div>
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-                    <div className="relative h-60 sm:h-72 lg:h-80 rounded-2xl overflow-hidden border border-white/10 bg-[var(--bg-surface)]">
-                      <Image
-                        src={panel.image}
-                        alt={panel.imageAlt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 45vw"
-                      />
+                  <div className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6">
+                    <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
+                      <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary">
+                        <span>{panel.previewTitle}</span>
+                        <span className="normal-case tracking-normal text-secondary">Current view</span>
+                      </div>
+                      <div className="mt-5 space-y-3">
+                        {panel.previewRows.map((row) => (
+                          <div key={row.label} className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
+                            <div className="flex items-center justify-between text-xs text-secondary">
+                              <span>{row.label}</span>
+                              <span className="text-primary">{row.value}</span>
+                            </div>
+                            <div className="mt-3 h-1.5 rounded-full bg-white/5">
+                              <div className="h-full w-[70%] rounded-full bg-[var(--accent)]" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-4 text-xs text-secondary">
+                        Clear status indicators without decorative visuals.
+                      </div>
                     </div>
                   </div>
                 </div>

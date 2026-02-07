@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 export default function ProductSpotlight() {
   return (
     <section id="visiblo" className="py-20 bg-surface">
@@ -25,16 +23,42 @@ export default function ProductSpotlight() {
             View Visiblo
           </a>
         </div>
-        <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-          <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-white/10 bg-[var(--bg-surface)]">
-            <Image
-              src="/assets/thumbnails/thumb-1.png"
-              alt="Visiblo product interface"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              priority
-            />
+        <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-6">
+          <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
+            <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary">
+              <span>Brand coverage</span>
+              <span className="normal-case tracking-normal text-secondary">Weekly summary</span>
+            </div>
+            <div className="mt-4 grid gap-4">
+              <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
+                <div className="flex items-center justify-between text-xs text-secondary">
+                  <span>Visibility score</span>
+                  <span className="text-primary">84</span>
+                </div>
+                <div className="mt-3 h-1.5 rounded-full bg-white/5">
+                  <div className="h-full w-[84%] rounded-full bg-[var(--accent)]" />
+                </div>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  { label: "Owned presence", value: "62%", width: "w-[62%]" },
+                  { label: "Partner coverage", value: "48%", width: "w-[48%]" },
+                  { label: "Share of voice", value: "29%", width: "w-[29%]" },
+                  { label: "Top mentions", value: "14", width: "w-[70%]" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
+                    <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">{item.label}</p>
+                    <p className="mt-2 text-lg font-semibold text-primary">{item.value}</p>
+                    <div className="mt-3 h-1.5 rounded-full bg-white/5">
+                      <div className={`h-full rounded-full bg-[var(--accent)] ${item.width}`} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4 text-xs text-secondary">
+                Last indexed updates: 2 hours ago • Coverage rising across trusted sources.
+              </div>
+            </div>
           </div>
         </div>
       </div>

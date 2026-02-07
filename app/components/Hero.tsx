@@ -1,14 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ThemeToggle from "./ThemeToggle";
 
 const highlights = [
   "Visibility analytics for AI-first brands",
-  "Reliable data foundations",
-  "Product-led systems built to scale",
+  "Clear coverage signals across AI surfaces",
+  "Product-led systems built for real usage",
 ];
 
 export default function Hero() {
@@ -47,11 +46,11 @@ export default function Hero() {
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
           <div className="space-y-6">
             <h1 className="hero-item text-4xl sm:text-5xl lg:text-6xl font-semibold text-primary">
-              Building systems for the AI-first internet.
+              Visibility analytics for AI-first brands.
             </h1>
             <p className="hero-item text-lg text-secondary max-w-xl">
-              We design and engineer AI systems, data platforms, and custom software for teams building the next wave of
-              intelligent products.
+              Perioxia builds Visiblo and the data systems that show how brands appear across AI search, assistants, and
+              recommendation engines.
             </p>
             <ul className="hero-item space-y-2 text-sm text-secondary">
               {highlights.map((item) => (
@@ -82,19 +81,46 @@ export default function Hero() {
               <span className="uppercase tracking-[0.2em]">Visiblo preview</span>
               <span className="text-primary">Live product</span>
             </div>
-            <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-4">
-              <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden border border-white/10">
-                <Image
-                  src="/assets/thumbnails/thumb-1.png"
-                  alt="Visiblo product preview"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  priority
-                />
+            <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
+              <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary">
+                <span>Visibility overview</span>
+                <span className="normal-case tracking-normal text-secondary">Last 30 days</span>
+              </div>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Coverage</p>
+                  <p className="mt-2 text-2xl font-semibold text-primary">72%</p>
+                  <div className="mt-3 h-1.5 rounded-full bg-white/5">
+                    <div className="h-full w-[72%] rounded-full bg-[var(--accent)]" />
+                  </div>
+                </div>
+                <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Sentiment</p>
+                  <p className="mt-2 text-2xl font-semibold text-primary">+18%</p>
+                  <div className="mt-3 h-1.5 rounded-full bg-white/5">
+                    <div className="h-full w-[62%] rounded-full bg-[var(--accent)]" />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Top surfaces</p>
+                <div className="mt-3 grid gap-2 text-xs text-secondary">
+                  <div className="flex items-center justify-between">
+                    <span>Assistant results</span>
+                    <span className="text-primary">41%</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Search summaries</span>
+                    <span className="text-primary">33%</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Marketplace answers</span>
+                    <span className="text-primary">26%</span>
+                  </div>
+                </div>
               </div>
               <div className="mt-4 text-xs text-secondary">
-                Live interface snapshot showing AI visibility coverage and trends.
+                Snapshot of visibility health, surfaced with calm, measurable signals.
               </div>
             </div>
           </div>
