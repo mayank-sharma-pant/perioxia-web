@@ -65,7 +65,7 @@ export default function Hero() {
                 href="#visiblo"
                 className="inline-flex items-center justify-center rounded-full border border-[var(--accent)] px-6 py-3 text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition"
               >
-                View Visiblo
+                View Products
               </a>
               <a
                 href="#contact"
@@ -78,49 +78,52 @@ export default function Hero() {
 
           <div className="hero-item rounded-3xl border border-white/10 bg-elevated p-6 md:p-8">
             <div className="flex items-center justify-between text-xs text-secondary">
-              <span className="uppercase tracking-[0.2em]">Visiblo preview</span>
-              <span className="text-primary">Live product</span>
+              <span className="uppercase tracking-[0.2em]">Company snapshot</span>
+              <span className="inline-flex items-center gap-2 text-primary">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
+                Active
+              </span>
             </div>
             <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
               <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary">
-                <span>Visibility overview</span>
+                <span>Operational overview</span>
                 <span className="normal-case tracking-normal text-secondary">Last 30 days</span>
               </div>
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Coverage</p>
-                  <p className="mt-2 text-2xl font-semibold text-primary">72%</p>
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Delivery cadence</p>
+                  <p className="mt-2 text-2xl font-semibold text-primary">92%</p>
                   <div className="mt-3 h-1.5 rounded-full bg-white/5">
-                    <div className="h-full w-[72%] rounded-full bg-[var(--accent)]" />
+                    <div className="h-full w-[92%] rounded-full bg-[var(--accent)]" />
                   </div>
                 </div>
                 <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Sentiment</p>
-                  <p className="mt-2 text-2xl font-semibold text-primary">+18%</p>
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Reliability</p>
+                  <p className="mt-2 text-2xl font-semibold text-primary">99.2%</p>
                   <div className="mt-3 h-1.5 rounded-full bg-white/5">
-                    <div className="h-full w-[62%] rounded-full bg-[var(--accent)]" />
+                    <div className="h-full w-[99%] rounded-full bg-[var(--accent)]" />
                   </div>
                 </div>
               </div>
               <div className="mt-4 rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-                <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Top surfaces</p>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Focus areas</p>
                 <div className="mt-3 grid gap-2 text-xs text-secondary">
                   <div className="flex items-center justify-between">
-                    <span>Assistant results</span>
-                    <span className="text-primary">41%</span>
+                    <span>AI systems</span>
+                    <span className="text-primary">Primary</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Search summaries</span>
-                    <span className="text-primary">33%</span>
+                    <span>Data platforms</span>
+                    <span className="text-primary">Core</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Marketplace answers</span>
-                    <span className="text-primary">26%</span>
+                    <span>Custom engineering</span>
+                    <span className="text-primary">Selective</span>
                   </div>
                 </div>
               </div>
               <div className="mt-4 text-xs text-secondary">
-                Snapshot of visibility health, surfaced with calm, measurable signals.
+                A calm operational snapshot that introduces Perioxia at a glance.
               </div>
             </div>
           </div>
