@@ -22,6 +22,14 @@ export default function ThemeToggle() {
     document.documentElement.setAttribute("data-theme", theme);
     window.localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
+  const [theme, setTheme] = useState<ThemeMode>("light");
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem(STORAGE_KEY) as ThemeMode | null;
+    const preferred = stored ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    setTheme(preferred);
+    document.documentElement.setAttribute("data-theme", preferred);
+  }, []);
 
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";
