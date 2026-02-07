@@ -50,21 +50,36 @@ const panels = [
 
 export default function TechConstellation() {
   const sectionRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const panelsEls = gsap.utils.toArray<HTMLElement>(".product-panel");
-      gsap.to(panelsEls, {
-        xPercent: -100 * (panelsEls.length - 1),
-        ease: "none",
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           pin: true,
           scrub: 1,
-          end: () => `+=${window.innerWidth * panelsEls.length * 1.4}`,
+          start: "top top",
+          end: () =>
+            `+=${window.innerWidth * (panelsEls.length - 1) + window.innerHeight * 0.6}`,
           invalidateOnRefresh: true,
         },
       });
+
+      tl.fromTo(
+        stageRef.current,
+        { scale: 0.96 },
+        { scale: 1, duration: 0.2, ease: "none" }
+      ).to(
+        panelsEls,
+        {
+          xPercent: -100 * (panelsEls.length - 1),
+          duration: 0.8,
+          ease: "none",
+        },
+        0.2
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -79,12 +94,15 @@ export default function TechConstellation() {
         </h2>
       </div>
 
-      <div className="relative h-[260vh]">
+      <div className="relative">
         <div className="sticky top-0 h-screen overflow-hidden">
-          <div className="flex h-full w-[300vw]">
-            {panels.map((panel) => (
+          <div ref={stageRef} className="flex h-full w-[300vw] origin-center">
+            {panels.map((panel, index) => (
               <div key={panel.name} className="product-panel w-screen h-full flex items-center px-6">
-                <div className="w-full grid gap-10 lg:grid-cols-[1fr_0.9fr] items-center rounded-3xl border border-white/10 bg-surface p-10 md:p-14">
+                <div
+                  className="float-card w-full grid gap-10 lg:grid-cols-[1fr_0.9fr] items-center rounded-3xl border border-white/10 bg-surface p-10 md:p-14"
+                  style={{ animationDelay: `${index * 1.5}s` }}
+                >
                   <div>
                     <div className="flex items-center justify-between">
                       <h3 className="text-3xl sm:text-4xl font-semibold text-primary">{panel.name}</h3>

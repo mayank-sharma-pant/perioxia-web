@@ -26,8 +26,12 @@ export default function SolutionsGrid() {
           </h2>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {focusAreas.map((area) => (
-            <div key={area.title} className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6">
+          {focusAreas.map((area, index) => (
+            <div
+              key={area.title}
+              className="float-card rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6"
+              style={{ animationDelay: `${index * 1.4}s` }}
+            >
               <h3 className="text-lg font-semibold text-primary">{area.title}</h3>
               <p className="mt-3 text-sm text-secondary">{area.desc}</p>
             </div>

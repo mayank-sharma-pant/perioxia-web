@@ -82,4 +82,39 @@
     .border-subtle {
         border-color: var(--border-subtle);
     }
+
+    .float-card {
+        transform-style: preserve-3d;
+        animation: floatCard 12s ease-in-out infinite;
+        transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+        will-change: transform;
+    }
+
+    .float-card:hover,
+    .float-card:focus-within {
+        animation-play-state: paused;
+        transform: translateY(-4px) rotateX(2deg) rotateY(-2deg);
+        box-shadow: 0 20px 45px -35px rgba(15, 20, 33, 0.6);
+    }
+
+    .float-card:focus-within {
+        transform: translateY(0) rotateX(1deg) rotateY(-1deg);
+    }
+
+    [data-theme="dark"] .float-card:hover,
+    [data-theme="dark"] .float-card:focus-within {
+        box-shadow: 0 18px 40px -30px rgba(0, 0, 0, 0.7);
+    }
+}
+
+@keyframes floatCard {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }

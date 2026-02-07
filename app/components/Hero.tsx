@@ -5,9 +5,9 @@ import gsap from "gsap";
 import ThemeToggle from "./ThemeToggle";
 
 const highlights = [
-  "Visibility analytics for AI-first brands",
-  "Clear coverage signals across AI surfaces",
-  "Product-led systems built for real usage",
+  "Product-led AI systems and data platforms",
+  "Clarity on how intelligent products perform",
+  "Infrastructure designed for long-term trust",
 ];
 
 export default function Hero() {
@@ -46,11 +46,11 @@ export default function Hero() {
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
           <div className="space-y-6">
             <h1 className="hero-item text-4xl sm:text-5xl lg:text-6xl font-semibold text-primary">
-              Visibility analytics for AI-first brands.
+              Perioxia builds trusted AI infrastructure.
             </h1>
             <p className="hero-item text-lg text-secondary max-w-xl">
-              Perioxia builds Visiblo and the data systems that show how brands appear across AI search, assistants, and
-              recommendation engines.
+              We partner with teams to design data platforms, intelligent workflows, and product systems that keep AI
+              experiences measurable and reliable.
             </p>
             <ul className="hero-item space-y-2 text-sm text-secondary">
               {highlights.map((item) => (
