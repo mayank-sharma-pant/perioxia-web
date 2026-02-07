@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 @import "tailwindcss";
 
@@ -5,6 +6,121 @@
    DESIGN TOKENS
 ================================ */
 :root {
+    --bg-dark: #f7f8fb;
+    --bg-surface: #ffffff;
+    --bg-elevated: #f1f3f9;
+    --text-primary: #101421;
+    --text-secondary: #4b5565;
+    --accent: #4b6bff;
+    --border-subtle: rgba(16, 20, 33, 0.08);
+}
+
+[data-theme="dark"] {
+    --bg-dark: #0f1424;
+    --bg-surface: #151b2c;
+    --bg-elevated: #1b2236;
+    --text-primary: #f4f6fb;
+    --text-secondary: #c3cad9;
+    --accent: #6f86ff;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+    body {
+        background-color: var(--bg-dark);
+        color: var(--text-primary);
+        font-family: 'Manrope', sans-serif;
+        overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+            radial-gradient(circle at 15% 15%, rgba(75, 107, 255, 0.12), transparent 45%),
+            radial-gradient(circle at 85% 0%, rgba(75, 107, 255, 0.06), transparent 50%),
+            linear-gradient(180deg, rgba(247, 248, 251, 0.9), rgba(241, 243, 249, 1));
+    }
+
+    [data-theme="dark"] body::before {
+        background:
+            radial-gradient(circle at 15% 15%, rgba(111, 134, 255, 0.18), transparent 45%),
+            radial-gradient(circle at 85% 0%, rgba(111, 134, 255, 0.08), transparent 50%),
+            linear-gradient(180deg, rgba(15, 20, 36, 0.95), rgba(10, 12, 20, 1));
+    }
+}
+
+@layer utilities {
+    .bg-surface {
+        background-color: var(--bg-surface);
+    }
+
+    .bg-elevated {
+        background-color: var(--bg-elevated);
+    }
+
+    .text-primary {
+        color: var(--text-primary);
+    }
+
+    .text-secondary {
+        color: var(--text-secondary);
+    }
+
+    .text-accent {
+        color: var(--accent);
+    }
+
+    .border-subtle {
+        border-color: var(--border-subtle);
+    }
+
+    .float-card {
+        transform-style: preserve-3d;
+        animation: floatCard 12s ease-in-out infinite;
+        transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+        will-change: transform;
+    }
+
+    .float-card:hover,
+    .float-card:focus-within {
+        animation-play-state: paused;
+        transform: translateY(-4px) rotateX(2deg) rotateY(-2deg);
+        box-shadow: 0 20px 45px -35px rgba(15, 20, 33, 0.6);
+    }
+
+    .float-card:focus-within {
+        transform: translateY(0) rotateX(1deg) rotateY(-1deg);
+    }
+
+    [data-theme="dark"] .float-card:hover,
+    [data-theme="dark"] .float-card:focus-within {
+        box-shadow: 0 18px 40px -30px rgba(0, 0, 0, 0.7);
+    }
+}
+
+@keyframes floatCard {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(0);
+    }
   --bg-dark: #f7f8fb;
   --bg-surface: #ffffff;
   --bg-elevated: #f1f3f9;
@@ -30,7 +146,6 @@
 
 /* ===============================
    BASE
-================================ */
 @layer base {
   body {
     background-color: var(--bg-dark);
@@ -78,7 +193,6 @@
 
 /* ===============================
    UTILITIES
-================================ */
 @layer utilities {
   .bg-surface {
     background-color: var(--bg-surface);

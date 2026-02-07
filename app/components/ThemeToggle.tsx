@@ -7,6 +7,21 @@ const STORAGE_KEY = "perioxia-theme";
 type ThemeMode = "light" | "dark";
 
 export default function ThemeToggle() {
+  const [theme, setTheme] = useState<ThemeMode>(() => {
+    if (typeof window === "undefined") {
+      return "light";
+    }
+    const stored = window.localStorage.getItem(STORAGE_KEY) as ThemeMode | null;
+    return stored ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+    document.documentElement.setAttribute("data-theme", theme);
+    window.localStorage.setItem(STORAGE_KEY, theme);
+  }, [theme]);
   const [theme, setTheme] = useState<ThemeMode>("light");
 
   useEffect(() => {

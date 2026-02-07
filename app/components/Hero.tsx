@@ -4,6 +4,11 @@ import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import ThemeToggle from "./ThemeToggle";
+
+const highlights = [
+  "Product-led AI systems and data platforms",
+  "Clarity on how intelligent products perform",
 
 const highlights = [
   "Product-led AI systems and data platforms",
@@ -12,6 +17,7 @@ const highlights = [
 ];
 
 export default function Hero() {
+  const containerRef = useRef<HTMLElement>(null);
   const container = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -19,6 +25,11 @@ export default function Hero() {
       gsap.from(".hero-item", {
         y: 16,
         opacity: 0,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power2.out",
+      });
+    }, containerRef);
         duration: 0.7,
         stagger: 0.12,
         ease: "power2.out",
@@ -29,6 +40,7 @@ export default function Hero() {
   }, []);
 
   return (
+    <section ref={containerRef} className="relative pt-14 pb-20 overflow-hidden">
     <section
       ref={container}
       className="relative pt-16 pb-20 overflow-hidden"
@@ -42,6 +54,21 @@ export default function Hero() {
         }}
         aria-hidden="true"
       />
+      <div className="container mx-auto px-6 relative">
+        <div className="hero-item flex items-center justify-between">
+          <p className="text-xs uppercase tracking-[0.4em] text-secondary">Perioxia</p>
+          <ThemeToggle />
+        </div>
+
+        <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+          <div className="space-y-6">
+            <h1 className="hero-item text-4xl sm:text-5xl lg:text-6xl font-semibold text-primary">
+              Perioxia builds trusted AI infrastructure.
+            </h1>
+            <p className="hero-item text-lg text-secondary max-w-xl">
+              We partner with teams to design data platforms, intelligent workflows, and product systems that keep AI
+              experiences measurable and reliable.
+            </p>
 
       <div className="container mx-auto px-6 relative">
         {/* Top bar */}
@@ -75,6 +102,9 @@ export default function Hero() {
                 </li>
               ))}
             </ul>
+            <div className="hero-item flex flex-wrap gap-4">
+              <a
+                href="#visiblo"
 
             <div className="hero-item flex flex-wrap gap-4">
               <a
@@ -89,6 +119,58 @@ export default function Hero() {
               >
                 Contact
               </a>
+            </div>
+          </div>
+
+          <div className="hero-item rounded-3xl border border-white/10 bg-elevated p-6 md:p-8">
+            <div className="flex items-center justify-between text-xs text-secondary">
+              <span className="uppercase tracking-[0.2em]">Company snapshot</span>
+              <span className="inline-flex items-center gap-2 text-primary">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
+                Active
+              </span>
+            </div>
+            <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
+              <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary">
+                <span>Operational overview</span>
+                <span className="normal-case tracking-normal text-secondary">Last 30 days</span>
+              </div>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Delivery cadence</p>
+                  <p className="mt-2 text-2xl font-semibold text-primary">92%</p>
+                  <div className="mt-3 h-1.5 rounded-full bg-white/5">
+                    <div className="h-full w-[92%] rounded-full bg-[var(--accent)]" />
+                  </div>
+                </div>
+                <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
+                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Reliability</p>
+                  <p className="mt-2 text-2xl font-semibold text-primary">99.2%</p>
+                  <div className="mt-3 h-1.5 rounded-full bg-white/5">
+                    <div className="h-full w-[99%] rounded-full bg-[var(--accent)]" />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Focus areas</p>
+                <div className="mt-3 grid gap-2 text-xs text-secondary">
+                  <div className="flex items-center justify-between">
+                    <span>AI systems</span>
+                    <span className="text-primary">Primary</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Data platforms</span>
+                    <span className="text-primary">Core</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Custom engineering</span>
+                    <span className="text-primary">Selective</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 text-xs text-secondary">
+                A calm operational snapshot that introduces Perioxia at a glance.
+              </div>
             </div>
           </div>
 
