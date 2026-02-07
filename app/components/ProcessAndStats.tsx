@@ -14,6 +14,8 @@ const capabilities = [
 ];
 
 export default function ProcessAndStats() {
+  return (
+    <section id="capabilities" className="py-20">
   const container = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -52,6 +54,10 @@ export default function ProcessAndStats() {
           {capabilities.map((item, index) => (
             <div
               key={item}
+              className={`rounded-2xl border border-white/10 bg-surface px-6 py-4 ${
+                index % 2 === 0 ? "md:ml-0" : "md:ml-8"
+              }`}
+            >
               className={`capability-row rounded-2xl border border-white/10 bg-surface px-6 py-4 ${
                 index % 2 === 0 ? "md:ml-0" : "md:ml-8"
               }`}
