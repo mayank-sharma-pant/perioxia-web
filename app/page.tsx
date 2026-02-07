@@ -1,4 +1,5 @@
 import Hero from './components/Hero'
+import SolutionsGrid from './components/SolutionsGrid'
 import TechConstellation from './components/TechConstellation'
 import CRMSection from './components/CRMSection'
 import Approach from './components/Approach'
@@ -16,6 +17,8 @@ export default function Page() {
             <Approach />
             <SolutionsGrid />
             <About />
+            <SolutionsGrid />
+            <TechConstellation />
             <ProcessAndStats />
             <Contact />
         </main>
