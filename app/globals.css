@@ -1,20 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 @import "tailwindcss";
 
 /* ===============================
    DESIGN TOKENS
 ================================ */
 :root {
-    --bg-dark: #f7f8fb;
-    --bg-surface: #ffffff;
-    --bg-elevated: #f1f3f9;
-    --text-primary: #101421;
-    --text-secondary: #4b5565;
-    --accent: #4b6bff;
-    --border-subtle: rgba(16, 20, 33, 0.08);
+  --bg-dark: #f7f8fb;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1f3f9;
+
+  --text-primary: #101421;
+  --text-secondary: #4b5565;
+
+  --accent: #4b6bff;
+  --border-subtle: rgba(16, 20, 33, 0.08);
 }
 
 [data-theme="dark"] {
+<<<<<<< HEAD
     --bg-dark: #0f1115;
     --bg-surface: #151821;
     --bg-elevated: #1b2236;
@@ -22,56 +25,68 @@
     --text-secondary: #c4cad6;
     --accent: #5b7cfa;
     --border-subtle: rgba(255, 255, 255, 0.08);
+=======
+  --bg-dark: #0f1115;
+  --bg-surface: #151821;
+  --bg-elevated: #1b2236;
+
+  --text-primary: #f5f7fb;
+  --text-secondary: #c4cad6;
+
+  --accent: #5b7cfa;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263
 }
 
 /* ===============================
    BASE
 ================================ */
 @layer base {
-    body {
-        background-color: var(--bg-dark);
-        color: var(--text-primary);
-        font-family: 'Manrope', sans-serif;
-        overflow-x: hidden;
-    }
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: "Manrope", sans-serif;
+    overflow-x: hidden;
+  }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: 'Space Grotesk', sans-serif;
-        letter-spacing: -0.02em;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Space Grotesk", sans-serif;
+    letter-spacing: -0.02em;
+  }
 
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        background:
-            radial-gradient(circle at 15% 15%, rgba(75, 107, 255, 0.12), transparent 45%),
-            radial-gradient(circle at 85% 0%, rgba(75, 107, 255, 0.06), transparent 50%),
-            linear-gradient(180deg, rgba(247, 248, 251, 0.9), rgba(241, 243, 249, 1));
-    }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(75, 107, 255, 0.12), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(75, 107, 255, 0.06), transparent 50%),
+      linear-gradient(180deg, rgba(247, 248, 251, 0.9), rgba(241, 243, 249, 1));
+  }
 
-    [data-theme="dark"] body::before {
-        background:
-            radial-gradient(circle at 15% 15%, rgba(111, 134, 255, 0.18), transparent 45%),
-            radial-gradient(circle at 85% 0%, rgba(111, 134, 255, 0.08), transparent 50%),
-            linear-gradient(180deg, rgba(15, 20, 36, 0.95), rgba(10, 12, 20, 1));
-    }
+  [data-theme="dark"] body::before {
+    background:
+      radial-gradient(circle at 15% 15%, rgba(91, 124, 250, 0.18), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(91, 124, 250, 0.08), transparent 50%),
+      linear-gradient(180deg, rgba(15, 17, 21, 0.95), rgba(10, 12, 20, 1));
+  }
 }
 
 /* ===============================
    UTILITIES
 ================================ */
 @layer utilities {
-    .bg-surface {
-        background-color: var(--bg-surface);
-    }
+  .bg-surface {
+    background-color: var(--bg-surface);
+  }
 
+<<<<<<< HEAD
     .bg-elevated {
         background-color: var(--bg-elevated);
     }
@@ -79,16 +94,32 @@
     .text-primary {
         color: var(--text-primary);
     }
+=======
+  .bg-elevated {
+    background-color: var(--bg-elevated);
+  }
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263
 
-    .text-secondary {
-        color: var(--text-secondary);
-    }
+  .text-primary {
+    color: var(--text-primary);
+  }
 
-    .text-accent {
-        color: var(--accent);
-    }
+  .text-secondary {
+    color: var(--text-secondary);
+  }
 
+<<<<<<< HEAD
     .border-subtle {
         border-color: var(--border-subtle);
     }
 }
+=======
+  .text-accent {
+    color: var(--accent);
+  }
+
+  .border-subtle {
+    border-color: var(--border-subtle);
+  }
+}
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263

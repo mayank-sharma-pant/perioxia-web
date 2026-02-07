@@ -32,7 +32,11 @@ export default function SolutionsGrid() {
           start: "top 75%",
           once: true,
         },
+<<<<<<< HEAD
         y: 20,
+=======
+        x: -24,
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263
         opacity: 0,
         duration: 0.8,
         stagger: 0.15,
@@ -44,18 +48,30 @@ export default function SolutionsGrid() {
   }, []);
 
   return (
+<<<<<<< HEAD
     <section ref={container} id="focus" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-2xl">
           <p className="text-xs uppercase tracking-[0.4em] text-secondary">What we work on</p>
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary">
             Focus areas grounded in real delivery.
+=======
+    <section ref={container} id="what-we-do" className="py-20 bg-surface">
+      <div className="container mx-auto px-6">
+        <div className="max-w-2xl">
+          <p className="text-xs uppercase tracking-[0.4em] text-secondary">
+            What we do
+          </p>
+          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">
+            Focused capabilities for AI-first products.
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263
           </h2>
           <p className="mt-4 text-secondary leading-relaxed">
             We specialize in bridging the gap between raw technology and production-ready systems.
           </p>
         </div>
 
+<<<<<<< HEAD
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {focusAreas.map((area) => (
             <div
@@ -68,6 +84,20 @@ export default function SolutionsGrid() {
               <div className="mt-8 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[var(--accent)] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
                 Learn more <span className="text-lg">→</span>
               </div>
+=======
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {focusAreas.map((area) => (
+            <div
+              key={area.title}
+              className="focus-card group rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6 transition duration-300 hover:-translate-y-2 hover:shadow-[0_18px_30px_rgba(10,15,25,0.45)] hover:border-[rgba(91,124,250,0.4)]"
+            >
+              <h3 className="text-lg font-semibold text-primary">
+                {area.title}
+              </h3>
+              <p className="mt-3 text-sm text-secondary">
+                {area.desc}
+              </p>
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263
             </div>
           ))}
         </div>

@@ -6,6 +6,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
+<<<<<<< HEAD
 gsap.registerPlugin(ScrollTrigger);
 
 const metrics = [
@@ -58,8 +59,16 @@ export default function Hero() {
 
     return () => ctx.revert();
   }, []);
+=======
+const highlights = [
+  "Product-led AI systems and data platforms",
+  "Clear visibility into how intelligent products perform",
+  "Infrastructure designed for long-term trust",
+];
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263
 
   return (
+<<<<<<< HEAD
     <section ref={container} className="relative pt-16 pb-20 overflow-hidden min-h-[90vh] flex flex-col justify-center">
       <div
         ref={gradientRef}
@@ -69,18 +78,94 @@ export default function Hero() {
             "radial-gradient(circle at 10% 20%, rgba(91,124,250,0.18), transparent 45%), radial-gradient(circle at 80% 0%, rgba(91,124,250,0.08), transparent 50%)",
           backgroundSize: "120% 120%",
           backgroundPosition: "20% 20%",
+=======
+    <section className="relative pt-16 pb-20 overflow-hidden">
+      {/* Background glow */}
+      <div
+        className="absolute inset-0 opacity-70"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 10% 20%, rgba(75,107,255,0.12), transparent 45%), radial-gradient(circle at 80% 0%, rgba(75,107,255,0.06), transparent 50%)",
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263
         }}
         aria-hidden="true"
       />
 
+<<<<<<< HEAD
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex items-center justify-between">
           <p className="hero-item text-xs uppercase tracking-[0.4em] text-secondary">Perioxia</p>
           <div className="hero-item">
             <ThemeToggle />
-          </div>
+=======
+      <div className="container mx-auto px-6 relative">
+        {/* Top bar */}
+        <div className="flex items-center justify-between">
+          <p className="text-xs uppercase tracking-[0.4em] text-secondary">
+            Perioxia
+          </p>
+          <ThemeToggle />
         </div>
 
+        {/* Main content */}
+        <div className="mt-12 grid gap-16 lg:grid-cols-[1.1fr_0.9fr] items-center">
+          
+          {/* Left: Copy */}
+          <div className="space-y-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-primary">
+              Building trusted systems for the AI-first internet.
+            </h1>
+
+            <p className="text-lg text-secondary max-w-xl">
+              We design and engineer AI systems, data platforms, and internal
+              tools that make intelligent products measurable, reliable, and
+              maintainable.
+            </p>
+
+            <ul className="space-y-2 text-sm text-secondary">
+              {highlights.map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="#products"
+                className="inline-flex items-center justify-center rounded-full border border-[var(--accent)] px-6 py-3 text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition"
+              >
+                View Products
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-primary hover:border-white/30 transition"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Visual */}
+          <div className="rounded-3xl border border-white/10 bg-elevated p-6 md:p-8">
+            <div className="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-white/10 bg-surface">
+              <Image
+                src="/images/robotics_core.png"
+                alt="Abstract AI system visualization"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                priority
+              />
+            </div>
+            <div className="mt-4 text-xs text-secondary">
+              Minimal system visualization — focused on structure, not decoration.
+            </div>
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263
+          </div>
+
+<<<<<<< HEAD
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
           <div className="space-y-6">
             <h1 className="hero-item text-4xl sm:text-5xl lg:text-7xl font-semibold text-primary leading-[1.1]">
@@ -151,6 +236,8 @@ export default function Hero() {
               </div>
             </div>
           </div>
+=======
+>>>>>>> 945e42af58a5077e1ed49bd887de9759d2a39263
         </div>
       </div>
     </section>
