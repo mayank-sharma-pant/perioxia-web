@@ -42,11 +42,11 @@ export default function Portfolio() {
     if (!sectionRef.current || !trackRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.to(trackRef.current, {
+      gsap.to(trackRef.current!, {
         x: () => -(trackRef.current!.scrollWidth - window.innerWidth),
         ease: "none",
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: sectionRef.current!,
           pin: true,
           scrub: 1,
           end: () => `+=${trackRef.current!.scrollWidth}`,
