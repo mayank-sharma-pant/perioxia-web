@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ThemeToggle from "./ThemeToggle";
@@ -8,12 +9,6 @@ const highlights = [
   "Visibility analytics for AI-first brands",
   "Reliable data foundations",
   "Product-led systems built to scale",
-];
-
-const systemLines = [
-  "M10 25 C 35 10, 55 40, 85 20",
-  "M5 55 C 30 45, 60 65, 92 50",
-  "M12 80 C 40 70, 70 90, 90 75",
 ];
 
 export default function Hero() {
@@ -87,19 +82,19 @@ export default function Hero() {
               <span className="uppercase tracking-[0.2em]">System view</span>
               <span className="text-primary">AI + Robotics</span>
             </div>
-            <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6">
-              <svg viewBox="0 0 100 100" className="w-full h-44 text-[var(--accent)] opacity-60">
-                {systemLines.map((path) => (
-                  <path key={path} d={path} stroke="currentColor" strokeWidth="1.2" fill="none" />
-                ))}
-                <circle cx="20" cy="25" r="2" fill="currentColor" />
-                <circle cx="50" cy="35" r="2" fill="currentColor" />
-                <circle cx="75" cy="20" r="2" fill="currentColor" />
-                <circle cx="35" cy="60" r="2" fill="currentColor" />
-                <circle cx="70" cy="70" r="2" fill="currentColor" />
-              </svg>
+            <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-4">
+              <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden border border-white/10">
+                <Image
+                  src="/assets/thumbnails/thumb-4.png"
+                  alt="Systems overview"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  priority
+                />
+              </div>
               <div className="mt-4 text-xs text-secondary">
-                A minimal system map showing how signals move through AI infrastructure.
+                A clean system overview that mirrors the calm product direction.
               </div>
             </div>
           </div>
