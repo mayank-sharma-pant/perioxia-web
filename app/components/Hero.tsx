@@ -79,14 +79,14 @@ export default function Hero() {
 
           <div className="hero-item rounded-3xl border border-white/10 bg-elevated p-6 md:p-8">
             <div className="flex items-center justify-between text-xs text-secondary">
-              <span className="uppercase tracking-[0.2em]">System view</span>
-              <span className="text-primary">AI + Robotics</span>
+              <span className="uppercase tracking-[0.2em]">Visiblo preview</span>
+              <span className="text-primary">Live product</span>
             </div>
             <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-4">
               <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden border border-white/10">
                 <Image
-                  src="/assets/thumbnails/thumb-4.png"
-                  alt="Systems overview"
+                  src="/assets/thumbnails/thumb-1.png"
+                  alt="Visiblo product preview"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -94,7 +94,7 @@ export default function Hero() {
                 />
               </div>
               <div className="mt-4 text-xs text-secondary">
-                A clean system overview that mirrors the calm product direction.
+                Live interface snapshot showing AI visibility coverage and trends.
               </div>
             </div>
           </div>
