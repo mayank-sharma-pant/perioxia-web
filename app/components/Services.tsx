@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { Monitor, Cpu, Rocket, GitMerge, Radio, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,7 +78,7 @@ export default function Services() {
         <div className="lg:col-span-4">
           <div className="services-pin">
             <span className="text-accent-signal font-mono-tech text-xs tracking-widest block mb-4">
-              // LOGIC LAYERS
+              Logic layers
             </span>
 
             <h2 className="text-6xl font-black text-white leading-[0.9] mb-8">

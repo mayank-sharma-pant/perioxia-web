@@ -3,7 +3,6 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { Send, Mail, Terminal, ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +15,6 @@ export default function Contact() {
 
   const [form, setForm] = useState({
     name: "",
-    company: "",
     email: "",
     message: "",
   });
@@ -32,10 +30,10 @@ export default function Contact() {
           trigger: container.current,
           start: "top 75%",
         },
-        y: 20,
+        xPercent: 12,
         opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
+        duration: 0.7,
+        stagger: 0.12,
         ease: "power2.out",
       });
     }, container);
@@ -57,133 +55,73 @@ export default function Contact() {
       if (!res.ok) throw new Error("Failed to send");
 
       setSubmitted(true);
-      setForm({ name: "", company: "", email: "", message: "" });
-    } catch (err) {
-      setError("Transmission failed. Please retry.");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section ref={container} id="contact" className="relative py-24 bg-bg-void border-t border-white/5">
-      <div className="container mx-auto px-6 max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-
-        {/* LEFT: Context */}
-        <div className="lg:col-span-5 space-y-10 contact-item">
-          <div>
-            <div className="inline-flex items-center gap-2 px-2 py-1 mb-6 border border-white/10 bg-white/5 rounded text-xs font-mono text-text-secondary">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-              <span>CHANNEL_OPEN</span>
-            </div>
-
-            <h2 className="text-4xl md:text-5xl font-bold text-text-primary leading-tight">
-              Initiate <br /> Protocol.
-            </h2>
-          </div>
-
-          <p className="text-text-secondary text-lg font-light leading-relaxed max-w-md">
-            Whether you are scaling an existing cognitive layer or architecting a new one from scratch.
-            Direct communication ensures clarity.
+    <section ref={container} id="contact" className="relative py-20 border-t border-white/10">
+      <div className="container mx-auto px-6 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
+        <div className="contact-item">
+          <p className="text-xs uppercase tracking-[0.4em] text-secondary">Contact us</p>
+          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">Start a conversation.</h2>
+          <p className="mt-4 text-sm text-secondary max-w-xl">
+            If you are building AI systems or data platforms and need a reliable engineering partner, we would love to
+            hear from you.
           </p>
-
-          <div className="pt-8 border-t border-white/10">
-            <div className="flex items-center gap-4 text-text-secondary hover:text-white transition-colors cursor-pointer group">
-              <div className="w-10 h-10 border border-white/10 bg-white/5 rounded-full flex items-center justify-center group-hover:border-white/30 transition-colors">
-                <Mail size={16} />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xs font-mono uppercase tracking-wider opacity-60">Secure Transmission</span>
-                <span className="font-medium">contact@perioxia.tech</span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* RIGHT: Form */}
-        <div className="lg:col-span-7 contact-item">
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-6">
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-mono text-text-secondary ml-1 uppercase">Identify</label>
-                  <input
-                    required
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Subject Name"
-                    className="w-full bg-bg-panel border border-white/10 rounded-none px-4 py-3 text-text-primary placeholder:text-white/10 focus:border-white/30 focus:bg-white/5 outline-none transition-all font-light"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-mono text-text-secondary ml-1 uppercase">Organization</label>
-                  <input
-                    required
-                    name="company"
-                    value={form.company}
-                    onChange={handleChange}
-                    placeholder="Entity Name"
-                    className="w-full bg-bg-panel border border-white/10 rounded-none px-4 py-3 text-text-primary placeholder:text-white/10 focus:border-white/30 focus:bg-white/5 outline-none transition-all font-light"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-mono text-text-secondary ml-1 uppercase">Return Address</label>
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="name@domain.com"
-                  className="w-full bg-bg-panel border border-white/10 rounded-none px-4 py-3 text-text-primary placeholder:text-white/10 focus:border-white/30 focus:bg-white/5 outline-none transition-all font-light"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-mono text-text-secondary ml-1 uppercase">Parameters</label>
-                <textarea
-                  required
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Outline operational requirements..."
-                  className="w-full bg-bg-panel border border-white/10 rounded-none px-4 py-3 text-text-primary placeholder:text-white/10 focus:border-white/30 focus:bg-white/5 outline-none transition-all font-light h-32 resize-none"
-                />
-              </div>
-
-              <div className="pt-4">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="flex items-center gap-2 bg-white text-black px-8 py-3 font-semibold text-sm hover:bg-gray-200 transition-colors disabled:opacity-50"
-                >
-                  {loading ? "Transmitting..." : "Execute Send"}
-                  {!loading && <ArrowRight size={16} />}
-                </button>
-                {error && <p className="mt-4 text-red-400 text-sm font-mono">{error}</p>}
-              </div>
-
-            </form>
-          ) : (
-            <div className="h-full min-h-[400px] flex flex-col items-center justify-center p-12 border border-white/10 bg-white/[0.02]">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6">
-                <Terminal size={24} className="text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Acknowledged.</h3>
-              <p className="text-text-secondary text-center mb-8 font-light">
-                Your transmission has been logged. Expect a response sequence shortly.
-              </p>
-              <button onClick={() => setSubmitted(false)} className="text-xs font-mono text-text-secondary border-b border-transparent hover:border-text-secondary transition-all pb-0.5">
-                RESET_FORM
-              </button>
+        <div className="contact-item rounded-2xl border border-white/10 bg-surface p-8">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="text-xs uppercase tracking-[0.2em] text-secondary">Name</label>
+              <input
+                required
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                className="mt-2 w-full rounded-xl border border-white/10 bg-transparent px-4 py-3 text-sm text-primary placeholder:text-secondary focus:border-[var(--accent)] focus:outline-none"
+                placeholder="Your name"
+              />
             </div>
-          )}
+            <div>
+              <label className="text-xs uppercase tracking-[0.2em] text-secondary">Email</label>
+              <input
+                required
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                className="mt-2 w-full rounded-xl border border-white/10 bg-transparent px-4 py-3 text-sm text-primary placeholder:text-secondary focus:border-[var(--accent)] focus:outline-none"
+                placeholder="name@company.com"
+              />
+            </div>
+            <div>
+              <label className="text-xs uppercase tracking-[0.2em] text-secondary">Message</label>
+              <textarea
+                required
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                className="mt-2 w-full rounded-xl border border-white/10 bg-transparent px-4 py-3 text-sm text-primary placeholder:text-secondary focus:border-[var(--accent)] focus:outline-none h-32 resize-none"
+                placeholder="Tell us what you're building"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white transition disabled:opacity-60"
+            >
+              {loading ? "Sending..." : "Send Message"}
+            </button>
+            {submitted && <p className="text-sm text-secondary">Thanks. We will get back to you shortly.</p>}
+            {error && <p className="text-sm text-red-400">{error}</p>}
+          </form>
         </div>
-
       </div>
     </section>
   );

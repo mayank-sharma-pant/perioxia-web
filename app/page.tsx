@@ -1,21 +1,23 @@
 import Hero from './components/Hero'
-import FeatureTicker from './components/FeatureTicker'
-import SolutionsGrid from './components/SolutionsGrid'
 import TechConstellation from './components/TechConstellation'
+import CRMSection from './components/CRMSection'
+import Approach from './components/Approach'
+import SolutionsGrid from './components/SolutionsGrid'
+import About from './components/About'
 import ProcessAndStats from './components/ProcessAndStats'
-import Portfolio from './components/Portfolio'
-import Footer from './components/Footer'
+import Contact from './components/Contact'
 
 export default function Page() {
     return (
-        <main className="relative min-h-screen selection:bg-accent-blue selection:text-white">
+        <main className="relative min-h-screen selection:bg-[var(--accent)] selection:text-white">
             <Hero />
-            <FeatureTicker />
-            <SolutionsGrid />
             <TechConstellation />
-            <Portfolio />
+            <CRMSection />
+            <Approach />
+            <SolutionsGrid />
+            <About />
             <ProcessAndStats />
-            <Footer />
+            <Contact />
         </main>
     )
 }
