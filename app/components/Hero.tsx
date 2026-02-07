@@ -1,5 +1,9 @@
 "use client";
 
+import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
+
+export default function Hero() {
 import ThemeToggle from "./ThemeToggle";
 
 const metrics = [
@@ -109,6 +113,23 @@ export default function Hero() {
 
           <div className="rounded-3xl border border-white/10 bg-elevated p-6 md:p-8">
             <div className="flex items-center justify-between text-xs text-secondary">
+              <span className="uppercase tracking-[0.2em]">System visual</span>
+              <span className="text-primary">Robotics + AI</span>
+            </div>
+            <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6">
+              <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden border border-white/10">
+                <Image
+                  src="/images/robotics_core.png"
+                  alt="Robotics system visual"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  priority
+                />
+              </div>
+              <div className="mt-4 text-xs text-secondary">
+                Minimal system visualization for AI-driven infrastructure.
+              </div>
               <span className="uppercase tracking-[0.2em]">Visiblo preview</span>
               <span className="text-primary">Live</span>
             </div>

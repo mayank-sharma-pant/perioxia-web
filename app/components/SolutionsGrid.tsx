@@ -26,6 +26,12 @@ const focusAreas = [
 
 export default function SolutionsGrid() {
   return (
+    <section id="what-we-do" className="py-20 bg-surface">
+      <div className="container mx-auto px-6">
+        <div className="max-w-2xl">
+          <p className="text-xs uppercase tracking-[0.4em] text-secondary">What we do</p>
+          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">
+            Focused capabilities for AI-first products.
     <section id="focus" className="py-20">
   const container = useRef<HTMLElement>(null);
 
@@ -59,6 +65,7 @@ export default function SolutionsGrid() {
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {focusAreas.map((area) => (
+            <div key={area.title} className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6">
             <div
               key={area.title}
               className="group rounded-2xl border border-white/10 bg-surface p-6 transition duration-300 hover:-translate-y-2 hover:shadow-[0_18px_30px_rgba(10,15,25,0.45)] hover:border-[rgba(111,134,255,0.4)]"
