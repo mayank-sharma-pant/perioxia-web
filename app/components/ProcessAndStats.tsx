@@ -18,7 +18,6 @@ export default function ProcessAndStats() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".capability-row", {
       gsap.from(".capability-card", {
         scrollTrigger: {
           trigger: container.current,
@@ -48,14 +47,6 @@ export default function ProcessAndStats() {
             We take on scoped builds that require reliable engineering, clear communication, and measurable outcomes.
           </p>
         </div>
-        <div className="mt-12 space-y-4">
-          {capabilities.map((item, index) => (
-            <div
-              key={item}
-              className={`capability-row rounded-2xl border border-white/10 bg-surface px-6 py-4 ${
-                index % 2 === 0 ? "md:ml-0" : "md:ml-8"
-              }`}
-            >
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {capabilities.map((item) => (
             <div key={item} className="capability-card rounded-2xl border border-white/10 bg-surface p-6">

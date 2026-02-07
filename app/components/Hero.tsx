@@ -104,6 +104,9 @@ export default function Hero() {
               <circle cx="80" cy="50" r="2" fill="var(--accent)" />
               <circle cx="45" cy="70" r="2" fill="var(--accent)" />
             </svg>
+          </div>
+        </div>
+
         <div className="hero-item rounded-3xl border border-white/10 bg-surface p-8">
           <h2 className="text-xl font-semibold text-primary">What we deliver</h2>
           <p className="mt-3 text-sm text-secondary">
