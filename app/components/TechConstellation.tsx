@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 const products = [
   {
     name: "Visiblo",
@@ -9,8 +7,7 @@ const products = [
     desc: "AI visibility analytics platform for the AI-first internet. Track presence, measure reach, and respond with clarity.",
     cta: "View Product",
     href: "https://visiblo.vercel.app/",
-    image: "/abstract_neural.png",
-    imageAlt: "Visiblo product preview",
+    meta: ["Brand coverage", "AI platform presence", "Competitive visibility"],
   },
   {
     name: "Custom CRM",
@@ -18,8 +15,7 @@ const products = [
     desc: "Internal and client-facing CRM systems with reliable data foundations and deliberate workflows.",
     cta: "In Development",
     href: "#",
-    image: "/abstract_robotics.png",
-    imageAlt: "Custom CRM concept preview",
+    meta: ["Pipeline clarity", "Relationship context", "Reliable data"],
   },
 ];
 
@@ -47,6 +43,14 @@ export default function TechConstellation() {
                     <span className="text-xs uppercase tracking-[0.3em] text-secondary">{product.status}</span>
                   </div>
                   <p className="mt-4 text-sm text-secondary max-w-xl">{product.desc}</p>
+                  <ul className="mt-6 space-y-2 text-sm text-secondary">
+                    {product.meta.map((item) => (
+                      <li key={item} className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                   <div className="mt-8">
                     <a
                       href={product.href}
@@ -60,14 +64,16 @@ export default function TechConstellation() {
                     </a>
                   </div>
                 </div>
-                <div className="relative h-60 sm:h-72 lg:h-80 rounded-2xl border border-white/10 bg-[rgba(15,17,21,0.5)] overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.imageAlt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                  />
+                <div className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6">
+                  <div className="text-xs uppercase tracking-[0.2em] text-secondary">Product interface</div>
+                  <div className="mt-4 grid gap-4">
+                    <div className="h-24 rounded-xl border border-white/10 bg-[rgba(75,107,255,0.08)]" />
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div className="h-16 rounded-xl border border-white/10 bg-[rgba(75,107,255,0.08)]" />
+                      <div className="h-16 rounded-xl border border-white/10 bg-[rgba(75,107,255,0.08)]" />
+                    </div>
+                    <div className="h-12 rounded-xl border border-white/10 bg-[rgba(75,107,255,0.08)]" />
+                  </div>
                 </div>
               </div>
             </div>
