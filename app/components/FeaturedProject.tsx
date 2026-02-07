@@ -96,9 +96,8 @@ export default function FeaturedProject() {
                         <h2 className="project-title font-display text-[clamp(4rem,12vw,7.5rem)] text-[--ivory] leading-none mb-6"
                             style={{
                                 WebkitTextStroke: "2px var(--ivory)",
-                                textStroke: "2px var(--ivory)",
                                 color: "transparent"
-                            }}>
+                            } as any}>
                             {"VISIBLO".split("").map((char, i) => (
                                 <span key={i} className="char inline-block">{char}</span>
                             ))}
