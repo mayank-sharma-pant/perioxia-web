@@ -34,7 +34,7 @@ const panels: Panel[] = [
     status: "Live",
     desc: "Visibility analytics for AI-first brands with clear, actionable signals.",
     cta: "View Product",
-    href: "https://visiblo.vercel.app/",
+    href: "https://visiblo.in/",
     previewTitle: "Signal coverage",
     previewRows: [
       { label: "Tracked surfaces", value: "152" },
@@ -57,10 +57,10 @@ const panels: Panel[] = [
   },
   {
     name: "Custom CRM",
-    status: "In Development",
+    status: "Live",
     desc: "A focused CRM designed for product-led teams and reliable data foundations.",
-    cta: "In Development",
-    href: "#",
+    cta: "View Product",
+    href: "https://crm.perioxia.com",
     previewTitle: "Pipeline model",
     previewRows: [
       { label: "Lifecycle stages", value: "6" },
@@ -173,7 +173,7 @@ export default function TechConstellation() {
             {panels.map((panel, index) => (
               <div key={panel.name} className="product-panel w-screen h-full flex items-center px-6">
                 <div
-                  className="float-card w-full max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1fr_0.9fr] items-center rounded-3xl border border-white/10 bg-surface p-10 md:p-14 cursor-pointer group hover:border-[var(--accent)]/30 transition-colors duration-300"
+                  className="float-card w-full max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1fr_0.9fr] items-center rounded-3xl border border-white/10 bg-surface p-10 md:p-14 cursor-pointer group hover:border-[var(--accent)]/30 hover:scale-[1.01] hover:shadow-[0_20px_60px_rgba(75,107,255,0.12)] transition-all duration-300"
                   style={{ animationDelay: `${index * 1.5}s` }}
                   onClick={() => setExpandedProject(panel)}
                 >

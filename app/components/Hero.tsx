@@ -44,7 +44,7 @@ export default function Hero() {
 
           {/* Left: Copy */}
           <div className="space-y-6">
-            <h1 className="hero-item text-4xl sm:text-5xl lg:text-6xl font-semibold text-primary">
+            <h1 className="hero-item text-4xl sm:text-5xl lg:text-6xl font-semibold text-primary leading-[1.1]">
               Building trusted systems for the AI-first internet.
             </h1>
 
@@ -89,7 +89,7 @@ export default function Hero() {
               </span>
             </div>
             <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
-              <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary">
+              <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary/80">
                 <span>Operational overview</span>
                 <span className="normal-case tracking-normal text-secondary">Last 30 days</span>
               </div>
@@ -97,15 +97,15 @@ export default function Hero() {
                 <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
                   <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Delivery cadence</p>
                   <p className="mt-2 text-2xl font-semibold text-primary">92%</p>
-                  <div className="mt-3 h-1.5 rounded-full bg-white/5">
-                    <div className="h-full w-[92%] rounded-full bg-[var(--accent)]" />
+                  <div className="mt-3 h-1 rounded-full bg-white/5">
+                    <div className="h-full w-[92%] rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent)]/60" />
                   </div>
                 </div>
                 <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
                   <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Reliability</p>
                   <p className="mt-2 text-2xl font-semibold text-primary">99.2%</p>
-                  <div className="mt-3 h-1.5 rounded-full bg-white/5">
-                    <div className="h-full w-[99%] rounded-full bg-[var(--accent)]" />
+                  <div className="mt-3 h-1 rounded-full bg-white/5">
+                    <div className="h-full w-[99%] rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent)]/60" />
                   </div>
                 </div>
               </div>

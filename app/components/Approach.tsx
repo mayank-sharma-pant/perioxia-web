@@ -97,7 +97,7 @@ export default function Approach() {
           {principles.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6"
+              className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6 hover:border-[var(--accent)]/20 hover:shadow-[0_10px_40px_rgba(75,107,255,0.08)] transition-all duration-300"
             >
               <h3 className="text-base font-semibold text-primary">
                 {item.title}
@@ -114,7 +114,7 @@ export default function Approach() {
           <p className="text-xs uppercase tracking-[0.4em] text-secondary">Our methodology</p>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {methodology.map((item) => (
-              <div key={item.title} className="method-step rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6">
+              <div key={item.title} className="method-step rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6 hover:border-[var(--accent)]/20 hover:shadow-[0_10px_40px_rgba(75,107,255,0.08)] hover:-translate-y-1 transition-all duration-300">
                 <div className="text-sm font-semibold text-[var(--accent)]">{item.id}</div>
                 <h3 className="mt-4 text-xl font-semibold text-primary">{item.title}</h3>
                 <p className="mt-3 text-sm text-secondary leading-relaxed">{item.desc}</p>
