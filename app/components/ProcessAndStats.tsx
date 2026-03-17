@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitTextReveal from "./ui/SplitTextReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,15 +49,15 @@ export default function ProcessAndStats() {
   }, []);
 
   return (
-    <section ref={container} id="process" className="py-20">
+    <section ref={container} id="process">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.4em] text-secondary">
+          <p className="inline-block px-3 py-1 rounded-full border border-[var(--accent)]/30 text-[10px] uppercase tracking-[0.4em] text-[var(--accent)] bg-[var(--accent)]/5 mb-6">
             What we can build
           </p>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">
+          <SplitTextReveal className="text-3xl sm:text-4xl lg:text-6xl font-semibold text-primary">
             Delivery-minded systems for real operations.
-          </h2>
+          </SplitTextReveal>
           <p className="mt-4 text-sm text-secondary">
             We take on scoped builds that require reliable engineering, clear
             communication, and measurable outcomes.
@@ -67,12 +68,12 @@ export default function ProcessAndStats() {
           {capabilities.map((item) => (
             <div
               key={item.title}
-              className="capability-card rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6"
+              className="capability-card rounded-3xl border border-white/10 bg-[var(--bg-surface)] p-8 hover:border-[var(--accent)]/40 hover:shadow-[0_20px_50px_rgba(75,107,255,0.08)] transition-all duration-300"
             >
-              <h3 className="text-base font-semibold text-primary">
+              <h3 className="text-lg font-semibold text-primary">
                 {item.title}
               </h3>
-              <p className="mt-3 text-sm text-secondary">
+              <p className="mt-4 text-base text-secondary/80 leading-relaxed">
                 {item.desc}
               </p>
             </div>

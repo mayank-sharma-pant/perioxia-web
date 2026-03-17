@@ -14,6 +14,7 @@ html {
     --text-secondary: #4b5565;
     --accent: #4b6bff;
     --border-subtle: rgba(16, 20, 33, 0.08);
+    --section-py: 8rem; /* py-32 */
 }
 
 [data-theme="dark"] {
@@ -35,7 +36,12 @@ html {
     }
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Space Grotesk', sans-serif;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+    }
+    section {
+        padding-top: var(--section-py);
+        padding-bottom: var(--section-py);
     }
 }
 
@@ -46,6 +52,26 @@ html {
     .text-secondary { color: var(--text-secondary); }
     .text-accent { color: var(--accent); }
     .border-subtle { border-color: var(--border-subtle); }
+    
+    .nav-link {
+        position: relative;
+        padding-bottom: 2px;
+    }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 1.5px;
+        background: var(--accent);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
     .float-card {
         transform-style: preserve-3d;
         animation: floatCard 12s ease-in-out infinite;

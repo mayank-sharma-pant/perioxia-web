@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import { Menu, X } from "lucide-react";
@@ -19,6 +19,15 @@ const navLinks = [
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScrollState = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScrollState);
+    return () => window.removeEventListener("scroll", handleScrollState);
+  }, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -50,7 +59,11 @@ export default function Navbar() {
     <>
       <header
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[var(--bg-dark)]/80 backdrop-blur-md"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "border-b border-white/5 bg-[var(--bg-dark)]/80 backdrop-blur-md"
+            : "bg-transparent"
+        }`}
       >
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo / Brand */}
@@ -69,7 +82,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.target)}
-                className="text-sm font-medium text-secondary hover:text-[var(--accent)] transition-colors"
+                className="nav-link text-sm font-medium text-secondary hover:text-[var(--accent)] transition-colors"
               >
                 {link.label}
               </a>
@@ -132,7 +145,7 @@ export default function Navbar() {
                     key={link.label}
                     href={link.href}
                     onClick={(e) => handleScroll(e, link.target)}
-                    className="text-base font-medium text-primary hover:text-[var(--accent)] transition-colors py-2 border-b border-white/5"
+                    className="nav-link w-fit text-base font-medium text-primary hover:text-[var(--accent)] transition-colors py-2 border-b border-white/5"
                   >
                     {link.label}
                   </a>

@@ -4,7 +4,8 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { X, ExternalLink, ArrowRight } from "lucide-react";
+import { X, ExternalLink, ArrowRight, ArrowUpRight } from "lucide-react";
+import SplitTextReveal from "./ui/SplitTextReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -162,9 +163,9 @@ export default function TechConstellation() {
     <section ref={sectionRef} id="projects" className="relative py-20 bg-surface">
       <div className="container mx-auto px-6 mb-12">
         <p className="text-xs uppercase tracking-[0.4em] text-secondary">Products & work</p>
-        <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">
+        <SplitTextReveal className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary">
           Scroll to explore what we&apos;ve built and what&apos;s next.
-        </h2>
+        </SplitTextReveal>
       </div>
 
       <div className="relative">
@@ -192,7 +193,7 @@ export default function TechConstellation() {
                         className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/50 bg-[var(--accent)]/5 px-6 py-3 text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition-all duration-300"
                       >
                         View Details
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
                       </button>
                       {panel.status === "Live" && (
                         <a
@@ -203,7 +204,7 @@ export default function TechConstellation() {
                           className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/30 px-6 py-3 text-sm font-semibold text-secondary hover:border-[var(--accent)] hover:text-primary transition-all duration-300"
                         >
                           Visit Site
-                          <ExternalLink className="w-3.5 h-3.5" />
+                          <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />
                         </a>
                       )}
                     </div>
@@ -212,7 +213,7 @@ export default function TechConstellation() {
                       Click anywhere on this card to expand details
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6">
+                  <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-6">
                     <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
                       <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary">
                         <span>{panel.previewTitle}</span>
@@ -273,7 +274,7 @@ export default function TechConstellation() {
                 className="absolute top-6 right-6 p-2 rounded-full border border-white/10 bg-[var(--bg-surface)] text-secondary hover:text-primary hover:border-[var(--accent)] transition-colors"
                 aria-label="Close modal"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" strokeWidth={1.5} />
               </button>
 
               {/* Header */}
@@ -374,7 +375,7 @@ export default function TechConstellation() {
                     className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-8 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
                   >
                     Visit {expandedProject.name}
-                    <ExternalLink className="w-4 h-4" />
+                    <ArrowUpRight className="w-4 h-4" strokeWidth={1.5} />
                   </a>
                 )}
                 <button

@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitTextReveal from "./ui/SplitTextReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,16 +39,16 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="stats" className="py-24 relative">
+    <section ref={sectionRef} id="stats" className="relative">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-xs uppercase tracking-[0.4em] text-secondary">
+          <p className="inline-block px-3 py-1 rounded-full border border-[var(--accent)]/30 text-[10px] uppercase tracking-[0.4em] text-[var(--accent)] bg-[var(--accent)]/5 mb-6">
             By the numbers
           </p>
-          <h2 className="mt-4 text-4xl sm:text-5xl font-semibold text-primary">
+          <SplitTextReveal className="text-4xl sm:text-5xl lg:text-7xl font-semibold text-primary">
             The numbers speak.
-          </h2>
+          </SplitTextReveal>
         </div>
 
         {/* Stats Grid */}
@@ -105,14 +106,16 @@ function StatCard({
     decimals > 0 ? count.toFixed(decimals) : Math.floor(count).toLocaleString();
 
   return (
-    <div className="stat-card rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-8 text-center hover:-translate-y-2 transition-transform cursor-pointer">
-      <div className="text-4xl md:text-5xl font-semibold text-[var(--accent)] mb-3">
-        {prefix}
-        {displayValue}
-        {suffix}
-      </div>
-      <div className="text-xs uppercase tracking-[0.2em] text-secondary">
-        {label}
+    <div className="stat-card rounded-3xl border border-white/10 bg-[var(--bg-elevated)] overflow-hidden transition-all duration-300 hover:border-[var(--accent)]/40 hover:shadow-[0_20px_60px_rgba(75,107,255,0.1)] cursor-pointer">
+      <div className="p-8 text-center">
+        <div className="text-4xl md:text-5xl font-semibold text-[var(--accent)] mb-3">
+          {prefix}
+          {displayValue}
+          {suffix}
+        </div>
+        <div className="text-xs font-bold uppercase tracking-[0.25em] text-secondary">
+          {label}
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,8 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import GlowFollower from "./ui/GlowFollower";
+import SplitTextReveal from "./ui/SplitTextReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,29 +46,30 @@ export default function SolutionsGrid() {
   }, []);
 
   return (
-    <section ref={container} id="what-we-do" className="py-20 bg-surface">
+    <section ref={container} id="what-we-do" className="bg-surface">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.4em] text-secondary">
+          <p className="inline-block px-3 py-1 rounded-full border border-[var(--accent)]/30 text-[10px] uppercase tracking-[0.4em] text-[var(--accent)] bg-[var(--accent)]/5 mb-6">
             What we do
           </p>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">
+          <SplitTextReveal className="text-3xl sm:text-4xl lg:text-6xl font-semibold text-primary">
             Focused capabilities for AI-first products.
-          </h2>
-          <p className="mt-4 text-sm text-secondary">
-            We focus on systems that solve real problems with discipline and long-term value.
+          </SplitTextReveal>
+          <p className="mt-4 text-base text-secondary/80 max-w-xl leading-relaxed">
+            We deliver specialized engineering for companies that rely on predictable AI workflows and high-performance data architecture.
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {focusAreas.map((area, index) => (
-            <div
+            <GlowFollower
               key={area.title}
-              className="focus-card float-card rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6"
-              style={{ animationDelay: `${index * 1.4}s` }}
+              className="focus-card float-card rounded-3xl border border-white/10 bg-[var(--bg-elevated)]"
             >
-              <h3 className="text-lg font-semibold text-primary">{area.title}</h3>
-              <p className="mt-3 text-sm text-secondary">{area.desc}</p>
-            </div>
+              <div className="p-8" style={{ animationDelay: `${index * 1.4}s` }}>
+                <h3 className="text-xl font-semibold text-primary">{area.title}</h3>
+                <p className="mt-4 text-base text-secondary/80 leading-relaxed">{area.desc}</p>
+              </div>
+            </GlowFollower>
           ))}
         </div>
       </div>

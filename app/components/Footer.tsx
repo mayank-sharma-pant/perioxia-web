@@ -12,9 +12,9 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", href: "#" },
-  { label: "Twitter", href: "#" },
-  { label: "GitHub", href: "#" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/perioxia" },
+  { label: "Twitter", href: "https://twitter.com/perioxia" },
+  { label: "GitHub", href: "https://github.com/perioxia" },
 ];
 
 export default function Footer() {
@@ -45,8 +45,8 @@ export default function Footer() {
           <p className="text-xs uppercase tracking-[0.4em] text-secondary">
             Get in touch
           </p>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">
-            Let&apos;s build something extraordinary.
+          <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary leading-tight">
+            Building critical infrastructure for the AI-first internet.
           </h2>
           <p className="mt-4 text-sm text-secondary max-w-xl">
             Ready to transform your infrastructure? We&apos;ll respond within
@@ -59,7 +59,7 @@ export default function Footer() {
             <input
               type="email"
               placeholder="your@email.com"
-              className="w-full sm:max-w-xs rounded-full border border-white/10 bg-transparent px-6 py-3 text-sm text-primary placeholder:text-secondary/60 focus:border-[var(--accent)] focus:outline-none transition-all"
+              className="w-full sm:max-w-xs rounded-full border border-white/10 bg-transparent px-6 py-3 text-sm text-primary placeholder:text-secondary focus:border-[var(--accent)] focus:outline-none transition-all"
               required
             />
             <button
@@ -77,7 +77,7 @@ export default function Footer() {
         </div>
 
         {/* Right: Company info */}
-        <div className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-8">
+        <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-10">
           <div className="text-lg font-semibold text-primary">
             Perioxia Technology
           </div>
