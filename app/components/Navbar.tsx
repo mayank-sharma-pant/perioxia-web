@@ -10,10 +10,9 @@ import Logo from "./Logo";
 
 const navLinks = [
   { label: "Home", href: "/", target: "body" },
-  { label: "About Us", href: "#approach", target: "#approach" },
-  { label: "Services", href: "#what-we-do", target: "#what-we-do" },
+  { label: "About Us", href: "#what-we-do", target: "#what-we-do" },
+  { label: "What We Build", href: "#what-we-do", target: "#what-we-do" },
   { label: "Products", href: "#products", target: "#products" },
-  { label: "Process", href: "#process", target: "#process" },
 ];
 
 export default function Navbar() {
@@ -29,19 +28,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScrollState);
   }, []);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(navRef.current, {
-        y: -100,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        delay: 0.2,
-      });
-    }, navRef);
-
-    return () => ctx.revert();
-  }, []);
 
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -65,7 +51,7 @@ export default function Navbar() {
             : "bg-[var(--bg-dark)]/40 backdrop-blur-sm"
         }`}
       >
-        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="container mx-auto px-6 h-20 pt-4 flex items-center justify-between">
           {/* Logo / Brand */}
           <Link
             href="/"

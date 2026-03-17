@@ -39,7 +39,7 @@ export default function SolutionsGrid() {
   // Favoring Framer Motion for entry reliability
   
   return (
-    <section ref={container} id="what-we-do" className="bg-surface">
+    <section ref={container} id="what-we-do" className="bg-surface py-32">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl">
           <p className="inline-block px-3 py-1 rounded-full border border-[var(--accent)]/30 text-[10px] uppercase tracking-[0.4em] text-[var(--accent)] bg-[var(--accent)]/5 mb-6">

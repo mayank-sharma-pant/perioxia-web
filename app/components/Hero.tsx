@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -54,7 +53,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={container} className="relative pt-16 pb-2 overflow-hidden">
+    <section ref={container} className="relative pt-6 pb-16 overflow-hidden">
       {/* Background glow */}
       <div
         className="absolute inset-0 opacity-70"
@@ -66,11 +65,11 @@ export default function Hero() {
       />
       <div className="container mx-auto px-6 relative">
         {/* Main content */}
-        <div className="mt-12 grid gap-16 lg:grid-cols-[1.1fr_0.9fr] items-center">
+        <div className="mt-2 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
 
           {/* Left: Copy */}
-          <div className="space-y-6">
-            <SplitTextReveal className="hero-item text-4xl sm:text-5xl lg:text-7xl font-bold text-primary leading-[1.05] tracking-tight">
+          <div className="space-y-4">
+            <SplitTextReveal className="hero-item text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold text-primary leading-[1.05] tracking-tight">
               Engineering the next generation of AI products.
             </SplitTextReveal>
 
@@ -105,56 +104,55 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: Operational Snapshot */}
-          <div className="hero-item rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-6 md:p-8">
+          {/* Right: Product Ecosystem Panel */}
+          <div className="hero-item rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-5 md:p-6">
             <div className="flex items-center justify-between text-xs text-secondary">
-              <span className="uppercase tracking-[0.2em]">Company snapshot</span>
+              <span className="uppercase tracking-[0.2em]">Our products</span>
               <span className="inline-flex items-center gap-2 text-primary">
                 <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
-                Active
+                Live
               </span>
             </div>
-            <div className="mt-6 rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
-              <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary/80">
-                <span>Operational overview</span>
-                <span className="normal-case tracking-normal text-secondary">Last 30 days</span>
-              </div>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Delivery cadence</p>
-                  <p className="mt-2 text-2xl font-semibold text-primary">92%</p>
-                  <div className="mt-3 h-1 rounded-full bg-white/5 shimmer-active">
-                    <div className="h-full w-[92%] rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent)]/60" />
-                  </div>
+
+            {/* Product cards */}
+            <div className="mt-4 space-y-2.5">
+              <a href="https://visiblo.in/" target="_blank" rel="noopener noreferrer" className="block rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-4 hover:border-[var(--accent)]/40 transition-all group">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-semibold text-primary group-hover:text-[var(--accent)] transition-colors">Visiblo</h3>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--accent)] bg-[var(--accent)]/10 px-2 py-0.5 rounded-full">Live</span>
                 </div>
-                <div className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Reliability</p>
-                  <p className="mt-2 text-2xl font-semibold text-primary">99.2%</p>
-                  <div className="mt-3 h-1 rounded-full bg-white/5 shimmer-active">
-                    <div className="h-full w-[99%] rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent)]/60" />
-                  </div>
+                <p className="mt-1.5 text-xs text-secondary leading-relaxed">AI visibility analytics — track your brand across AI-powered search surfaces.</p>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                  {["Next.js", "TypeScript", "PostgreSQL"].map(t => (
+                    <span key={t} className="text-[10px] px-2 py-0.5 rounded-full border border-white/10 text-secondary">{t}</span>
+                  ))}
                 </div>
-              </div>
-              <div className="mt-4 rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-                <p className="text-[11px] uppercase tracking-[0.2em] text-secondary">Focus areas</p>
-                <div className="mt-3 grid gap-2 text-xs text-secondary">
-                  <div className="flex items-center justify-between">
-                    <span>AI systems</span>
-                    <span className="text-primary">Primary</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span>Data platforms</span>
-                    <span className="text-primary">Core</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span>Product R&D</span>
-                    <span className="text-primary">Selective</span>
-                  </div>
+              </a>
+
+              <a href="https://crm.perioxia.com" target="_blank" rel="noopener noreferrer" className="block rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-4 hover:border-[var(--accent)]/40 transition-all group">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-semibold text-primary group-hover:text-[var(--accent)] transition-colors">Custom CRM</h3>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--accent)] bg-[var(--accent)]/10 px-2 py-0.5 rounded-full">Live</span>
                 </div>
+                <p className="mt-1.5 text-xs text-secondary leading-relaxed">Purpose-built CRM for product-led teams with clean data foundations.</p>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                  {["Next.js", "SQLite", "Drizzle ORM"].map(t => (
+                    <span key={t} className="text-[10px] px-2 py-0.5 rounded-full border border-white/10 text-secondary">{t}</span>
+                  ))}
+                </div>
+              </a>
+
+              <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-semibold text-primary">Infrastructure & R&D</h3>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-secondary bg-white/5 px-2 py-0.5 rounded-full">Ongoing</span>
+                </div>
+                <p className="mt-1.5 text-xs text-secondary leading-relaxed">Foundational systems, architecture, and R&D powering the product ecosystem.</p>
               </div>
-              <div className="mt-4 text-xs text-secondary italic">
-                A calm operational snapshot of our current focus.
-              </div>
+            </div>
+
+            <div className="mt-4 text-xs text-secondary italic">
+              Building the software tools for the AI-first economy.
             </div>
           </div>
         </div>

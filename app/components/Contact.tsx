@@ -64,14 +64,13 @@ export default function Contact() {
   };
 
   return (
-    <section ref={container} id="contact" className="relative py-20 border-t border-white/10">
+    <section ref={container} id="contact" className="relative py-32 border-t border-white/10">
       <div className="container mx-auto px-6 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
         <div className="contact-item">
           <p className="text-xs uppercase tracking-[0.4em] text-secondary">Contact us</p>
           <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">Start a conversation.</h2>
           <p className="mt-4 text-sm text-secondary max-w-xl">
-            If you are building AI systems or data platforms and need a reliable engineering partner, we would love to
-            hear from you.
+            Interested in our products, have feedback, or want to explore a collaboration? We&apos;d love to hear from you.
           </p>
         </div>
 
