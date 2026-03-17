@@ -65,14 +65,14 @@ export default function Hero() {
 
             <div className="hero-item flex flex-wrap gap-4">
               <a
-                href="#work"
+                href="#projects"
                 className="inline-flex items-center justify-center rounded-full border border-[var(--accent)] px-8 py-3 text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition"
               >
                 View Work
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full border border-white/10 px-8 py-3 text-sm font-semibold text-primary hover:border-white/30 transition"
+                className="inline-flex items-center justify-center rounded-full border border-[var(--border-subtle)] px-8 py-3 text-sm font-semibold text-primary hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
               >
                 Contact
               </a>

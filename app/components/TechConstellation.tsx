@@ -1,12 +1,34 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { X, ExternalLink, ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const panels = [
+interface PanelRow {
+  label: string;
+  value: string;
+}
+
+interface Panel {
+  name: string;
+  status: string;
+  desc: string;
+  cta: string;
+  href: string;
+  previewTitle: string;
+  previewRows: PanelRow[];
+  fullDescription: string;
+  keyFeatures: string[];
+  technologies: string[];
+  timeline: string;
+  teamSize: string;
+}
+
+const panels: Panel[] = [
   {
     name: "Visiblo",
     status: "Live",
@@ -19,6 +41,19 @@ const panels = [
       { label: "Coverage score", value: "84%" },
       { label: "Visibility delta", value: "+12%" },
     ],
+    fullDescription:
+      "Visiblo is a visibility analytics platform purpose-built for AI-first brands. It tracks how and where your brand appears across AI-powered search surfaces, knowledge panels, and recommendation engines. Unlike traditional SEO tools, Visiblo focuses on the new frontier — understanding your brand's presence in AI-generated answers, chatbot recommendations, and intelligent search results. It provides clear, actionable signals so you can measure, optimize, and grow your visibility in the AI-first internet.",
+    keyFeatures: [
+      "Real-time tracking across 150+ AI-powered surfaces",
+      "Coverage scoring with competitive benchmarking",
+      "Visibility delta tracking over time",
+      "Actionable signal reports with prioritized recommendations",
+      "Dashboard with team-level views and alerts",
+      "API access for custom integrations",
+    ],
+    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "Vercel", "TailwindCSS"],
+    timeline: "3 months build + ongoing iteration",
+    teamSize: "2 engineers + 1 designer",
   },
   {
     name: "Custom CRM",
@@ -32,6 +67,19 @@ const panels = [
       { label: "Data readiness", value: "In build" },
       { label: "Reporting grid", value: "Scoping" },
     ],
+    fullDescription:
+      "Our Custom CRM is being built from the ground up for product-led teams who need a reliable, structured data foundation for managing relationships. Instead of bolting on features to a generic CRM, we're designing every layer — from the data model to the reporting grid — to serve teams that care about clean data, clear lifecycle stages, and repeatable workflows. The CRM is designed to integrate seamlessly with internal tools, providing a unified view of customer relationships, pipeline health, and team performance.",
+    keyFeatures: [
+      "6-stage lifecycle pipeline with custom transitions",
+      "Structured data model with validation at every layer",
+      "Built-in reporting grid with exportable views",
+      "Role-based access control for team management",
+      "Integration-ready API for internal tool connectivity",
+      "Audit logging for compliance and transparency",
+    ],
+    technologies: ["Next.js", "TypeScript", "SQLite", "Drizzle ORM", "TailwindCSS", "Node.js"],
+    timeline: "Currently in active development",
+    teamSize: "2 engineers",
   },
   {
     name: "Systems & Work",
@@ -45,12 +93,26 @@ const panels = [
       { label: "Integration audits", value: "Monthly" },
       { label: "Reliability reviews", value: "Weekly" },
     ],
+    fullDescription:
+      "Our Systems & Work practice covers the foundational engineering that makes every product possible. This includes system architecture design, integration planning, reliability engineering, and continuous infrastructure improvement. We maintain quarterly architecture maps, run monthly integration audits, and conduct weekly reliability reviews to ensure every system we build and maintain meets our standards for performance, security, and scalability.",
+    keyFeatures: [
+      "Quarterly architecture mapping and review",
+      "Monthly integration audits across all systems",
+      "Weekly reliability reviews with incident tracking",
+      "Infrastructure-as-code for reproducible environments",
+      "Automated testing pipelines for continuous delivery",
+      "Documentation-first approach for knowledge sharing",
+    ],
+    technologies: ["Node.js", "Docker", "GitHub Actions", "PostgreSQL", "Redis", "Terraform"],
+    timeline: "Ongoing — continuous improvement",
+    teamSize: "Full team involvement",
   },
 ];
 
 export default function TechConstellation() {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const [expandedProject, setExpandedProject] = useState<Panel | null>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -84,6 +146,18 @@ export default function TechConstellation() {
     return () => ctx.revert();
   }, []);
 
+  // Lock body scroll when modal is open
+  useLayoutEffect(() => {
+    if (expandedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [expandedProject]);
+
   return (
     <section ref={sectionRef} id="projects" className="relative py-20 bg-surface">
       <div className="container mx-auto px-6 mb-12">
@@ -99,8 +173,9 @@ export default function TechConstellation() {
             {panels.map((panel, index) => (
               <div key={panel.name} className="product-panel w-screen h-full flex items-center px-6">
                 <div
-                  className="float-card w-full max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1fr_0.9fr] items-center rounded-3xl border border-white/10 bg-surface p-10 md:p-14"
+                  className="float-card w-full max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1fr_0.9fr] items-center rounded-3xl border border-white/10 bg-surface p-10 md:p-14 cursor-pointer group hover:border-[var(--accent)]/30 transition-colors duration-300"
                   style={{ animationDelay: `${index * 1.5}s` }}
+                  onClick={() => setExpandedProject(panel)}
                 >
                   <div>
                     <div className="flex items-center justify-between">
@@ -108,17 +183,34 @@ export default function TechConstellation() {
                       <span className="text-xs uppercase tracking-[0.3em] text-secondary">{panel.status}</span>
                     </div>
                     <p className="mt-4 text-sm text-secondary max-w-xl">{panel.desc}</p>
-                    <div className="mt-8">
-                      <a
-                        href={panel.href}
-                        className={`inline-flex items-center rounded-full border px-6 py-3 text-sm font-semibold transition ${panel.status === "Live"
-                            ? "border-[var(--accent)] text-primary hover:bg-[var(--accent)] hover:text-white"
-                            : "border-white/10 text-secondary hover:border-[var(--accent)] hover:text-primary"
-                          }`}
+                    <div className="mt-8 flex items-center gap-4">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpandedProject(panel);
+                        }}
+                        className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)] px-6 py-3 text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition"
                       >
-                        {panel.cta}
-                      </a>
+                        View Details
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                      {panel.status === "Live" && (
+                        <a
+                          href={panel.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-secondary hover:border-[var(--accent)] hover:text-primary transition"
+                        >
+                          Visit Site
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      )}
                     </div>
+                    {/* Click hint */}
+                    <p className="mt-4 text-[11px] text-secondary/60 italic group-hover:text-[var(--accent)]/80 transition-colors">
+                      Click anywhere on this card to expand details
+                    </p>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6">
                     <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
@@ -147,6 +239,155 @@ export default function TechConstellation() {
           </div>
         </div>
       </div>
+
+      {/* ── Expanded Project Modal ── */}
+      <AnimatePresence>
+        {expandedProject && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Backdrop */}
+            <motion.div
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+              onClick={() => setExpandedProject(null)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+
+            {/* Modal Content */}
+            <motion.div
+              className="relative z-10 w-[95vw] max-w-5xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-8 md:p-12 shadow-2xl"
+              initial={{ scale: 0.85, opacity: 0, y: 40 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0, y: 40 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setExpandedProject(null)}
+                className="absolute top-6 right-6 p-2 rounded-full border border-white/10 bg-[var(--bg-surface)] text-secondary hover:text-primary hover:border-[var(--accent)] transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Header */}
+              <div className="flex items-center gap-4 mb-2">
+                <h2 className="text-4xl sm:text-5xl font-semibold text-primary">
+                  {expandedProject.name}
+                </h2>
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
+                    expandedProject.status === "Live"
+                      ? "bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30"
+                      : expandedProject.status === "In Development"
+                      ? "bg-amber-500/15 text-amber-400 border border-amber-500/30"
+                      : "bg-white/10 text-secondary border border-white/10"
+                  }`}
+                >
+                  {expandedProject.status}
+                </span>
+              </div>
+
+              {/* Full Description */}
+              <p className="mt-6 text-sm sm:text-base text-secondary leading-relaxed max-w-3xl">
+                {expandedProject.fullDescription}
+              </p>
+
+              {/* Info Grid */}
+              <div className="mt-10 grid gap-6 md:grid-cols-2">
+                {/* Key Features */}
+                <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6">
+                  <h3 className="text-xs uppercase tracking-[0.3em] text-secondary mb-4">
+                    Key Features
+                  </h3>
+                  <ul className="space-y-3">
+                    {expandedProject.keyFeatures.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3 text-sm text-primary">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--accent)] shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Tech + Stats */}
+                <div className="space-y-6">
+                  {/* Technologies */}
+                  <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6">
+                    <h3 className="text-xs uppercase tracking-[0.3em] text-secondary mb-4">
+                      Technology Stack
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {expandedProject.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1.5 rounded-full text-xs font-medium text-primary border border-white/10 bg-[var(--bg-elevated)] hover:border-[var(--accent)]/40 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Timeline & Team */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-secondary">Timeline</p>
+                      <p className="mt-2 text-sm font-medium text-primary">{expandedProject.timeline}</p>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-secondary">Team</p>
+                      <p className="mt-2 text-sm font-medium text-primary">{expandedProject.teamSize}</p>
+                    </div>
+                  </div>
+
+                  {/* Live Metrics (Preview Rows) */}
+                  <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6">
+                    <h3 className="text-xs uppercase tracking-[0.3em] text-secondary mb-4">
+                      {expandedProject.previewTitle}
+                    </h3>
+                    <div className="space-y-3">
+                      {expandedProject.previewRows.map((row) => (
+                        <div key={row.label} className="flex items-center justify-between text-sm">
+                          <span className="text-secondary">{row.label}</span>
+                          <span className="font-semibold text-primary">{row.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="mt-10 flex items-center gap-4">
+                {expandedProject.status === "Live" && (
+                  <a
+                    href={expandedProject.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-8 py-3 text-sm font-semibold text-white hover:bg-[var(--accent)]/90 transition-colors"
+                  >
+                    Visit {expandedProject.name}
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
+                <button
+                  onClick={() => setExpandedProject(null)}
+                  className="inline-flex items-center rounded-full border border-white/10 px-8 py-3 text-sm font-semibold text-secondary hover:border-[var(--accent)] hover:text-primary transition"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

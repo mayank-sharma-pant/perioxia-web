@@ -5,6 +5,7 @@ import Approach from "./components/Approach";
 import ProcessAndStats from "./components/ProcessAndStats";
 import Stats from "./components/Stats";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
       <ProcessAndStats />
       <Stats />
       <Contact />
+      <Footer />
     </main>
   );
 }
