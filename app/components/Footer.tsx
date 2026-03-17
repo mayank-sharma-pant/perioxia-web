@@ -13,9 +13,11 @@ const footerLinks = [
 ];
 
 const socialLinks = [
+  { label: "WhatsApp", href: "https://wa.me/917042701064" },
+  { label: "Email", href: "mailto:info@perioxia.com" },
+  { label: "Instagram", href: "#" },
+  { label: "X (Twitter)", href: "#" },
   { label: "LinkedIn", href: "https://linkedin.com/company/perioxia" },
-  { label: "Twitter", href: "https://twitter.com/perioxia" },
-  { label: "GitHub", href: "https://github.com/perioxia" },
 ];
 
 export default function Footer() {
@@ -70,11 +72,13 @@ export default function Footer() {
               {submitted ? "Sent ✓" : "Send Signal"}
             </button>
           </form>
-          <p className="mt-3 text-xs text-secondary">
-            {submitted
-              ? "Thanks! We'll get back to you shortly."
-              : "Or email: hello@perioxia.tech"}
-          </p>
+          <div className="mt-3 flex flex-col gap-2">
+            <p className="text-xs text-secondary">
+              {submitted
+                ? "Thanks! We'll get back to you shortly."
+                : "Or email: info@perioxia.com"}
+            </p>
+          </div>
         </div>
 
         {/* Right: Company info */}
@@ -84,36 +88,19 @@ export default function Footer() {
             Developing the software products and intelligent systems that lead the AI-first economy.
           </p>
 
-          {/* Navigation */}
-          <div className="mt-6">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-secondary mb-3">
-              Navigation
-            </p>
-            <div className="grid grid-cols-2 gap-2">
-              {footerLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleScroll(e, link.href)}
-                  className="text-xs text-secondary hover:text-[var(--accent)] transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Social */}
-          <div className="mt-6">
+          {/* Connect (Social & Links) */}
+          <div className="mt-10">
             <p className="text-[10px] uppercase tracking-[0.2em] text-secondary mb-3">
               Connect
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-xs text-secondary hover:text-[var(--accent)] transition-colors"
+                  className="text-sm font-medium text-secondary hover:text-[var(--accent)] transition-colors"
+                  target={link.href.startsWith("http") ? "_blank" : "_self"}
+                  rel="noopener noreferrer"
                 >
                   {link.label}
                 </a>

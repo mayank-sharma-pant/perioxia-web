@@ -111,43 +111,33 @@ const panels: Panel[] = [
 ];
 
 export default function TechConstellation() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const [expandedProject, setExpandedProject] = useState<Panel | null>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const panelsEls = gsap.utils.toArray<HTMLElement>(".product-panel");
-      const tl = gsap.timeline({
+      const container = stageRef.current;
+      if (!container) return;
+
+      gsap.to(container, {
+        xPercent: -((panelsEls.length - 1) * 100) / panelsEls.length,
+        ease: "none",
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: pinRef.current,
           pin: true,
           scrub: 1,
           start: "top top",
-          end: () => `+=${window.innerWidth * (panelsEls.length - 1) + window.innerHeight * 0.6}`,
+          end: () => `+=${window.innerWidth * panelsEls.length}`,
           invalidateOnRefresh: true,
         },
       });
-
-      tl.fromTo(
-        stageRef.current,
-        { scale: 0.96 },
-        { scale: 1, duration: 0.2, ease: "none" }
-      ).to(
-        panelsEls,
-        {
-          xPercent: -100 * (panelsEls.length - 1),
-          duration: 0.8,
-          ease: "none",
-        },
-        0.2
-      );
-    }, sectionRef);
+    }, pinRef);
 
     return () => ctx.revert();
   }, []);
 
-  // Lock body scroll when modal is open
   useLayoutEffect(() => {
     if (expandedProject) {
       document.body.style.overflow = "hidden";
@@ -160,88 +150,109 @@ export default function TechConstellation() {
   }, [expandedProject]);
 
   return (
-    <section ref={sectionRef} id="products" className="relative py-20 bg-surface">
-      <div className="container mx-auto px-6 mb-12">
-        <p className="text-xs uppercase tracking-[0.4em] text-[var(--accent)] font-bold">Our Product Ecosystem</p>
-        <SplitTextReveal className="mt-4 text-3xl sm:text-4xl lg:text-7xl font-bold text-primary tracking-tight">
-          Systems designed to lead.
-        </SplitTextReveal>
-      </div>
+    <>
+      {/* Heading — scrolls away naturally before pinning */}
+      <section id="products" className="relative pt-32 pb-16 bg-surface">
+        <div className="container mx-auto px-6">
+          <p className="text-xs uppercase tracking-[0.4em] text-[var(--accent)] font-bold">
+            Our Product Ecosystem
+          </p>
+          <SplitTextReveal className="mt-4 text-3xl sm:text-4xl lg:text-7xl font-bold text-primary tracking-tight">
+            Systems designed to lead.
+          </SplitTextReveal>
+        </div>
+      </section>
 
-      <div className="relative">
-        <div className="sticky top-0 h-[80vh] overflow-hidden">
-          <div ref={stageRef} className="flex h-full w-[300vw] origin-center">
-            {panels.map((panel, index) => (
-              <div key={panel.name} className="product-panel w-screen h-full flex items-center px-6">
-                <div
-                  className="float-card w-full max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1fr_0.9fr] items-center rounded-3xl border border-white/10 bg-surface p-10 md:p-14 cursor-pointer group hover:border-[var(--accent)]/30 hover:scale-[1.01] hover:shadow-[0_20px_60px_rgba(75,107,255,0.12)] transition-all duration-300"
-                  style={{ animationDelay: `${index * 1.5}s` }}
-                  onClick={() => setExpandedProject(panel)}
-                >
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-3xl sm:text-4xl font-semibold text-primary">{panel.name}</h3>
-                      <span className="text-xs uppercase tracking-[0.3em] text-secondary">{panel.status}</span>
-                    </div>
-                    <p className="mt-4 text-sm text-secondary max-w-xl">{panel.desc}</p>
-                    <div className="mt-8 flex items-center gap-4">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setExpandedProject(panel);
-                        }}
-                        className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/50 bg-[var(--accent)]/5 px-6 py-3 text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition-all duration-300"
-                      >
-                        View Details
-                        <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
-                      </button>
-                      {panel.status === "Live" && (
-                        <a
-                          href={panel.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/30 px-6 py-3 text-sm font-semibold text-secondary hover:border-[var(--accent)] hover:text-primary transition-all duration-300"
-                        >
-                          Visit Site
-                          <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />
-                        </a>
-                      )}
-                    </div>
-                    {/* Click hint */}
-                    <p className="mt-4 text-[11px] text-secondary/60 italic group-hover:text-[var(--accent)]/80 transition-colors">
-                      Click anywhere on this card to expand details
-                    </p>
+      {/* Pinned horizontal scroll — cards get full viewport height */}
+      <div ref={pinRef} className="relative h-screen w-full overflow-hidden bg-surface">
+        <div
+          ref={stageRef}
+          className="flex h-full items-center"
+          style={{ width: `${panels.length * 100}vw` }}
+        >
+          {panels.map((panel, index) => (
+            <div
+              key={panel.name}
+              className="product-panel h-full flex items-center justify-center px-6 md:px-12"
+              style={{ width: "100vw" }}
+            >
+              <div
+                className="w-full max-w-[1200px] mx-auto grid gap-8 lg:gap-16 lg:grid-cols-[1.1fr_0.9fr] items-center rounded-3xl border border-white/5 bg-white/5 backdrop-blur-2xl p-8 sm:p-12 lg:p-16 cursor-pointer group hover:border-[var(--accent)]/30 hover:bg-white/[0.07] hover:shadow-[0_0_80px_rgba(75,107,255,0.08)] transition-all duration-500"
+                style={{ animationDelay: `${index * 1.5}s` }}
+                onClick={() => setExpandedProject(panel)}
+              >
+                {/* Left column */}
+                <div>
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-3xl sm:text-4xl font-semibold text-primary">
+                      {panel.name}
+                    </h3>
+                    <span className="text-xs uppercase tracking-[0.3em] text-secondary">
+                      {panel.status}
+                    </span>
                   </div>
-                  <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-6">
-                    <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
-                      <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-secondary">
-                        <span>{panel.previewTitle}</span>
-                        <span className="normal-case tracking-normal text-secondary">Current view</span>
-                      </div>
-                      <div className="mt-5 space-y-3">
-                        {panel.previewRows.map((row) => (
-                          <div key={row.label} className="rounded-xl border border-white/10 bg-[var(--bg-elevated)] p-4">
-                            <div className="flex items-center justify-between text-xs text-secondary">
-                              <span>{row.label}</span>
-                              <span className="text-primary">{row.value}</span>
-                            </div>
-                            <div className="mt-3 h-1 rounded-full bg-white/5">
-                              <div className="h-full w-[70%] rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent)]/60" />
-                            </div>
+                  <p className="mt-4 text-sm text-secondary max-w-xl">{panel.desc}</p>
+                  <div className="mt-10 flex items-center gap-4">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpandedProject(panel);
+                      }}
+                      className="inline-flex items-center gap-2 rounded-full bg-white text-black px-6 py-3 text-sm font-semibold hover:bg-gray-200 hover:scale-[1.02] transition-all duration-300"
+                    >
+                      View Details
+                      <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+                    </button>
+                    {panel.status === "Live" && (
+                      <a
+                        href={panel.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/30 px-6 py-3 text-sm font-semibold text-secondary hover:border-[var(--accent)] hover:text-primary transition-all duration-300"
+                      >
+                        Visit Site
+                        <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />
+                      </a>
+                    )}
+                  </div>
+                  <p className="mt-4 text-[11px] text-secondary/60 italic group-hover:text-[var(--accent)]/80 transition-colors">
+                    Click anywhere on this card to expand details
+                  </p>
+                </div>
+
+                {/* Right column — preview panel */}
+                <div className="rounded-3xl border border-white/5 bg-black/40 p-6 md:p-8 backdrop-blur-md relative overflow-hidden">
+                  <div className="absolute -top-24 -right-24 w-48 h-48 bg-[var(--accent)]/20 rounded-full blur-[80px]" />
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-secondary/70">
+                      <span className="font-semibold text-[var(--accent)]">
+                        {panel.previewTitle}
+                      </span>
+                      <span className="text-secondary/50">Live Snapshot</span>
+                    </div>
+                    <div className="mt-6 space-y-4">
+                      {panel.previewRows.map((row) => (
+                        <div key={row.label} className="group/row">
+                          <div className="flex items-center justify-between text-xs text-secondary/90 mb-2">
+                            <span>{row.label}</span>
+                            <span className="text-white font-medium">{row.value}</span>
                           </div>
-                        ))}
-                      </div>
+                          <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                            <div className="h-full w-[75%] rounded-full bg-gradient-to-r from-[var(--accent)]/40 to-[var(--accent)] group-hover/row:w-[100%] transition-all duration-1000 ease-out" />
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* ── Expanded Project Modal ── */}
+      {/* Expanded Project Modal */}
       <AnimatePresence>
         {expandedProject && (
           <motion.div
@@ -251,7 +262,6 @@ export default function TechConstellation() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {/* Backdrop */}
             <motion.div
               className="absolute inset-0 bg-black/60 backdrop-blur-md"
               onClick={() => setExpandedProject(null)}
@@ -259,8 +269,6 @@ export default function TechConstellation() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
-
-            {/* Modal Content */}
             <motion.div
               className="relative z-10 w-[95vw] max-w-5xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-8 md:p-12 shadow-2xl"
               initial={{ scale: 0.85, opacity: 0, y: 40 }}
@@ -268,7 +276,6 @@ export default function TechConstellation() {
               exit={{ scale: 0.85, opacity: 0, y: 40 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
             >
-              {/* Close Button */}
               <button
                 onClick={() => setExpandedProject(null)}
                 className="absolute top-6 right-6 p-2 rounded-full border border-white/10 bg-[var(--bg-surface)] text-secondary hover:text-primary hover:border-[var(--accent)] transition-colors"
@@ -277,7 +284,6 @@ export default function TechConstellation() {
                 <X className="w-5 h-5" strokeWidth={1.5} />
               </button>
 
-              {/* Header */}
               <div className="flex items-center gap-4 mb-2">
                 <h2 className="text-4xl sm:text-5xl font-semibold text-primary">
                   {expandedProject.name}
@@ -295,31 +301,28 @@ export default function TechConstellation() {
                 </span>
               </div>
 
-              {/* Full Description */}
               <p className="mt-6 text-sm sm:text-base text-secondary leading-relaxed max-w-3xl">
                 {expandedProject.fullDescription}
               </p>
 
-              {/* Info Grid */}
               <div className="mt-10 grid gap-6 md:grid-cols-2">
-                {/* Key Features */}
                 <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6">
                   <h3 className="text-xs uppercase tracking-[0.3em] text-secondary mb-4">
                     Key Features
                   </h3>
                   <ul className="space-y-3">
                     {expandedProject.keyFeatures.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3 text-sm text-primary">
+                      <li
+                        key={feature}
+                        className="flex items-start gap-3 text-sm text-primary"
+                      >
                         <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--accent)] shrink-0" />
                         {feature}
                       </li>
                     ))}
                   </ul>
                 </div>
-
-                {/* Tech + Stats */}
                 <div className="space-y-6">
-                  {/* Technologies */}
                   <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6">
                     <h3 className="text-xs uppercase tracking-[0.3em] text-secondary mb-4">
                       Technology Stack
@@ -335,27 +338,34 @@ export default function TechConstellation() {
                       ))}
                     </div>
                   </div>
-
-                  {/* Timeline & Team */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-secondary">Timeline</p>
-                      <p className="mt-2 text-sm font-medium text-primary">{expandedProject.timeline}</p>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-secondary">
+                        Timeline
+                      </p>
+                      <p className="mt-2 text-sm font-medium text-primary">
+                        {expandedProject.timeline}
+                      </p>
                     </div>
                     <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-5">
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-secondary">Team</p>
-                      <p className="mt-2 text-sm font-medium text-primary">{expandedProject.teamSize}</p>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-secondary">
+                        Team
+                      </p>
+                      <p className="mt-2 text-sm font-medium text-primary">
+                        {expandedProject.teamSize}
+                      </p>
                     </div>
                   </div>
-
-                  {/* Live Metrics (Preview Rows) */}
                   <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-6">
                     <h3 className="text-xs uppercase tracking-[0.3em] text-secondary mb-4">
                       {expandedProject.previewTitle}
                     </h3>
                     <div className="space-y-3">
                       {expandedProject.previewRows.map((row) => (
-                        <div key={row.label} className="flex items-center justify-between text-sm">
+                        <div
+                          key={row.label}
+                          className="flex items-center justify-between text-sm"
+                        >
                           <span className="text-secondary">{row.label}</span>
                           <span className="font-semibold text-primary">{row.value}</span>
                         </div>
@@ -365,7 +375,6 @@ export default function TechConstellation() {
                 </div>
               </div>
 
-              {/* CTA */}
               <div className="mt-10 flex items-center gap-4">
                 {expandedProject.status === "Live" && (
                   <a
@@ -389,6 +398,6 @@ export default function TechConstellation() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </>
   );
 }

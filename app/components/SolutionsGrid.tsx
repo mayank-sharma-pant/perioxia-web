@@ -6,6 +6,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import GlowFollower from "./ui/GlowFollower";
 import SplitTextReveal from "./ui/SplitTextReveal";
 import { Cpu, Database, Boxes } from "lucide-react";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,26 +36,8 @@ export default function SolutionsGrid() {
     setMounted(true);
   }, []);
 
-  useLayoutEffect(() => {
-    if (!mounted) return;
-    const ctx = gsap.context(() => {
-      gsap.from(".focus-card", {
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 90%",
-          once: true,
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out",
-      });
-    }, container);
-
-    return () => ctx.revert();
-  }, []);
-
+  // Favoring Framer Motion for entry reliability
+  
   return (
     <section ref={container} id="what-we-do" className="bg-surface">
       <div className="container mx-auto px-6">
@@ -70,19 +53,28 @@ export default function SolutionsGrid() {
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {focusAreas.map((area, index) => (
-            <GlowFollower
+          {mounted && focusAreas.map((area, index) => (
+            <motion.div
               key={area.title}
-              className="focus-card float-card rounded-3xl border border-white/10 bg-[var(--bg-elevated)]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="p-8">
-                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--accent)]/10 text-[var(--accent)]">
-                  <area.icon className="h-6 w-6" strokeWidth={1.5} />
+              <GlowFollower
+                className="focus-card float-card rounded-3xl border border-white/10 bg-[var(--bg-elevated)] h-full"
+              >
+                <div className="p-8">
+                  {area.icon && (
+                    <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--accent)]/10 text-[var(--accent)]">
+                      <area.icon className="h-6 w-6" strokeWidth={1.5} />
+                    </div>
+                  )}
+                  <h3 className="text-xl font-semibold text-primary">{area.title}</h3>
+                  <p className="mt-4 text-base text-secondary/80 leading-relaxed">{area.desc}</p>
                 </div>
-                <h3 className="text-xl font-semibold text-primary">{area.title}</h3>
-                <p className="mt-4 text-base text-secondary/80 leading-relaxed">{area.desc}</p>
-              </div>
-            </GlowFollower>
+              </GlowFollower>
+            </motion.div>
           ))}
         </div>
       </div>

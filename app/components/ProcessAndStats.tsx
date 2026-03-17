@@ -5,6 +5,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitTextReveal from "./ui/SplitTextReveal";
 import { Zap, Layers, BarChart3, Activity } from "lucide-react";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,26 +40,8 @@ export default function ProcessAndStats() {
     setMounted(true);
   }, []);
 
-  useLayoutEffect(() => {
-    if (!mounted) return;
-    const ctx = gsap.context(() => {
-      gsap.from(".capability-card", {
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 90%",
-          once: true,
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out",
-      });
-    }, container);
-
-    return () => ctx.revert();
-  }, []);
-
+  // Favoring Framer Motion for entry reliability
+  
   return (
     <section ref={container} id="process">
       <div className="container mx-auto px-6">
@@ -75,21 +58,28 @@ export default function ProcessAndStats() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {capabilities.map((item) => (
-            <div
+          {mounted && capabilities.map((item, index) => (
+            <motion.div
               key={item.title}
-              className="capability-card rounded-3xl border border-white/10 bg-[var(--bg-surface)] p-8 hover:border-[var(--accent)]/40 hover:shadow-[0_20px_50px_rgba(75,107,255,0.08)] transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--accent)]/10 text-[var(--accent)]">
-                <item.icon className="h-5 w-5" strokeWidth={1.5} />
+              <div
+                className="capability-card rounded-3xl border border-white/10 bg-[var(--bg-surface)] p-8 hover:border-[var(--accent)]/40 hover:shadow-[0_20px_50px_rgba(75,107,255,0.08)] transition-all duration-300 h-full"
+              >
+                <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--accent)]/10 text-[var(--accent)]">
+                  <item.icon className="h-5 w-5" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-lg font-semibold text-primary">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-base text-secondary/80 leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
-              <h3 className="text-lg font-semibold text-primary">
-                {item.title}
-              </h3>
-              <p className="mt-3 text-base text-secondary/80 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
