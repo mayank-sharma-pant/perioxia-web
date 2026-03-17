@@ -81,7 +81,7 @@ export default function Footer() {
         <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-10">
           <Logo className="mb-6" />
           <p className="mt-3 text-sm text-secondary leading-relaxed">
-            Building critical infrastructure for next-generation enterprises.
+            Developing the software products and intelligent systems that lead the AI-first economy.
           </p>
 
           {/* Navigation */}

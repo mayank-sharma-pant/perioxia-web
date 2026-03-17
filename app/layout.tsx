@@ -15,7 +15,7 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <Navbar />
         <main className="min-h-screen w-full pt-16">{children}</main>

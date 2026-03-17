@@ -83,10 +83,10 @@ const panels: Panel[] = [
     teamSize: "2 engineers",
   },
   {
-    name: "Systems & Work",
+    name: "Infrastructure & R&D",
     status: "Ongoing",
-    desc: "System design, architecture, and integration work that supports our product roadmap.",
-    cta: "See Approach",
+    desc: "The underlying architecture and specialized labs that power our product ecosystem.",
+    cta: "View Labs",
     href: "#approach",
     previewTitle: "Delivery flow",
     previewRows: [
@@ -160,11 +160,11 @@ export default function TechConstellation() {
   }, [expandedProject]);
 
   return (
-    <section ref={sectionRef} id="projects" className="relative py-20 bg-surface">
+    <section ref={sectionRef} id="products" className="relative py-20 bg-surface">
       <div className="container mx-auto px-6 mb-12">
-        <p className="text-xs uppercase tracking-[0.4em] text-secondary">Products & work</p>
-        <SplitTextReveal className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary">
-          Scroll to explore what we&apos;ve built and what&apos;s next.
+        <p className="text-xs uppercase tracking-[0.4em] text-[var(--accent)] font-bold">Our Product Ecosystem</p>
+        <SplitTextReveal className="mt-4 text-3xl sm:text-4xl lg:text-7xl font-bold text-primary tracking-tight">
+          Systems designed to lead.
         </SplitTextReveal>
       </div>
 

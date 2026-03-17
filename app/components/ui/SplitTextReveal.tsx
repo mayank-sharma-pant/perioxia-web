@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -11,26 +11,13 @@ export default function SplitTextReveal({
   children: string;
   className?: string;
 }) {
-  const textRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLHeadingElement>(null);
 
-  useLayoutEffect(() => {
-    if (!textRef.current) return;
-
+  useEffect(() => {
     const ctx = gsap.context(() => {
-      // Manual splitting for simpler implementation without external libraries
-      const words = textRef.current?.innerText.split(" ");
-      if (textRef.current && words) {
-        textRef.current.innerHTML = words
-          .map(
-            (word) =>
-              `<span class="inline-block overflow-hidden"><span class="reveal-word inline-block">${word}</span></span>`
-          )
-          .join(" ");
-      }
-
       gsap.from(".reveal-word", {
         scrollTrigger: {
-          trigger: textRef.current,
+          trigger: containerRef.current,
           start: "top 90%",
           toggleActions: "play none none none",
         },
@@ -39,14 +26,21 @@ export default function SplitTextReveal({
         stagger: 0.05,
         ease: "power4.out",
       });
-    }, textRef);
-
+    }, containerRef);
     return () => ctx.revert();
   }, [children]);
 
+  const words = children.split(" ");
+
   return (
-    <h2 ref={textRef} className={className}>
-      {children}
+    <h2 ref={containerRef} className={className}>
+      {words.map((word, i) => (
+        <span key={i} className="inline-block overflow-hidden mr-[0.2em] last:mr-0">
+          <span className="reveal-word inline-block">
+            {word}
+          </span>
+        </span>
+      ))}
     </h2>
   );
 }

@@ -8,8 +8,8 @@ import SplitTextReveal from "./ui/SplitTextReveal";
 
 const highlights = [
   "Product-led AI systems and data platforms",
-  "Clear visibility into how intelligent products perform",
-  "Infrastructure designed for long-term trust",
+  "Developing a suite of intelligent AI products",
+  "Infrastructure designed for long-term product stability",
 ];
 
 export default function Hero() {
@@ -70,14 +70,12 @@ export default function Hero() {
 
           {/* Left: Copy */}
           <div className="space-y-6">
-            <SplitTextReveal className="hero-item text-4xl sm:text-5xl lg:text-6xl font-semibold text-primary leading-[1.1]">
-              Building trusted systems for the AI-first internet.
+            <SplitTextReveal className="hero-item text-4xl sm:text-5xl lg:text-7xl font-bold text-primary leading-[1.05] tracking-tight">
+              Engineering the next generation of AI products.
             </SplitTextReveal>
 
-            <p className="hero-item text-lg text-secondary max-w-xl">
-              We design and engineer AI systems, data platforms, and internal
-              tools that make intelligent products measurable, reliable, and
-              maintainable.
+            <p className="hero-item text-lg text-secondary max-w-xl leading-relaxed">
+              We design and develop high-performance software products, AI platforms, and intelligent systems built for scale and reliability.
             </p>
 
             <ul className="hero-item space-y-2 text-sm text-secondary">
@@ -91,10 +89,10 @@ export default function Hero() {
 
             <div className="hero-item flex flex-wrap gap-4">
               <a
-                href="#projects"
+                href="#products"
                 className="magnetic-btn inline-flex items-center justify-center gap-2 rounded-full border border-[var(--accent)] px-8 py-3 min-w-[160px] text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition-all duration-300"
               >
-                View Work
+                Explore Products
                 <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
               </a>
               <a
@@ -149,7 +147,7 @@ export default function Hero() {
                     <span className="text-primary">Core</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Custom engineering</span>
+                    <span>Product R&D</span>
                     <span className="text-primary">Selective</span>
                   </div>
                 </div>

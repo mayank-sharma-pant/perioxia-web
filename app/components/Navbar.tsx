@@ -12,9 +12,8 @@ const navLinks = [
   { label: "Home", href: "/", target: "body" },
   { label: "About Us", href: "#approach", target: "#approach" },
   { label: "Services", href: "#what-we-do", target: "#what-we-do" },
-  { label: "Projects", href: "#projects", target: "#projects" },
+  { label: "Products", href: "#products", target: "#products" },
   { label: "Process", href: "#process", target: "#process" },
-  { label: "Stats", href: "#stats", target: "#stats" },
 ];
 
 export default function Navbar() {

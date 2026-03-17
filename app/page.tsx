@@ -3,7 +3,6 @@ import TechConstellation from "./components/TechConstellation";
 import SolutionsGrid from "./components/SolutionsGrid";
 import Approach from "./components/Approach";
 import ProcessAndStats from "./components/ProcessAndStats";
-import Stats from "./components/Stats";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -15,7 +14,6 @@ export default function Page() {
       <SolutionsGrid />
       <Approach />
       <ProcessAndStats />
-      <Stats />
       <Contact />
       <Footer />
     </main>
