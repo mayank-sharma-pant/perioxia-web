@@ -6,6 +6,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 const navLinks = [
   { label: "Home", href: "/", target: "body" },
@@ -62,7 +63,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "border-b border-white/5 bg-[var(--bg-dark)]/80 backdrop-blur-md"
-            : "bg-transparent"
+            : "bg-[var(--bg-dark)]/40 backdrop-blur-sm"
         }`}
       >
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
@@ -70,9 +71,9 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={(e) => handleScroll(e, "body")}
-            className="text-sm uppercase tracking-[0.3em] text-primary font-semibold hover:text-[var(--accent)] transition-colors"
+            className="hover:opacity-80 transition-opacity"
           >
-            Perioxia
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}
@@ -82,7 +83,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.target)}
-                className="nav-link text-sm font-medium text-secondary hover:text-[var(--accent)] transition-colors"
+                className="nav-link text-sm font-medium text-primary hover:text-[var(--accent)] transition-colors"
               >
                 {link.label}
               </a>

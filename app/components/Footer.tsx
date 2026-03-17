@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
+import Logo from "./Logo";
 
 const footerLinks = [
   { label: "About Us", href: "#approach" },
@@ -78,10 +79,8 @@ export default function Footer() {
 
         {/* Right: Company info */}
         <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-10">
-          <div className="text-lg font-semibold text-primary">
-            Perioxia Technology
-          </div>
-          <p className="mt-3 text-sm text-secondary">
+          <Logo className="mb-6" />
+          <p className="mt-3 text-sm text-secondary leading-relaxed">
             Building critical infrastructure for next-generation enterprises.
           </p>
 
