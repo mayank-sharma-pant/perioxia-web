@@ -189,7 +189,7 @@ export default function TechConstellation() {
                           e.stopPropagation();
                           setExpandedProject(panel);
                         }}
-                        className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)] px-6 py-3 text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition"
+                        className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/50 bg-[var(--accent)]/5 px-6 py-3 text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition-all duration-300"
                       >
                         View Details
                         <ArrowRight className="w-4 h-4" />
@@ -200,7 +200,7 @@ export default function TechConstellation() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-secondary hover:border-[var(--accent)] hover:text-primary transition"
+                          className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/30 px-6 py-3 text-sm font-semibold text-secondary hover:border-[var(--accent)] hover:text-primary transition-all duration-300"
                         >
                           Visit Site
                           <ExternalLink className="w-3.5 h-3.5" />
@@ -225,8 +225,8 @@ export default function TechConstellation() {
                               <span>{row.label}</span>
                               <span className="text-primary">{row.value}</span>
                             </div>
-                            <div className="mt-3 h-1.5 rounded-full bg-white/5">
-                              <div className="h-full w-[70%] rounded-full bg-[var(--accent)]" />
+                            <div className="mt-3 h-1 rounded-full bg-white/5">
+                              <div className="h-full w-[70%] rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent)]/60" />
                             </div>
                           </div>
                         ))}

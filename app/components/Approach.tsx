@@ -81,13 +81,13 @@ export default function Approach() {
     <section ref={sectionRef} id="approach" className="py-20">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.4em] text-secondary">
+          <p className="inline-block px-3 py-1 rounded-full border border-[var(--accent)]/30 text-[10px] uppercase tracking-[0.4em] text-[var(--accent)] bg-[var(--accent)]/5 mb-6">
             Our approach
           </p>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary leading-tight">
             Product-led systems built with clarity.
           </h2>
-          <p className="mt-4 text-sm text-secondary">
+          <p className="mt-6 text-base text-secondary/80 max-w-xl leading-relaxed">
             We focus on systems that solve real problems with discipline and long-term value.
           </p>
         </div>

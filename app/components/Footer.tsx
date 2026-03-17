@@ -53,13 +53,13 @@ export default function Footer() {
             one business day.
           </p>
           <form
-            className="mt-8 flex flex-col gap-3 sm:flex-row"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
             onSubmit={handleSubmit}
           >
             <input
               type="email"
               placeholder="your@email.com"
-              className="w-full rounded-full border border-white/10 bg-transparent px-6 py-3 text-sm text-primary placeholder:text-secondary/60 focus:border-[var(--accent)] focus:outline-none"
+              className="w-full sm:max-w-xs rounded-full border border-white/10 bg-transparent px-6 py-3 text-sm text-primary placeholder:text-secondary/60 focus:border-[var(--accent)] focus:outline-none transition-all"
               required
             />
             <button
@@ -126,12 +126,12 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/5">
-        <div className="container mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3 text-xs text-secondary">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
+        <div className="container mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3 text-xs text-secondary/80">
+            <span className="h-2 w-2 rounded-full bg-[var(--accent)] animate-pulse shadow-[0_0_10px_var(--accent)]" />
             All systems operational
           </div>
-          <p className="text-xs text-secondary">
+          <p className="text-xs text-secondary/60">
             © {new Date().getFullYear()} Perioxia Technology. All rights
             reserved.
           </p>
