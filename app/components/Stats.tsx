@@ -41,7 +41,7 @@ export default function Stats() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-32 relative">
+        <section ref={sectionRef} id="stats" className="py-32 relative">
             <div className="container-candy">
 
                 {/* Header */}

@@ -85,7 +85,7 @@ export default function TechConstellation() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="work" className="relative py-20 bg-surface">
+    <section ref={sectionRef} id="projects" className="relative py-20 bg-surface">
       <div className="container mx-auto px-6 mb-12">
         <p className="text-xs uppercase tracking-[0.4em] text-secondary">Products & work</p>
         <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">

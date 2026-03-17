@@ -1,8 +1,9 @@
-﻿import Hero from "./components/Hero";
+import Hero from "./components/Hero";
 import TechConstellation from "./components/TechConstellation";
 import SolutionsGrid from "./components/SolutionsGrid";
 import Approach from "./components/Approach";
 import ProcessAndStats from "./components/ProcessAndStats";
+import Stats from "./components/Stats";
 import Contact from "./components/Contact";
 
 export default function Page() {
@@ -13,6 +14,7 @@ export default function Page() {
       <SolutionsGrid />
       <Approach />
       <ProcessAndStats />
+      <Stats />
       <Contact />
     </main>
   );

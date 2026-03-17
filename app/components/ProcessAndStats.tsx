@@ -48,7 +48,7 @@ export default function ProcessAndStats() {
   }, []);
 
   return (
-    <section ref={container} id="capabilities" className="py-20">
+    <section ref={container} id="process" className="py-20">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl">
           <p className="text-xs uppercase tracking-[0.4em] text-secondary">

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import ThemeToggle from "./ThemeToggle";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
@@ -40,14 +39,6 @@ export default function Hero() {
         aria-hidden="true"
       />
       <div className="container mx-auto px-6 relative">
-        {/* Top bar */}
-        <div className="hero-item flex items-center justify-between">
-          <p className="text-xs uppercase tracking-[0.4em] text-secondary">
-            Perioxia
-          </p>
-          <ThemeToggle />
-        </div>
-
         {/* Main content */}
         <div className="mt-12 grid gap-16 lg:grid-cols-[1.1fr_0.9fr] items-center">
 

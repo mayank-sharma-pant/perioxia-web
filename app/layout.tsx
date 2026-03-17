@@ -7,6 +7,8 @@ export const metadata = {
     "Building advanced AI agents, custom CRM, and next-gen robotic operating systems.",
 };
 
+import Navbar from "./components/Navbar";
+
 export default function RootLayout({
   children,
 }: {
@@ -15,7 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main className="min-h-screen w-full">{children}</main>
+        <Navbar />
+        <main className="min-h-screen w-full pt-16">{children}</main>
       </body>
     </html>
   );
