@@ -57,7 +57,7 @@ const panels: Panel[] = [
     teamSize: "2 engineers + 1 designer",
   },
   {
-    name: "Custom CRM",
+    name: "Perioxia CRM",
     status: "Live",
     desc: "A focused CRM designed for product-led teams and reliable data foundations.",
     cta: "View Product",
@@ -152,19 +152,19 @@ export default function TechConstellation() {
   return (
     <>
       {/* Heading — scrolls away naturally before pinning */}
-      <section id="products" className="relative pt-32 pb-16 bg-surface">
+      <section id="products" className="relative pt-32 pb-16 bg-transparent">
         <div className="container mx-auto px-6">
           <p className="text-xs uppercase tracking-[0.4em] text-[var(--accent)] font-bold">
             Our Product Ecosystem
           </p>
-          <SplitTextReveal className="mt-4 text-3xl sm:text-4xl lg:text-7xl font-bold text-primary tracking-tight">
+          <SplitTextReveal className="mt-4 text-3xl sm:text-4xl lg:text-7xl font-bold text-primary tracking-tight drop-shadow-lg">
             Systems designed to lead.
           </SplitTextReveal>
         </div>
       </section>
 
       {/* Pinned horizontal scroll — cards get full viewport height */}
-      <div ref={pinRef} className="relative h-screen w-full overflow-hidden bg-surface">
+      <div ref={pinRef} className="relative h-screen w-full overflow-hidden bg-transparent">
         <div
           ref={stageRef}
           className="flex h-full items-center"

@@ -5,6 +5,21 @@ import gsap from "gsap";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SplitTextReveal from "./ui/SplitTextReveal";
 
+function AICoreAnimation() {
+  return (
+    <div className="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center overflow-hidden mix-blend-screen opacity-50">
+      <div className="relative w-[600px] h-[600px] sm:w-[800px] sm:h-[800px]">
+        {/* Core Glow */}
+        <div className="absolute inset-0 m-auto w-[200px] h-[200px] bg-[var(--accent)] rounded-full blur-[100px] animate-pulse opacity-60" />
+        {/* Orbital Rings */}
+        <div className="absolute inset-0 m-auto w-[400px] h-[400px] rounded-full border border-[var(--accent)]/30 animate-[spin_15s_linear_infinite] border-dashed" />
+        <div className="absolute inset-0 m-auto w-[550px] h-[550px] rounded-full border border-cyan-500/20 animate-[spin_25s_linear_infinite_reverse]" />
+        <div className="absolute inset-0 m-auto w-[700px] h-[700px] rounded-full border border-purple-500/20 animate-[spin_35s_linear_infinite] border-dotted" />
+      </div>
+    </div>
+  );
+}
+
 const highlights = [
   "Product-led AI systems and data platforms",
   "Developing a suite of intelligent AI products",
@@ -63,98 +78,65 @@ export default function Hero() {
         }}
         aria-hidden="true"
       />
-      <div className="container mx-auto px-6 relative">
-        {/* Main content */}
-        <div className="mt-2 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
+      <AICoreAnimation />
+      
+      {/* Structural Grid lines */}
+      <div className="absolute inset-0 pointer-events-none flex justify-center opacity-20">
+        <div className="w-px h-full bg-[var(--accent)]" />
+        <div className="absolute top-1/3 w-full h-px bg-[var(--accent)]" />
+      </div>
 
-          {/* Left: Copy */}
-          <div className="space-y-4">
-            <SplitTextReveal className="hero-item text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold text-primary leading-[1.05] tracking-tight">
-              Engineering the next generation of AI products.
-            </SplitTextReveal>
-
-            <p className="hero-item text-lg text-secondary max-w-xl leading-relaxed">
-              We design and develop high-performance software products, AI platforms, and intelligent systems built for scale and reliability.
-            </p>
-
-            <ul className="hero-item space-y-2 text-sm text-secondary">
-              {highlights.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <div className="hero-item flex flex-wrap gap-4">
-              <a
-                href="#products"
-                className="magnetic-btn inline-flex items-center justify-center gap-2 rounded-full border border-[var(--accent)] px-8 py-3 min-w-[160px] text-sm font-semibold text-primary hover:bg-[var(--accent)] hover:text-white transition-all duration-300"
-              >
-                Explore Products
-                <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
-              </a>
-              <a
-                href="#contact"
-                className="magnetic-btn inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border-subtle)] px-8 py-3 min-w-[160px] text-sm font-semibold text-primary hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all duration-300"
-              >
-                Contact
-                <ArrowUpRight className="w-4 h-4" strokeWidth={1.5} />
-              </a>
-            </div>
+      <div className="container mx-auto px-6 relative mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        {/* Left Side: Massive Text */}
+        <div className="lg:col-span-8 space-y-6 z-10 pt-10">
+          <SplitTextReveal className="hero-item text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold text-white tracking-tighter leading-[1] drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            Intelligent Software Infrastructure.
+          </SplitTextReveal>
+          
+          <p className="hero-item text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed">
+            Developing the products and foundational systems that lead the AI-first economy. Built for scale, security, and absolute precision.
+          </p>
+          
+          <div className="hero-item flex flex-wrap gap-4 pt-6">
+            <a
+              href="#products"
+              className="magnetic-btn inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 min-w-[160px] text-sm font-bold text-black hover:bg-gray-200 transition-all duration-300"
+            >
+              Explore Ecosystem
+              <ArrowRight className="w-4 h-4" strokeWidth={2} />
+            </a>
+            <a
+              href="#contact"
+              className="magnetic-btn inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-black/50 backdrop-blur-md px-8 py-3.5 min-w-[160px] text-sm font-semibold text-white hover:border-white transition-all duration-300"
+            >
+              Get in touch
+              <ArrowUpRight className="w-4 h-4" strokeWidth={1.5} />
+            </a>
           </div>
+        </div>
 
-          {/* Right: Product Ecosystem Panel */}
-          <div className="hero-item rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-5 md:p-6">
-            <div className="flex items-center justify-between text-xs text-secondary">
-              <span className="uppercase tracking-[0.2em]">Our products</span>
-              <span className="inline-flex items-center gap-2 text-primary">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
-                Live
-              </span>
-            </div>
-
-            {/* Product cards */}
-            <div className="mt-4 space-y-2.5">
-              <a href="https://visiblo.in/" target="_blank" rel="noopener noreferrer" className="block rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-4 hover:border-[var(--accent)]/40 transition-all group">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base font-semibold text-primary group-hover:text-[var(--accent)] transition-colors">Visiblo</h3>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--accent)] bg-[var(--accent)]/10 px-2 py-0.5 rounded-full">Live</span>
-                </div>
-                <p className="mt-1.5 text-xs text-secondary leading-relaxed">AI visibility analytics — track your brand across AI-powered search surfaces.</p>
-                <div className="mt-2.5 flex flex-wrap gap-1.5">
-                  {["Next.js", "TypeScript", "PostgreSQL"].map(t => (
-                    <span key={t} className="text-[10px] px-2 py-0.5 rounded-full border border-white/10 text-secondary">{t}</span>
-                  ))}
-                </div>
-              </a>
-
-              <a href="https://crm.perioxia.com" target="_blank" rel="noopener noreferrer" className="block rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-4 hover:border-[var(--accent)]/40 transition-all group">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base font-semibold text-primary group-hover:text-[var(--accent)] transition-colors">Custom CRM</h3>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--accent)] bg-[var(--accent)]/10 px-2 py-0.5 rounded-full">Live</span>
-                </div>
-                <p className="mt-1.5 text-xs text-secondary leading-relaxed">Purpose-built CRM for product-led teams with clean data foundations.</p>
-                <div className="mt-2.5 flex flex-wrap gap-1.5">
-                  {["Next.js", "SQLite", "Drizzle ORM"].map(t => (
-                    <span key={t} className="text-[10px] px-2 py-0.5 rounded-full border border-white/10 text-secondary">{t}</span>
-                  ))}
-                </div>
-              </a>
-
-              <div className="rounded-2xl border border-white/10 bg-[var(--bg-surface)] p-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base font-semibold text-primary">Infrastructure & R&D</h3>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-secondary bg-white/5 px-2 py-0.5 rounded-full">Ongoing</span>
-                </div>
-                <p className="mt-1.5 text-xs text-secondary leading-relaxed">Foundational systems, architecture, and R&D powering the product ecosystem.</p>
-              </div>
-            </div>
-
-            <div className="mt-4 text-xs text-secondary italic">
-              Building the software tools for the AI-first economy.
-            </div>
+        {/* Right Side: Dense Data Grid */}
+        <div className="lg:col-span-4 z-10 mt-10 lg:mt-0 flex flex-col justify-end space-y-4">
+          <div className="text-xs text-white/50 uppercase tracking-[0.4em] font-medium border-b border-white/10 pb-4 mb-2">
+             Active Modules
           </div>
+          
+          <a href="https://visiblo.in/" target="_blank" rel="noopener noreferrer" className="block p-5 border border-white/10 bg-black/40 backdrop-blur-md hover:border-cyan-400/50 transition-all duration-300 group">
+             <div className="flex items-center justify-between mb-2">
+                <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">Visiblo</h3>
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black bg-cyan-400 px-2 py-0.5 rounded-sm">Live</span>
+             </div>
+             <p className="text-xs text-white/60 leading-relaxed">AI visibility analytics — track your brand globally.</p>
+          </a>
+
+          <a href="https://crm.perioxia.com" target="_blank" rel="noopener noreferrer" className="block p-5 border border-white/10 bg-black/40 backdrop-blur-md hover:border-purple-400/50 transition-all duration-300 group">
+             <div className="flex items-center justify-between mb-2">
+                <h3 className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">Perioxia CRM</h3>
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-black bg-purple-400 px-2 py-0.5 rounded-sm">Live</span>
+             </div>
+             <p className="text-xs text-white/60 leading-relaxed">Modular CRM architecture for product-led teams.</p>
+          </a>
         </div>
       </div>
     </section>

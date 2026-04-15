@@ -3,6 +3,7 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitTextReveal from "./ui/SplitTextReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,7 +69,7 @@ export default function Contact() {
       <div className="container mx-auto px-6 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
         <div className="contact-item">
           <p className="text-xs uppercase tracking-[0.4em] text-secondary">Contact us</p>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">Start a conversation.</h2>
+          <SplitTextReveal className="mt-4 text-3xl sm:text-4xl font-semibold text-primary">Start a conversation.</SplitTextReveal>
           <p className="mt-4 text-sm text-secondary max-w-xl">
             Interested in our products, have feedback, or want to explore a collaboration? We&apos;d love to hear from you.
           </p>

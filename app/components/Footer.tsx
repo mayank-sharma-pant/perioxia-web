@@ -80,7 +80,7 @@ export default function Footer() {
         </div>
 
         {/* Right: Company info */}
-        <div className="rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-10">
+        <div className="rounded-3xl glass-panel p-10 shadow-2xl shadow-[var(--accent)]/5">
           <Logo className="mb-6" />
           <p className="mt-3 text-sm text-secondary leading-relaxed">
             Developing the software products and intelligent systems that lead the AI-first economy.

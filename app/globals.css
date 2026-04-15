@@ -10,21 +10,25 @@ html {
     --bg-dark: #f7f8fb;
     --bg-surface: #ffffff;
     --bg-elevated: #f1f3f9;
-    --text-primary: #101421;
+    --text-primary: #030712;
     --text-secondary: #4b5565;
     --accent: #4b6bff;
     --border-subtle: rgba(16, 20, 33, 0.08);
-    --section-py: 8rem; /* py-32 */
+    --section-py: 8rem;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(16, 20, 33, 0.05);
 }
 
 [data-theme="dark"] {
-    --bg-dark: #0f1424;
-    --bg-surface: #151b2c;
-    --bg-elevated: #1b2236;
-    --text-primary: #f4f6fb;
-    --text-secondary: #c3cad9;
-    --accent: #6f86ff;
-    --border-subtle: rgba(255, 255, 255, 0.08);
+    --bg-dark: #030712;
+    --bg-surface: #0a0e17;
+    --bg-elevated: #111827;
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --accent: #8b5cf6;
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --glass-bg: rgba(10, 14, 23, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
@@ -52,6 +56,14 @@ html {
     .text-secondary { color: var(--text-secondary); }
     .text-accent { color: var(--accent); }
     .border-subtle { border-color: var(--border-subtle); }
+    
+    .glass-panel {
+        background-color: var(--glass-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    }
     
     .nav-link {
         position: relative;

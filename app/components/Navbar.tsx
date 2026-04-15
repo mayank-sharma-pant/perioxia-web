@@ -47,8 +47,8 @@ export default function Navbar() {
         ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "border-b border-white/5 bg-[var(--bg-dark)]/80 backdrop-blur-md"
-            : "bg-[var(--bg-dark)]/40 backdrop-blur-sm"
+            ? "border-b border-[var(--glass-border)] bg-[var(--bg-dark)]/60 backdrop-blur-xl"
+            : "bg-[var(--bg-dark)]/40 backdrop-blur-md"
         }`}
       >
         <div className="container mx-auto px-6 h-20 pt-4 flex items-center justify-between">

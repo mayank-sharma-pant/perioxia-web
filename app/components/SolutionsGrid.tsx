@@ -39,7 +39,7 @@ export default function SolutionsGrid() {
   // Favoring Framer Motion for entry reliability
   
   return (
-    <section ref={container} id="what-we-do" className="bg-surface py-32">
+    <section ref={container} id="what-we-do" className="bg-transparent py-32 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl">
           <p className="inline-block px-3 py-1 rounded-full border border-[var(--accent)]/30 text-[10px] uppercase tracking-[0.4em] text-[var(--accent)] bg-[var(--accent)]/5 mb-6">
@@ -62,7 +62,7 @@ export default function SolutionsGrid() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <GlowFollower
-                className="focus-card float-card rounded-3xl border border-white/10 bg-[var(--bg-elevated)] h-full"
+                className="focus-card float-card rounded-3xl glass-panel h-full"
               >
                 <div className="p-8">
                   {area.icon && (
