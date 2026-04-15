@@ -68,7 +68,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={container} className="relative pt-6 pb-16 overflow-hidden">
+    <section ref={container} className="relative pt-20 pb-16 overflow-hidden min-h-[90vh] flex items-center">
       {/* Background glow */}
       <div
         className="absolute inset-0 opacity-70"
@@ -86,7 +86,7 @@ export default function Hero() {
         <div className="absolute top-1/3 w-full h-px bg-[var(--accent)]" />
       </div>
 
-      <div className="container mx-auto px-6 relative mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div className="container mx-auto px-6 relative mt-0 grid grid-cols-1 lg:grid-cols-12 gap-10">
         
         {/* Left Side: Massive Text */}
         <div className="lg:col-span-8 space-y-6 z-10 pt-10">

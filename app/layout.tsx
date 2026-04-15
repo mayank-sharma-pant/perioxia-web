@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en" className="dark" style={{ colorScheme: 'dark' }}>
       <body>
         <Navbar />
-        <main className="min-h-screen w-full pt-16">{children}</main>
+        <main className="min-h-screen w-full pt-0">{children}</main>
       </body>
     </html>
   );
