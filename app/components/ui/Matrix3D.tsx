@@ -90,10 +90,10 @@ export default function Matrix3D() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none -z-10 bg-transparent overflow-hidden mix-blend-screen opacity-50">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-60">
       <canvas
         ref={canvasRef}
-        className="w-full h-full drop-shadow-[0_0_15px_rgba(139,92,246,0.6)] object-cover"
+        className="w-full h-full drop-shadow-[0_0_15px_rgba(139,92,246,0.5)] object-cover"
       />
     </div>
   );

@@ -9,11 +9,13 @@ export default function Page() {
   return (
     <main className="relative min-h-screen selection:bg-[var(--accent)] selection:text-white">
       <Matrix3D />
-      <Hero />
-      <TechConstellation />
-      <SolutionsGrid />
-      <Contact />
-      <Footer />
+      <div className="relative z-10">
+        <Hero />
+        <TechConstellation />
+        <SolutionsGrid />
+        <Contact />
+        <Footer />
+      </div>
     </main>
   );
 }

@@ -38,7 +38,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/10 bg-[var(--bg-surface)]">
+    <footer className="relative border-t border-white/10 bg-transparent">
       {/* Main footer content */}
       <div className="container mx-auto px-6 py-16 grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-start">
         {/* Left: CTA + email */}
