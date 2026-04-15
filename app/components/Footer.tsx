@@ -15,9 +15,7 @@ const footerLinks = [
 const socialLinks = [
   { label: "WhatsApp", href: "https://wa.me/917042701064" },
   { label: "Email", href: "mailto:info@perioxia.com" },
-  { label: "Instagram", href: "#" },
-  { label: "X (Twitter)", href: "#" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/perioxia" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/perioxia-technology/" },
 ];
 
 export default function Footer() {
