@@ -101,7 +101,7 @@ export default function Hero() {
           <div className="hero-item flex flex-wrap gap-4 pt-6">
             <a
               href="#products"
-              className="magnetic-btn inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 min-w-[160px] text-sm font-bold text-black hover:bg-gray-200 transition-all duration-300"
+              className="magnetic-btn inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-8 py-3.5 min-w-[160px] text-sm font-bold text-white hover:opacity-90 transition-all duration-300 shadow-[0_0_20px_rgba(139,92,246,0.3)]"
             >
               Explore Ecosystem
               <ArrowRight className="w-4 h-4" strokeWidth={2} />

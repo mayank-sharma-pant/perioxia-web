@@ -1,25 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
-html {
-  scroll-padding-top: 5rem;
-  scroll-behavior: smooth;
+@theme {
+    --color-bg-dark: #030712;
+    --color-bg-surface: #0a0e17;
+    --color-bg-elevated: #111827;
+    --color-text-primary: #f9fafb;
+    --color-text-secondary: #9ca3af;
+    --color-accent: #8b5cf6;
+    
+    --color-border-subtle: rgba(255, 255, 255, 0.05);
+    
+    --glass-bg: rgba(10, 14, 23, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 :root {
-    --bg-dark: #f7f8fb;
-    --bg-surface: #ffffff;
-    --bg-elevated: #f1f3f9;
-    --text-primary: #030712;
-    --text-secondary: #4b5565;
-    --accent: #4b6bff;
-    --border-subtle: rgba(16, 20, 33, 0.08);
-    --section-py: 8rem;
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(16, 20, 33, 0.05);
-}
-
-[data-theme="dark"] {
     --bg-dark: #030712;
     --bg-surface: #0a0e17;
     --bg-elevated: #111827;
@@ -29,20 +25,30 @@ html {
     --border-subtle: rgba(255, 255, 255, 0.05);
     --glass-bg: rgba(10, 14, 23, 0.5);
     --glass-border: rgba(255, 255, 255, 0.08);
+    --section-py: 8rem;
 }
 
 @layer base {
+    html {
+        background-color: #030712;
+        color: #f9fafb;
+        scroll-padding-top: 5rem;
+        scroll-behavior: smooth;
+    }
+    
     body {
-        background-color: var(--bg-dark);
-        color: var(--text-primary);
+        background-color: #030712;
+        color: #f9fafb;
         font-family: 'Manrope', sans-serif;
         overflow-x: hidden;
     }
+    
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Space Grotesk', sans-serif;
         letter-spacing: -0.03em;
         line-height: 1.1;
     }
+    
     section {
         padding-top: var(--section-py);
         padding-bottom: var(--section-py);
